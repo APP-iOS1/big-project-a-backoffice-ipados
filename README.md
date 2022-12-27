@@ -1,4 +1,4 @@
-# Back-Office-App 🍡
+# Back-Office-App 
 
 ### 앱의 소개
 
