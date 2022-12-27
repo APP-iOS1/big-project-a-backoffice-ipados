@@ -13,7 +13,7 @@ struct Pie: View {
     var body: some View {
         VStack {
             Text("Customer growth")
-                .font(.largeTitle)
+                .modifier(DashBoardChartTitleModifier())
             HStack {
                 Canvas { context, size in
                     let total = slices.reduce(0) { $0 + $1.0 }
@@ -52,7 +52,7 @@ struct Pie: View {
                 }
             }
         }
-        
+        .modifier(DashBoardChartBorderModifier())
     }
 }
 
