@@ -81,8 +81,7 @@ feat/26-tab2/recipe
 
 ## ⚒️ 활용한 기술
 
-- JSON
-- mocki.io // Mock API 제작 서비스
+- Firebase/FireStore
 
 <br>
 
