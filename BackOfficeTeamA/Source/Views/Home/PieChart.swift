@@ -47,7 +47,6 @@ struct PieChart: View {
                 }
             }
         }
-        .modifier(DashBoardChartBorderModifier())
     }
 }
 

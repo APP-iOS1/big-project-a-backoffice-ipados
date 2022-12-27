@@ -10,9 +10,9 @@ import SwiftUI
 
 struct BarChart: View {
     var data: [SalesChart] = [
-        .init(type: "광고수익", count: 5),
-        .init(type: "중계수수료", count: 4),
-        .init(type: "후원", count: 4)
+        .init(type: "광고수익", count: 500),
+        .init(type: "중계수수료", count: 400),
+        .init(type: "후원", count: 220)
     ]
     
     var body: some View {
@@ -31,6 +31,8 @@ struct BarChart: View {
                      y: .value("Total Count", data[2].count)
                 )
             }
+            .chartXAxis(.hidden)
+            .chartYAxis(.hidden)
         }
 
     }

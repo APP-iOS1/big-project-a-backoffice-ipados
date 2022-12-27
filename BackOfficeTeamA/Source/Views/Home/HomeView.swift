@@ -22,11 +22,15 @@ struct HomeView: View {
             VStack {
                 HStack {
                     BarChart()
+                        .modifier(DashBoardChartBorderModifier())
                     PieChart(customer: customer)
+                        .modifier(DashBoardChartBorderModifier())
                 }
                 HStack {
                     LineChart()
+                        .modifier(DashBoardChartBorderModifier())
                     PieChart(customer: customer)
+                        .modifier(DashBoardChartBorderModifier())
                 }
             }
             .padding()
