@@ -35,6 +35,16 @@
 		FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BACE295A80B7001D0AB3 /* View+.swift */; };
 		FA71BAD2295A810F001D0AB3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAD1295A810F001D0AB3 /* Constants.swift */; };
 		FA71BAD4295A87B9001D0AB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAD3295A87B9001D0AB3 /* AppDelegate.swift */; };
+		FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAD6295AC46E001D0AB3 /* TotalStoreView.swift */; };
+		FA71BADA295AC846001D0AB3 /* RequestCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAD9295AC846001D0AB3 /* RequestCountView.swift */; };
+		FA71BADC295AC982001D0AB3 /* RequestStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BADB295AC982001D0AB3 /* RequestStateView.swift */; };
+		FA71BAE0295ACBA6001D0AB3 /* EnrollRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */; };
+		FA71BAE2295ACBD4001D0AB3 /* CurrentRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */; };
+		FA71BAE4295ACBF0001D0AB3 /* MoreRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */; };
+		FA71BAE6295ACE97001D0AB3 /* ManageEnrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */; };
+		FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */; };
+		FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */; };
+		FA71BAEC295AD602001D0AB3 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAEB295AD602001D0AB3 /* StoreCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +77,16 @@
 		FA71BACE295A80B7001D0AB3 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		FA71BAD1295A810F001D0AB3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA71BAD3295A87B9001D0AB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA71BAD6295AC46E001D0AB3 /* TotalStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStoreView.swift; sourceTree = "<group>"; };
+		FA71BAD9295AC846001D0AB3 /* RequestCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCountView.swift; sourceTree = "<group>"; };
+		FA71BADB295AC982001D0AB3 /* RequestStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStateView.swift; sourceTree = "<group>"; };
+		FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollRequestModal.swift; sourceTree = "<group>"; };
+		FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRequestView.swift; sourceTree = "<group>"; };
+		FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRequestList.swift; sourceTree = "<group>"; };
+		FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEnrollView.swift; sourceTree = "<group>"; };
+		FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMangeEnrollList.swift; sourceTree = "<group>"; };
+		FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreList.swift; sourceTree = "<group>"; };
+		FA71BAEB295AD602001D0AB3 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +217,17 @@
 		FA71BAAA295A7E20001D0AB3 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */,
+				FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */,
+				FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */,
+				FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */,
+				FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */,
+				FA71BAD9295AC846001D0AB3 /* RequestCountView.swift */,
+				FA71BADB295AC982001D0AB3 /* RequestStateView.swift */,
+				FA71BAEB295AD602001D0AB3 /* StoreCell.swift */,
+				FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */,
 				FA71BAC2295A7FF2001D0AB3 /* StoreView.swift */,
+				FA71BAD6295AC46E001D0AB3 /* TotalStoreView.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -368,23 +398,33 @@
 				AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */,
 				FA71BAD2295A810F001D0AB3 /* Constants.swift in Sources */,
 				FA71BABF295A7FDC001D0AB3 /* PaymentView.swift in Sources */,
+				FA71BAEC295AD602001D0AB3 /* StoreCell.swift in Sources */,
 				FA71BAC3295A7FF2001D0AB3 /* StoreView.swift in Sources */,
+				FA71BAE6295ACE97001D0AB3 /* ManageEnrollView.swift in Sources */,
 				FA71BAD4295A87B9001D0AB3 /* AppDelegate.swift in Sources */,
 				FA71BAB9295A7FB6001D0AB3 /* LogView.swift in Sources */,
 				FA71BACD295A8090001D0AB3 /* Modifiers.swift in Sources */,
 				FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */,
+				FA71BAE4295ACBF0001D0AB3 /* MoreRequestList.swift in Sources */,
+				FA71BADA295AC846001D0AB3 /* RequestCountView.swift in Sources */,
 				FA71BABD295A7FD1001D0AB3 /* NotificationView.swift in Sources */,
 				6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */,
 				6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
+				FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
+				FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */,
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
 				FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */,
 				FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */,
+				FA71BADC295AC982001D0AB3 /* RequestStateView.swift in Sources */,
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
+				FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */,
 				FA71BAC5295A7FFE001D0AB3 /* StoreUserView.swift in Sources */,
 				FA71BAC1295A7FE8001D0AB3 /* ReportView.swift in Sources */,
+				FA71BAE0295ACBA6001D0AB3 /* EnrollRequestModal.swift in Sources */,
+				FA71BAE2295ACBD4001D0AB3 /* CurrentRequestView.swift in Sources */,
 				FA71BABB295A7FC0001D0AB3 /* NoticeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
