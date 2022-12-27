@@ -5,11 +5,37 @@
 //  Created by MacBook on 2022/12/27.
 //
 
+import Charts
 import SwiftUI
 
 struct HomeView: View {
+    @State var customer = [
+        CustomerGrowth(type: "User", count: 284, color: .red),
+        CustomerGrowth(type: "B2B User", count: 62, color: .orange),
+        CustomerGrowth(type: "Payment", count: 162, color: .yellow),
+        CustomerGrowth(type: "Login", count: 297, color: .green),
+        CustomerGrowth(type: "Ekyc", count: 738, color: .blue)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                HStack {
+                    BarChart()
+                        .modifier(DashBoardChartBorderModifier())
+                    PieChart(customer: customer)
+                        .modifier(DashBoardChartBorderModifier())
+                }
+                HStack {
+                    LineChart()
+                        .modifier(DashBoardChartBorderModifier())
+                    PieChart(customer: customer)
+                        .modifier(DashBoardChartBorderModifier())
+                }
+            }
+            .padding()
+        }
+        .navigationTitle("Dashboard")
     }
 }
 
