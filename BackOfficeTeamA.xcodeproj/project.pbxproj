@@ -130,7 +130,7 @@
 				FA71BA96295A7CAE001D0AB3 /* ContentView.swift */,
 				FA71BAAE295A7E60001D0AB3 /* Ad */,
 				FA71BAA9295A7DB1001D0AB3 /* Customer */,
-				FA71BAA8295A7D90001D0AB3 /* DashBoard */,
+				FA71BAA8295A7D90001D0AB3 /* Home */,
 				FA71BAAD295A7E5B001D0AB3 /* Log */,
 				FA71BAAF295A7E75001D0AB3 /* Notice */,
 				FA71BAB0295A7E81001D0AB3 /* Notification */,
@@ -171,7 +171,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FA71BAA8295A7D90001D0AB3 /* DashBoard */ = {
+		FA71BAA8295A7D90001D0AB3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				6A2E7D36295AB60200426E61 /* BarChart.swift */,
@@ -179,7 +179,7 @@
 				6A2E7D3C295AC31900426E61 /* LineChart.swift */,
 				6A2E7D34295AB56D00426E61 /* PieChart.swift */,
 			);
-			path = DashBoard;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		FA71BAA9295A7DB1001D0AB3 /* Customer */ = {
