@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PieChart: View {
     @State var slices: [(Double, Color)]
+    @State var customer: [CustomerGrowth]
     
     var body: some View {
         VStack {
@@ -57,6 +58,14 @@ struct PieChart: View {
 }
 
 struct Pie_Previews: PreviewProvider {
+    @State static var customer = [
+        CustomerGrowth(type: "User", count: 284),
+        CustomerGrowth(type: "B2B User", count: 362),
+        CustomerGrowth(type: "Payment", count: 362),
+        CustomerGrowth(type: "Login", count: 497),
+        CustomerGrowth(type: "Ekyc", count: 538),
+    ]
+    
     static var previews: some View {
         PieChart(slices: [
             (2, .red),
@@ -66,6 +75,6 @@ struct Pie_Previews: PreviewProvider {
             (5, .blue),
             (4, .indigo),
             (2, .purple)
-        ])
+        ], customer: customer)
     }
 }
