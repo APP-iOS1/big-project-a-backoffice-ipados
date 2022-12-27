@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var searchText = ""
+    @State private var selected: Int? = 0
+    
     
     var body: some View {
         NavigationView {
-            
-            List{
+            List(selection: $selected){
                 Section{
-                    NavigationLink {
+                    NavigationLink(tag: 0, selection: $selected) {
                         HomeView()
                     } label: {
                         Text("Home")
-                    }.tag(0)
+                    }
                 }
                 
                 Section{
