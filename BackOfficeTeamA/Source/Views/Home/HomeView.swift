@@ -8,21 +8,12 @@
 import Charts
 import SwiftUI
 
-struct DashBoardView: View {
-    private let spacing: CGFloat = 40.0
-    
-    @State var customer = [
-        CustomerGrowth(type: "User", count: 284),
-        CustomerGrowth(type: "B2B User", count: 362),
-        CustomerGrowth(type: "Payment", count: 362),
-        CustomerGrowth(type: "Login", count: 497),
-        CustomerGrowth(type: "Ekyc", count: 538),
-    ]
+struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: spacing) {
-                HStack(spacing: spacing) {
+            VStack {
+                HStack {
                     BarChart()
                     PieChart(slices: [
                         (2, .red),
@@ -32,9 +23,9 @@ struct DashBoardView: View {
                         (5, .blue),
                         (4, .indigo),
                         (2, .purple)
-                    ], customer: customer)
+                    ])
                 }
-                HStack(spacing: spacing) {
+                HStack {
                     LineChart()
                     PieChart(slices: [
                         (2, .red),
@@ -44,7 +35,7 @@ struct DashBoardView: View {
                         (5, .blue),
                         (4, .indigo),
                         (2, .purple)
-                    ], customer: customer)
+                    ])
                 }
             }
             .padding()
@@ -55,6 +46,10 @@ struct DashBoardView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
+<<<<<<< HEAD:BackOfficeTeamA/Source/Views/Home/DashBoardView.swift
         DashBoardView().previewInterfaceOrientation(.landscapeLeft)
+=======
+        HomeView()
+>>>>>>> parent of 678fd65 ([Chore] Home-> DashBoard 이름 변경):BackOfficeTeamA/Source/Views/Home/HomeView.swift
     }
 }
