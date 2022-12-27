@@ -46,10 +46,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-<<<<<<< HEAD:BackOfficeTeamA/Source/Views/Home/DashBoardView.swift
-        DashBoardView().previewInterfaceOrientation(.landscapeLeft)
-=======
         HomeView()
->>>>>>> parent of 678fd65 ([Chore] Home-> DashBoard 이름 변경):BackOfficeTeamA/Source/Views/Home/HomeView.swift
     }
 }
