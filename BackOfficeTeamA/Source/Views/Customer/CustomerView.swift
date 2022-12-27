@@ -9,7 +9,35 @@ import SwiftUI
 
 struct CustomerView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("All customers")
+                Button {
+                    print("")
+                } label: {
+//                    Image(systemName: "magnifyingglass")
+                    Text("Quick Search")
+                }
+                .modifier(MainButtonModifier())
+                
+                Button {
+                    print("")
+                } label: {
+//                    Image(systemName: "magnifyingglass")
+                    Text("Quick Search")
+                }
+                .modifier(SubButtonModifier())
+                
+                Button {
+                    print("")
+                } label: {
+//                    Image(systemName: "magnifyingglass")
+                    Text("Quick Search")
+                }
+                .modifier(OptionsButtonModifier())
+
+            }
+        }
     }
 }
 
