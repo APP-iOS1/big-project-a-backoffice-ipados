@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack {
                 HStack {
                     Bar()
-                    Pie(slices: [
+                    PieChart(slices: [
                         (2, .red),
                         (3, .orange),
                         (4, .yellow),
@@ -27,7 +27,7 @@ struct HomeView: View {
                 }
                 HStack {
                     LineChart()
-                    Pie(slices: [
+                    PieChart(slices: [
                         (2, .red),
                         (3, .orange),
                         (4, .yellow),

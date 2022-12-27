@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Pie: View {
+struct PieChart: View {
     @State var slices: [(Double, Color)]
     
     var body: some View {
@@ -58,7 +58,7 @@ struct Pie: View {
 
 struct Pie_Previews: PreviewProvider {
     static var previews: some View {
-        Pie(slices: [
+        PieChart(slices: [
             (2, .red),
             (3, .orange),
             (4, .yellow),
