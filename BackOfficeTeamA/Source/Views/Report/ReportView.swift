@@ -13,30 +13,97 @@ struct ReportView: View {
     @State var searchFor = ""
     @State private var reportData: [tempReportModel] = [
         tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970),
-        tempReportModel(reporter: "이름이 긴 사람", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970)
+        tempReportModel(reporter: "이름이 긴 사람", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970),
+        tempReportModel(reporter: "이름이 긴 사람2", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 88400),
+        tempReportModel(reporter: "이름이 긴 사람2", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 804800),
+        tempReportModel(reporter: "이름이 긴 사람3", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 2892000),
+        tempReportModel(reporter: "이름이 긴 사람3", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 33536600),
+        
     ]
+    @State var searchDate = dayWeekMonthYear.all
         
     var results: [tempReportModel] {
-        //filter를 날짜로 한번하고 그 이후꺼 필터가 되도록?
+        //filter를 날짜로 한번하고 그 이후 필터 진행
+        var dateFilteredData = reportData
+        
+        switch searchDate {
+        case .day:
+            dateFilteredData = dateFilteredData.filter {
+                $0.createdAt >= Date().timeIntervalSince1970 - 86400
+            }
+        case .week:
+            dateFilteredData = dateFilteredData.filter {
+                $0.createdAt >= Date().timeIntervalSince1970 - 604800
+            }
+        case .month:
+            dateFilteredData = dateFilteredData.filter {
+                $0.createdAt >= Date().timeIntervalSince1970 - 2592000
+            }
+        case .year:
+            dateFilteredData = dateFilteredData.filter {
+                $0.createdAt >= Date().timeIntervalSince1970 - 31536000
+            }
+        default:
+            //.all인 경우 필터 x
+            break
+        }
+        
+        
+        
         
         if !searchFor.isEmpty && pickerSelection == 0   {
-            return reportData.filter {
+            return dateFilteredData.filter {
                 $0.reporter.contains(searchFor)
             }
         } else if !searchFor.isEmpty && pickerSelection == 1 {
-            return reportData.filter {
+            return dateFilteredData.filter {
                 $0.reported.contains(searchFor)
             }
         } else if !searchFor.isEmpty && pickerSelection == 2 {
-            return reportData.filter {
+            return dateFilteredData.filter {
                 $0.contents.contains(searchFor)
             }
         }
-        return reportData
+        return dateFilteredData
     }
     
     var body: some View {
+        
             List {
+                HStack {
+                    Button {
+                        searchDate = .all
+                    } label: {
+                        Text("전체").modifier(OptionsButtonModifier())
+                    }
+                    
+                    Button {
+                        searchDate = .day
+                    } label: {
+                        Text("하루 전").modifier(OptionsButtonModifier())
+                    }
+                    
+                    Button {
+                        searchDate = .week
+                    } label: {
+                        Text("일주일 전").modifier(OptionsButtonModifier())
+                    }
+                    
+                    Button {
+                        searchDate = .month
+                    } label: {
+                        Text("한달 전").modifier(OptionsButtonModifier())
+                    }
+                    
+                    Button {
+                        searchDate = .year
+                    } label: {
+                        Text("일년 전").modifier(OptionsButtonModifier())
+                    }
+                    
+                    
+                }
+                .buttonStyle(PlainButtonStyle())
                 ForEach(results, id: \.self) { group in
                     CellView(reportData: group)
                 }
@@ -52,6 +119,14 @@ struct ReportView: View {
                 }
             }
         }
+}
+
+enum dayWeekMonthYear {
+    case all
+    case day
+    case week
+    case month
+    case year
 }
 
 struct ReportView_Previews: PreviewProvider {
@@ -77,7 +152,7 @@ struct CellView: View {
                         .foregroundColor(.black)
                     Divider()
                     Text(reportData.reporter)
-                        .frame(width: 60)
+//                        .frame(width: 60)
                     Text("님이 판매자")
                         .foregroundColor(.black)
                     Text(reportData.reported)
@@ -86,7 +161,7 @@ struct CellView: View {
                     
                     
                 }
-                .lineLimit(1)
+//                .lineLimit(1)
                 
                 if showDetail {
                     Text(reportData.contents)
