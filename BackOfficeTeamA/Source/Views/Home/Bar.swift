@@ -5,11 +5,34 @@
 //  Created by Park Jungwoo on 2022/12/27.
 //
 
+import Charts
 import SwiftUI
 
 struct Bar: View {
+    var data: [SalesChart] = [
+        .init(type: "광고수익", count: 5),
+        .init(type: "중계수수료", count: 4),
+        .init(type: "후원", count: 4)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Chart {
+                BarMark(
+                    x: .value("Shape Type", data[0].type),
+                    y: .value("Total Count", data[0].count)
+                )
+                BarMark(
+                     x: .value("Shape Type", data[1].type),
+                     y: .value("Total Count", data[1].count)
+                )
+                BarMark(
+                     x: .value("Shape Type", data[2].type),
+                     y: .value("Total Count", data[2].count)
+                )
+            }
+        }
+
     }
 }
 
