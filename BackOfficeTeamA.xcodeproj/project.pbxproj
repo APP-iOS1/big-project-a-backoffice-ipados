@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A2E7D33295AB1C200426E61 /* SalesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D32295AB1C200426E61 /* SalesChart.swift */; };
 		FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */; };
 		FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA96295A7CAE001D0AB3 /* ContentView.swift */; };
 		FA71BA99295A7CAF001D0AB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA71BA98295A7CAF001D0AB3 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A2E7D32295AB1C200426E61 /* SalesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesChart.swift; sourceTree = "<group>"; };
 		FA71BA91295A7CAE001D0AB3 /* BackOfficeTeamA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackOfficeTeamA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfficeTeamAApp.swift; sourceTree = "<group>"; };
 		FA71BA96295A7CAE001D0AB3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		FA71BAA7295A7D86001D0AB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A2E7D32295AB1C200426E61 /* SalesChart.swift */,
 				FA71BAC6295A8019001D0AB3 /* Store.swift */,
 			);
 			path = Models;
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A2E7D33295AB1C200426E61 /* SalesChart.swift in Sources */,
 				FA71BAB3295A7F39001D0AB3 /* AdView.swift in Sources */,
 				FA71BAD2295A810F001D0AB3 /* Constants.swift in Sources */,
 				FA71BABF295A7FDC001D0AB3 /* PaymentView.swift in Sources */,
