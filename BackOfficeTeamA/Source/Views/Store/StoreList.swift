@@ -30,7 +30,7 @@ struct StoreList: View {
                 Text("a")
                 Text("a")
             }
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
         
     }
 }

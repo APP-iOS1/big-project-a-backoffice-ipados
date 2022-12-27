@@ -19,7 +19,7 @@ struct RequestCountView: View {
             }
             .font(.title)
             
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
     }
 }
 

@@ -21,7 +21,7 @@ struct TotalStoreView: View {
                 Image(systemName: true ? "arrow.up" :"arrow.down")
             }
             
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
     }
 }
 
@@ -31,14 +31,3 @@ struct TotalStoreView_Previews: PreviewProvider {
     }
 }
 
-// Mark: -Modifier : 스토어 컴포넌트 뷰 속성
-struct TopItemModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .foregroundColor(.black)
-            .padding()
-            .background(.white, in: RoundedRectangle(cornerRadius: 20))
-            //.shadow(color: .gray,radius: 10)
-            .padding()
-    }
-}

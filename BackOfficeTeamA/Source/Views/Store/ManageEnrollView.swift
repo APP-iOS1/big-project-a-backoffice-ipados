@@ -34,7 +34,7 @@ struct ManageEnrollView: View {
                     .padding()
             }
             Spacer()
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
     }
 }
 

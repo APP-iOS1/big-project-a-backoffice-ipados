@@ -33,7 +33,7 @@ struct CurrentRequestView: View {
                     .padding()
             }
             Spacer()
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
     }
 }
 

@@ -20,7 +20,7 @@ struct RequestStateView: View {
             }
             .font(.title)
             
-        }.modifier(TopItemModifier())
+        }.modifier(StoreComponentModifier())
     }
 }
 
