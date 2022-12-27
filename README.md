@@ -1,4 +1,4 @@
-# Back-Office-App 
+# Back-Office-App
 
 ### 앱의 소개
 
@@ -57,7 +57,7 @@ feat/26-tab2/recipe
 │       │
 │       +------🗂 Customer
 │       |
-│       +------🗂 Home
+│       +------🗂 DashBoard
 │       |
 │       +------🗂 Log
 │       │
