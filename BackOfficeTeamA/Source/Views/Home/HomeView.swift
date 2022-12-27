@@ -14,7 +14,7 @@ struct HomeView: View {
         ScrollView {
             VStack {
                 HStack {
-                    Bar()
+                    BarChart()
                     PieChart(slices: [
                         (2, .red),
                         (3, .orange),

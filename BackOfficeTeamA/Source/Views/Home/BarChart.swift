@@ -8,7 +8,7 @@
 import Charts
 import SwiftUI
 
-struct Bar: View {
+struct BarChart: View {
     var data: [SalesChart] = [
         .init(type: "광고수익", count: 5),
         .init(type: "중계수수료", count: 4),
@@ -38,6 +38,6 @@ struct Bar: View {
 
 struct Bar_Previews: PreviewProvider {
     static var previews: some View {
-        Bar()
+        BarChart()
     }
 }
