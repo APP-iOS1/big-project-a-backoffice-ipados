@@ -1,6 +1,6 @@
 ---
 name: BackOffice 팀 이슈 템플릿
-about: Suggest an idea for this project
+about: BackOffice 팀 이슈 템플릿입니다.
 title: "[Feat]"
 labels: ''
 assignees: ''
