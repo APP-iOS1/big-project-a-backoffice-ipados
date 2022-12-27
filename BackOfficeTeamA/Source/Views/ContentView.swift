@@ -16,7 +16,7 @@ struct ContentView: View {
             List{
                 Section{
                     NavigationLink {
-                        HomeView()
+                        DashBoardView()
                     } label: {
                         Text("Home")
                     }.tag(0)

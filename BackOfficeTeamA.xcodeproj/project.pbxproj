@@ -19,7 +19,7 @@
 		FA71BA9D295A7CAF001D0AB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA71BA9C295A7CAF001D0AB3 /* Preview Assets.xcassets */; };
 		FA71BAB3295A7F39001D0AB3 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAB2295A7F39001D0AB3 /* AdView.swift */; };
 		FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAB4295A7F97001D0AB3 /* CustomerView.swift */; };
-		FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAB6295A7FAC001D0AB3 /* HomeView.swift */; };
+		FA71BAB7295A7FAC001D0AB3 /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAB6295A7FAC001D0AB3 /* DashBoardView.swift */; };
 		FA71BAB9295A7FB6001D0AB3 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAB8295A7FB6001D0AB3 /* LogView.swift */; };
 		FA71BABB295A7FC0001D0AB3 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BABA295A7FC0001D0AB3 /* NoticeView.swift */; };
 		FA71BABD295A7FD1001D0AB3 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BABC295A7FD1001D0AB3 /* NotificationView.swift */; };
@@ -50,7 +50,7 @@
 		FA71BA9C295A7CAF001D0AB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA71BAB2295A7F39001D0AB3 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		FA71BAB4295A7F97001D0AB3 /* CustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerView.swift; sourceTree = "<group>"; };
-		FA71BAB6295A7FAC001D0AB3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FA71BAB6295A7FAC001D0AB3 /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
 		FA71BAB8295A7FB6001D0AB3 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		FA71BABA295A7FC0001D0AB3 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		FA71BABC295A7FD1001D0AB3 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				6A2E7D36295AB60200426E61 /* BarChart.swift */,
-				FA71BAB6295A7FAC001D0AB3 /* HomeView.swift */,
+				FA71BAB6295A7FAC001D0AB3 /* DashBoardView.swift */,
 				6A2E7D3C295AC31900426E61 /* LineChart.swift */,
 				6A2E7D34295AB56D00426E61 /* PieChart.swift */,
 			);
@@ -375,7 +375,7 @@
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
-				FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */,
+				FA71BAB7295A7FAC001D0AB3 /* DashBoardView.swift in Sources */,
 				FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */,
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
 				FA71BAC5295A7FFE001D0AB3 /* StoreUserView.swift in Sources */,
