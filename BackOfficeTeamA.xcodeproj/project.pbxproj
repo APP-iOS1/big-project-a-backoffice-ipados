@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		6A2E7D33295AB1C200426E61 /* SalesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D32295AB1C200426E61 /* SalesChart.swift */; };
+		6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D34295AB56D00426E61 /* PieChart.swift */; };
+		6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D36295AB60200426E61 /* BarChart.swift */; };
+		6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */; };
+		6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3C295AC31900426E61 /* LineChart.swift */; };
+		6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */; };
 		AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7873F295AD7D9003F46E9 /* TestModel.swift */; };
 		FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */; };
 		FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA96295A7CAE001D0AB3 /* ContentView.swift */; };
@@ -41,6 +48,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A2E7D32295AB1C200426E61 /* SalesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesChart.swift; sourceTree = "<group>"; };
+		6A2E7D34295AB56D00426E61 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		6A2E7D36295AB60200426E61 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCustomerTraffic.swift; sourceTree = "<group>"; };
+		6A2E7D3C295AC31900426E61 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerGrowth.swift; sourceTree = "<group>"; };
 		AEE7873F295AD7D9003F46E9 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		FA71BA91295A7CAE001D0AB3 /* BackOfficeTeamA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackOfficeTeamA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfficeTeamAApp.swift; sourceTree = "<group>"; };
@@ -173,6 +186,9 @@
 		FA71BAA7295A7D86001D0AB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */,
+				6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */,
+				6A2E7D32295AB1C200426E61 /* SalesChart.swift */,
 				FA71BAC6295A8019001D0AB3 /* Store.swift */,
 			);
 			path = Models;
@@ -181,7 +197,10 @@
 		FA71BAA8295A7D90001D0AB3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6A2E7D36295AB60200426E61 /* BarChart.swift */,
 				FA71BAB6295A7FAC001D0AB3 /* HomeView.swift */,
+				6A2E7D3C295AC31900426E61 /* LineChart.swift */,
+				6A2E7D34295AB56D00426E61 /* PieChart.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,7 +391,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A2E7D33295AB1C200426E61 /* SalesChart.swift in Sources */,
+				6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */,
 				FA71BAB3295A7F39001D0AB3 /* AdView.swift in Sources */,
+				6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */,
 				AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */,
 				FA71BAD2295A810F001D0AB3 /* Constants.swift in Sources */,
 				FA71BABF295A7FDC001D0AB3 /* PaymentView.swift in Sources */,
@@ -386,8 +408,11 @@
 				FA71BAE4295ACBF0001D0AB3 /* MoreRequestList.swift in Sources */,
 				FA71BADA295AC846001D0AB3 /* RequestCountView.swift in Sources */,
 				FA71BABD295A7FD1001D0AB3 /* NotificationView.swift in Sources */,
+				6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */,
+				6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
 				FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */,
+				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
 				FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */,
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
