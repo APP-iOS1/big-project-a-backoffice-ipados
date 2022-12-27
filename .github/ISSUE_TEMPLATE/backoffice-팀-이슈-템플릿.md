@@ -1,7 +1,7 @@
 ---
-name: "[Feat]"
+name: BackOffice 팀 이슈 템플릿
 about: Suggest an idea for this project
-title: ''
+title: "[Feat]"
 labels: ''
 assignees: ''
 
