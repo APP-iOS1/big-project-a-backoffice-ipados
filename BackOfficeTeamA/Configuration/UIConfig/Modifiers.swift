@@ -45,3 +45,11 @@ struct OptionsButtonModifier: ViewModifier {
             .cornerRadius(20)
     }
 }
+
+// MARK: -Modifier : Dashboard 차트 타이틀 속성
+struct DashBoardChartTitleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+    }
+}
