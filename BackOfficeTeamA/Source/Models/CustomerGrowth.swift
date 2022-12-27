@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CustomerGrowth: Identifiable {
     var id = UUID().uuidString
     var type: String
     var count: Int
+    
+    let color: Color
 }

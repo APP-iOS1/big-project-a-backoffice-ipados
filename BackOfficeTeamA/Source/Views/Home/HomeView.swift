@@ -9,33 +9,24 @@ import Charts
 import SwiftUI
 
 struct HomeView: View {
+    @State var customer = [
+        CustomerGrowth(type: "User", count: 284, color: .red),
+        CustomerGrowth(type: "B2B User", count: 62, color: .orange),
+        CustomerGrowth(type: "Payment", count: 162, color: .yellow),
+        CustomerGrowth(type: "Login", count: 297, color: .green),
+        CustomerGrowth(type: "Ekyc", count: 738, color: .blue)
+    ]
     
     var body: some View {
         ScrollView {
             VStack {
                 HStack {
                     BarChart()
-                    PieChart(slices: [
-                        (2, .red),
-                        (3, .orange),
-                        (4, .yellow),
-                        (1, .green),
-                        (5, .blue),
-                        (4, .indigo),
-                        (2, .purple)
-                    ])
+                    PieChart(customer: customer)
                 }
                 HStack {
                     LineChart()
-                    PieChart(slices: [
-                        (2, .red),
-                        (3, .orange),
-                        (4, .yellow),
-                        (1, .green),
-                        (5, .blue),
-                        (4, .indigo),
-                        (2, .purple)
-                    ])
+                    PieChart(customer: customer)
                 }
             }
             .padding()
