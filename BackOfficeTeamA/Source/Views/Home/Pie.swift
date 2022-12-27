@@ -52,8 +52,6 @@ struct Pie: View {
                 }
             }
         }
-        .padding()
-        .border(.black)
         
     }
 }

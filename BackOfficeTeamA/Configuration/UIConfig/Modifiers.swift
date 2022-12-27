@@ -53,3 +53,12 @@ struct DashBoardChartTitleModifier: ViewModifier {
             .font(.largeTitle)
     }
 }
+
+// MARK: -Modifier : Dashboard 차트 border 속성
+struct DashBoardChartBorderModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .border(.black)
+    }
+}
