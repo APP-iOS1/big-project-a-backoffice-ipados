@@ -105,14 +105,14 @@
 		FA71BAA3295A7D36001D0AB3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FA71BAA7295A7D86001D0AB3 /* Model */,
-				FA71BAA4295A7D59001D0AB3 /* View */,
-				FA71BAA6295A7D7B001D0AB3 /* ViewModel */,
+				FA71BAA7295A7D86001D0AB3 /* Models */,
+				FA71BAA4295A7D59001D0AB3 /* Views */,
+				FA71BAA6295A7D7B001D0AB3 /* ViewModels */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		FA71BAA4295A7D59001D0AB3 /* View */ = {
+		FA71BAA4295A7D59001D0AB3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FA71BA96295A7CAE001D0AB3 /* ContentView.swift */,
@@ -127,33 +127,33 @@
 				FA71BAAA295A7E20001D0AB3 /* Store */,
 				FA71BAAB295A7E40001D0AB3 /* StoreUser */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FA71BAA5295A7D60001D0AB3 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				FA71BAD0295A80EA001D0AB3 /* Constants */,
-				FA71BACB295A805F001D0AB3 /* UIConfig */,
 				FA71BACA295A804A001D0AB3 /* Extension */,
+				FA71BACB295A805F001D0AB3 /* UIConfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		FA71BAA6295A7D7B001D0AB3 /* ViewModel */ = {
+		FA71BAA6295A7D7B001D0AB3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				FA71BAC8295A802C001D0AB3 /* StoreViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		FA71BAA7295A7D86001D0AB3 /* Model */ = {
+		FA71BAA7295A7D86001D0AB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				FA71BAC6295A8019001D0AB3 /* Store.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FA71BAA8295A7D90001D0AB3 /* Home */ = {
