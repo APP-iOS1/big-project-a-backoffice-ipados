@@ -11,8 +11,11 @@ struct PieChart: View {
     @State var customer: [CustomerGrowth]
     var body: some View {
         VStack {
-            Text("Customer growth")
-                .modifier(DashBoardChartTitleModifier())
+            HStack {
+                Text("Customer growth")
+                    .modifier(DashBoardChartTitleModifier())
+                Spacer()
+            }
             HStack {
                 Canvas { context, size in
                     let total = customer.reduce(0) { $0 + $1.count }
