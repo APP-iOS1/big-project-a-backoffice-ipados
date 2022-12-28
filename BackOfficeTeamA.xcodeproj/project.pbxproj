@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A037417295BFC440082F37C /* ChartFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A037416295BFC440082F37C /* ChartFooter.swift */; };
 		6A2E7D33295AB1C200426E61 /* ProfitByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D32295AB1C200426E61 /* ProfitByCategory.swift */; };
 		6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D34295AB56D00426E61 /* PieChart.swift */; };
 		6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D36295AB60200426E61 /* BarChart.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A037416295BFC440082F37C /* ChartFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartFooter.swift; sourceTree = "<group>"; };
 		6A2E7D32295AB1C200426E61 /* ProfitByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitByCategory.swift; sourceTree = "<group>"; };
 		6A2E7D34295AB56D00426E61 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		6A2E7D36295AB60200426E61 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				FA71BAB6295A7FAC001D0AB3 /* HomeView.swift */,
 				6A2E7D3C295AC31900426E61 /* LineChart.swift */,
 				6A2E7D34295AB56D00426E61 /* PieChart.swift */,
+				6A037416295BFC440082F37C /* ChartFooter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
 				FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */,
+				6A037417295BFC440082F37C /* ChartFooter.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
 				FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */,
