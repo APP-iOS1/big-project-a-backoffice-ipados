@@ -20,11 +20,23 @@ struct BarChart: View {
                 Spacer()
             }
             Chart(data) {
+//                RuleMark(y: .value("Break even Threshold", 20000))
+//                    .foregroundStyle(by: .value("손익분기점", "손익분기점"))
                 BarMark(
                     x: .value("Month", $0.date),
-                    y: .value("Profit", $0.profit)
+                    y: .value("Profit", $0.profit),
+                    width: .automatic
                 )
                 .foregroundStyle(by: .value("Product Category", $0.category))
+            }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .month)) {
+                    AxisGridLine()
+                    AxisValueLabel(format: .dateTime.month(.defaultDigits))
+                }
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading)
             }
             .onAppear {
                 var randomProfit: [Double] = []
