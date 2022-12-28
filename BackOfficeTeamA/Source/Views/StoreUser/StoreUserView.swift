@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct StoreUserView: View {
+    @State private var isShowingSheet = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+                HStack{
+                    RequestCountView()
+                    RequestStateView()
+                }
+                .frame(height: 100)
+                .padding()
+                
+                HStack{
+                    CurrentRequestView(isShowingSheet: $isShowingSheet)
+                    ManageEnrollView()
+                }
+                .padding()
+                
+        }
+        .navigationTitle("Store Enrollment")
+        .sheet(isPresented: $isShowingSheet) {
+            EnrollRequestModal()
+        }
+        
     }
 }
 
 struct StoreUserView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreUserView()
+        NavigationStack{
+            StoreUserView()
+        }
     }
 }

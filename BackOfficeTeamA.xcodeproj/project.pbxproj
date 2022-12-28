@@ -43,11 +43,12 @@
 		FA71BADC295AC982001D0AB3 /* RequestStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BADB295AC982001D0AB3 /* RequestStateView.swift */; };
 		FA71BAE0295ACBA6001D0AB3 /* EnrollRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */; };
 		FA71BAE2295ACBD4001D0AB3 /* CurrentRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */; };
-		FA71BAE4295ACBF0001D0AB3 /* MoreRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */; };
 		FA71BAE6295ACE97001D0AB3 /* ManageEnrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */; };
-		FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */; };
 		FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */; };
 		FA71BAEC295AD602001D0AB3 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BAEB295AD602001D0AB3 /* StoreCell.swift */; };
+		FADAD303295C0365000528D9 /* StoreStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAD302295C0364000528D9 /* StoreStateView.swift */; };
+		FADAD305295C079A000528D9 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAD304295C079A000528D9 /* StoreDetailView.swift */; };
+		FADAD307295C0CBF000528D9 /* TotalProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAD306295C0CBF000528D9 /* TotalProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,11 +90,12 @@
 		FA71BADB295AC982001D0AB3 /* RequestStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStateView.swift; sourceTree = "<group>"; };
 		FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollRequestModal.swift; sourceTree = "<group>"; };
 		FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRequestView.swift; sourceTree = "<group>"; };
-		FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRequestList.swift; sourceTree = "<group>"; };
 		FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEnrollView.swift; sourceTree = "<group>"; };
-		FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMangeEnrollList.swift; sourceTree = "<group>"; };
 		FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreList.swift; sourceTree = "<group>"; };
 		FA71BAEB295AD602001D0AB3 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		FADAD302295C0364000528D9 /* StoreStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStateView.swift; sourceTree = "<group>"; };
+		FADAD304295C079A000528D9 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
+		FADAD306295C0CBF000528D9 /* TotalProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,16 +230,12 @@
 		FA71BAAA295A7E20001D0AB3 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */,
-				FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */,
-				FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */,
-				FA71BAE7295ACEB4001D0AB3 /* MoreMangeEnrollList.swift */,
-				FA71BAE3295ACBF0001D0AB3 /* MoreRequestList.swift */,
-				FA71BAD9295AC846001D0AB3 /* RequestCountView.swift */,
-				FA71BADB295AC982001D0AB3 /* RequestStateView.swift */,
 				FA71BAEB295AD602001D0AB3 /* StoreCell.swift */,
+				FADAD304295C079A000528D9 /* StoreDetailView.swift */,
 				FA71BAE9295AD5F7001D0AB3 /* StoreList.swift */,
+				FADAD302295C0364000528D9 /* StoreStateView.swift */,
 				FA71BAC2295A7FF2001D0AB3 /* StoreView.swift */,
+				FADAD306295C0CBF000528D9 /* TotalProductView.swift */,
 				FA71BAD6295AC46E001D0AB3 /* TotalStoreView.swift */,
 			);
 			path = Store;
@@ -246,6 +244,11 @@
 		FA71BAAB295A7E40001D0AB3 /* StoreUser */ = {
 			isa = PBXGroup;
 			children = (
+				FA71BAE1295ACBD4001D0AB3 /* CurrentRequestView.swift */,
+				FA71BADF295ACBA6001D0AB3 /* EnrollRequestModal.swift */,
+				FA71BAE5295ACE97001D0AB3 /* ManageEnrollView.swift */,
+				FA71BAD9295AC846001D0AB3 /* RequestCountView.swift */,
+				FA71BADB295AC982001D0AB3 /* RequestStateView.swift */,
 				FA71BAC4295A7FFE001D0AB3 /* StoreUserView.swift */,
 			);
 			path = StoreUser;
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2E7D33295AB1C200426E61 /* SalesChart.swift in Sources */,
+				FADAD305295C079A000528D9 /* StoreDetailView.swift in Sources */,
 				6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */,
 				FA71BAB3295A7F39001D0AB3 /* AdView.swift in Sources */,
 				6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */,
@@ -418,13 +422,12 @@
 				FA71BAB9295A7FB6001D0AB3 /* LogView.swift in Sources */,
 				FA71BACD295A8090001D0AB3 /* Modifiers.swift in Sources */,
 				FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */,
-				FA71BAE4295ACBF0001D0AB3 /* MoreRequestList.swift in Sources */,
 				FA71BADA295AC846001D0AB3 /* RequestCountView.swift in Sources */,
+				FADAD303295C0365000528D9 /* StoreStateView.swift in Sources */,
 				FA71BABD295A7FD1001D0AB3 /* NotificationView.swift in Sources */,
 				6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */,
 				6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
-				FA71BAE8295ACEB4001D0AB3 /* MoreMangeEnrollList.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
@@ -441,6 +444,7 @@
 				FA71BAE2295ACBD4001D0AB3 /* CurrentRequestView.swift in Sources */,
 				FA71BABB295A7FC0001D0AB3 /* NoticeView.swift in Sources */,
 				AEB8B839295C10200004562B /* UserInfoDetailView.swift in Sources */,
+				FADAD307295C0CBF000528D9 /* TotalProductView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
