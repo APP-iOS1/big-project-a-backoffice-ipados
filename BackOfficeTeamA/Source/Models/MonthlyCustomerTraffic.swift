@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct MonthlyCustomerTraffic: Identifiable {
+struct MonthlyCustomerTraffic: Identifiable, Hashable {
     var id = UUID().uuidString
 
+    var name: String
     var date: Date
     var customerTraffic: Double
     
-    init(month: Int, customerTraffic: Double) {
+    init(name: String, month: Int, customerTraffic: Double) {
         let calendar = Calendar.autoupdatingCurrent
+        self.name = name
         self.date = calendar.date(from: DateComponents(year: 2022, month: month))!
         self.customerTraffic = customerTraffic
     }
