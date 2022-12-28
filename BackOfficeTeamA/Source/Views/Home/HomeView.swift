@@ -24,25 +24,25 @@ struct HomeView: View {
                     VStack {
                         BarChart()
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter()
+                        ChartFooter(label: "Monthly Profit", growth: 1200, percentage: 40)
                     }
 
                     VStack {
                         PieChart(customer: customer)
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter()
+                        ChartFooter(label: "Customer growth", growth: 200, percentage: 70)
                     }
                 }
                 HStack {
                     VStack {
                         LineChart()
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter()
+                        ChartFooter(label: "Monthly Traffic", growth: 241, percentage: 2)
                     }
                     VStack {
                         PieChart(customer: customer)
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter()
+                        ChartFooter(label: "넣을게 없다", growth: 10560, percentage: 55)
                     }
 
                 }

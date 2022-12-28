@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ChartFooter: View {
-    let label: String = "Costumer growth"
-    let growth = 1396
-    @State var percentage = 12
+    let label: String
+    let growth: Int
+    let percentage: Int
     @State var progressValue: Float = 0.0
     
     var body: some View {
@@ -29,7 +29,10 @@ struct ChartFooter: View {
                     Group {
                         Image(systemName: "arrow.up")
                         Text("+\(percentage)%")
-                    }.padding(.trailing)
+                    }
+                    .font(.title3)
+                    .padding(.trailing, 5)
+
                     
                     CircleProgressBar(progress: $progressValue, percentage: percentage)
                         .frame(width: 80.0, height: 80.0)
@@ -46,6 +49,6 @@ struct ChartFooter: View {
 
 struct ChartFooter_Previews: PreviewProvider {
     static var previews: some View {
-        ChartFooter()
+        ChartFooter(label: "test", growth: 1366, percentage: 12)
     }
 }
