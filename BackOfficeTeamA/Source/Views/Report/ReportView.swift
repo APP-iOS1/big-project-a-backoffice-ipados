@@ -125,37 +125,43 @@ struct ReportView_Previews: PreviewProvider {
 struct CellView: View {
     @State var reportData: tempReportModel
     @State private var showDetail = false
+    @State var isShowingReportDetailSheet = false
     
     var body: some View {
-        
-        Button {
-            showDetail.toggle()
-        } label: {
-            VStack {
-                HStack {
-                    Text(reportData.createdDate)
-                        .foregroundColor(.black)
-                    Divider()
-                    Text(reportData.reporter)
-//                        .frame(width: 60)
-                    Text("님이 판매자")
-                        .foregroundColor(.black)
-                    Text(reportData.reported)
-                    Text("님을 신고했습니다.")
-                        .foregroundColor(.black)
+        VStack {
+            Button {
+                //            showDetail.toggle()
+                isShowingReportDetailSheet.toggle()
+            } label: {
+                VStack {
+                    HStack {
+                        Text(reportData.createdDate)
+                            .foregroundColor(.black)
+                        Divider()
+                        Text(reportData.reporter)
+                        //                        .frame(width: 60)
+                        Text("님이 판매자")
+                            .foregroundColor(.black)
+                        Text(reportData.reported)
+                        Text("님을 신고했습니다.")
+                            .foregroundColor(.black)
+                        
+                    }
+                    //                .lineLimit(1)
                     
-                    
-                }
-//                .lineLimit(1)
-                
-                if showDetail {
-                    Text(reportData.contents)
-                        .foregroundColor(.black)
+                    if showDetail {
+                        Text(reportData.contents)
+                            .foregroundColor(.black)
+                    }
                 }
             }
         }
+        .sheet(isPresented: $isShowingReportDetailSheet) {
+            ReportDetailSheet(reportData: reportData)
+        }
     }
 }
+
 
 // 테스트를 위한 신고 임시 모델
 struct tempReportModel: Hashable {
