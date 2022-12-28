@@ -9,6 +9,8 @@ import Charts
 import SwiftUI
 
 struct LineChart: View {
+    let title: String
+    
     let data =
     [
         MonthlyCustomerTraffic(name: "customer", month: 1, customerTraffic: 14),
@@ -28,7 +30,7 @@ struct LineChart: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Monthly Traffic")
+                Text(title)
                 Spacer()
             }
             .modifier(DashBoardChartTitleModifier())
@@ -61,6 +63,6 @@ struct LineChart: View {
 
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
-        LineChart()
+        LineChart(title: "test")
     }
 }

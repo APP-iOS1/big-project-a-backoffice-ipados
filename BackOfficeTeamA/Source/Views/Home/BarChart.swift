@@ -11,11 +11,11 @@ import SwiftUI
 struct BarChart: View {
     // 중계수수료, 광고수익, 후원,
     @State private var data: [ProfitByCategory] = []
-    
+    let title: String
     var body: some View {
         VStack {
             HStack {
-                Text("Monthly Profit")
+                Text(title)
                     .modifier(DashBoardChartTitleModifier())
                 Spacer()
             }
@@ -58,6 +58,6 @@ struct BarChart: View {
 
 struct Bar_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart()
+        BarChart(title: "Test")
     }
 }

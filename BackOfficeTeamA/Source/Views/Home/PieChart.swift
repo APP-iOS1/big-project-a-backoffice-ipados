@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PieChart: View {
+    let title: String
     @State var customer: [CustomerGrowth]
     var body: some View {
         VStack {
             HStack {
-                Text("Customer growth")
+                Text(title)
                     .modifier(DashBoardChartTitleModifier())
                 Spacer()
             }
@@ -63,6 +64,6 @@ struct Pie_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        PieChart(customer: customer)
+        PieChart(title: "test",customer: customer)
     }
 }
