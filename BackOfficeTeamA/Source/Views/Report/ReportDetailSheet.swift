@@ -17,8 +17,10 @@ struct ReportDetailSheet: View {
                 HStack {
                     // TODO: 각자 이름에 따라 정보를 조회할 수 있는 뷰로 링크 걸기
                     Text("Reporter :")
-                    Text(reportData.reporter)
-                        .foregroundColor(.accentColor)
+                    NavigationLink(destination: ReportCustomerUserDetailView()) {
+                        Text(reportData.reporter)
+                            .foregroundColor(.accentColor)
+                    }
                     Text("/")
                     Text("Reported :")
                     NavigationLink(destination: ReportStoreUserDetailView()) {
