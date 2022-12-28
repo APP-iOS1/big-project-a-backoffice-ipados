@@ -14,6 +14,7 @@
 		6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3C295AC31900426E61 /* LineChart.swift */; };
 		6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */; };
 		8F70A08F295BD3C800C74131 /* ReportDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F70A08E295BD3C800C74131 /* ReportDetailSheet.swift */; };
+		8F70A091295BE62300C74131 /* ReportStoreUserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */; };
 		AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7873F295AD7D9003F46E9 /* TestModel.swift */; };
 		FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */; };
 		FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA96295A7CAE001D0AB3 /* ContentView.swift */; };
@@ -55,6 +56,7 @@
 		6A2E7D3C295AC31900426E61 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerGrowth.swift; sourceTree = "<group>"; };
 		8F70A08E295BD3C800C74131 /* ReportDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailSheet.swift; sourceTree = "<group>"; };
+		8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStoreUserDetailView.swift; sourceTree = "<group>"; };
 		AEE7873F295AD7D9003F46E9 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		FA71BA91295A7CAE001D0AB3 /* BackOfficeTeamA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackOfficeTeamA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfficeTeamAApp.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				FA71BAC0295A7FE8001D0AB3 /* ReportView.swift */,
 				8F70A08E295BD3C800C74131 /* ReportDetailSheet.swift */,
+				8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
 				FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */,
 				FA71BAC5295A7FFE001D0AB3 /* StoreUserView.swift in Sources */,
+				8F70A091295BE62300C74131 /* ReportStoreUserDetailView.swift in Sources */,
 				FA71BAC1295A7FE8001D0AB3 /* ReportView.swift in Sources */,
 				FA71BAE0295ACBA6001D0AB3 /* EnrollRequestModal.swift in Sources */,
 				FA71BAE2295ACBD4001D0AB3 /* CurrentRequestView.swift in Sources */,

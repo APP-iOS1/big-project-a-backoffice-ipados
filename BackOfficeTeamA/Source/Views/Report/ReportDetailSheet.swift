@@ -12,22 +12,29 @@ struct ReportDetailSheet: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Reporter : ")
-                Text(reportData.reporter)
-                    .foregroundColor(.accentColor)
-                Text("Reported : ")
-                Text(reportData.reported)
-                    .foregroundColor(.accentColor)
+        NavigationStack {
+            VStack {
+                HStack {
+                    // TODO: 각자 이름에 따라 정보를 조회할 수 있는 뷰로 링크 걸기
+                    Text("Reporter :")
+                    Text(reportData.reporter)
+                        .foregroundColor(.accentColor)
+                    Text("/")
+                    Text("Reported :")
+                    NavigationLink(destination: ReportStoreUserDetailView()) {
+                        Text(reportData.reported)
+                            .foregroundColor(.accentColor)
+                    }
+                }
+               
+                ReportDetailGridView()
+                ZStack {
+                    Color.gray
+                    Text(reportData.contents)
+                }
             }
-            ReportDetailGridView()
-            ZStack {
-                Color.gray
-                Text(reportData.contents)
-            }
+            .padding()
         }
-        .padding()
     }
 }
 
@@ -50,6 +57,8 @@ struct ReportDetailGridView: View {
 
 struct ReportDetailSheet_Previews: PreviewProvider {
     static var previews: some View {
-        ReportDetailSheet(reportData: tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970))
+        NavigationStack {
+            ReportDetailSheet(reportData: tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970))
+        }
     }
 }
