@@ -21,16 +21,30 @@ struct HomeView: View {
         ScrollView {
             VStack {
                 HStack {
-                    BarChart()
-                        .modifier(DashBoardChartBorderModifier())
-                    PieChart(customer: customer)
-                        .modifier(DashBoardChartBorderModifier())
+                    VStack {
+                        BarChart()
+                            .modifier(DashBoardChartBorderModifier())
+                        ChartFooter()
+                    }
+
+                    VStack {
+                        PieChart(customer: customer)
+                            .modifier(DashBoardChartBorderModifier())
+                        ChartFooter()
+                    }
                 }
                 HStack {
-                    LineChart()
-                        .modifier(DashBoardChartBorderModifier())
-                    PieChart(customer: customer)
-                        .modifier(DashBoardChartBorderModifier())
+                    VStack {
+                        LineChart()
+                            .modifier(DashBoardChartBorderModifier())
+                        ChartFooter()
+                    }
+                    VStack {
+                        PieChart(customer: customer)
+                            .modifier(DashBoardChartBorderModifier())
+                        ChartFooter()
+                    }
+
                 }
             }
             .padding()
@@ -41,6 +55,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().previewInterfaceOrientation(.landscapeRight)
     }
 }
