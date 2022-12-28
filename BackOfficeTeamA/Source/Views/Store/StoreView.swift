@@ -11,27 +11,51 @@ struct StoreView: View {
     
     @State private var rowHeight: CGFloat = 80 //list cell 높이설정
     @State private var isShowingSheet = false
+    @State var searchFor = ""
     var body: some View {
         ScrollView{
-                HStack{
-                    TotalStoreView()
-                    RequestCountView()
-                    RequestStateView()
-                    RequestStateView() // untitled
-                }
-                .frame(height: 100)
-                .padding()
-                
-                HStack{
-                    CurrentRequestView(isShowingSheet: $isShowingSheet)
-                    ManageEnrollView()
-                }
-                .padding()
-                
-            StoreList()
-                
+            HStack{
+                TotalStoreView()
+                StoreStateView()
+                TotalProductView()
+            }
+            .frame(height: 100)
+            .padding()
+            
+            VStack {
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Text("All Store")
+                            .font(Font.footnote)
+                    }
+                    .modifier(OptionsButtonModifier())
+                    .padding()
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Available Store")
+                            .font(Font.footnote)
+                    }
+                    .modifier(OptionsButtonModifier())
+                    .padding()
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Closed Store")
+                            .font(Font.footnote)
+                    }
+                    .modifier(OptionsButtonModifier())
+                    .padding()
+                    Spacer()
+                }.padding(.leading,100)
+                StoreList(searchFor: $searchFor)
+            }
+            
         }
-        .background(.quaternary)
         .navigationTitle("Store")
         .sheet(isPresented: $isShowingSheet) {
             EnrollRequestModal()
