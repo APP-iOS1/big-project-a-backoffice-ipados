@@ -21,9 +21,11 @@ struct TotalStoreView: View {
                 Image(systemName: true ? "arrow.up" :"arrow.down")
             }
             
-        }.modifier(StoreComponentModifier())
+        }
+        .modifier(StoreStateModifier())
     }
 }
+
 
 struct TotalStoreView_Previews: PreviewProvider {
     static var previews: some View {
