@@ -10,7 +10,8 @@ import SwiftUI
 struct ChartFooter: View {
     let label: String = "Costumer growth"
     let growth = 1396
-    let percentage = 12
+    @State var percentage = 12
+    @State var progressValue: Float = 0.0
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,9 +26,18 @@ struct ChartFooter: View {
                 }
                 Spacer()
                 HStack {
-                    Image(systemName: "arrow.up")
-                    Text("+\(percentage)%")
+                    Group {
+                        Image(systemName: "arrow.up")
+                        Text("+\(percentage)%")
+                    }.padding(.trailing)
+                    
+                    CircleProgressBar(progress: $progressValue, percentage: percentage)
+                        .frame(width: 80.0, height: 80.0)
+                        .onAppear {
+                            progressValue = Float(percentage)/100.0
+                        }
                 }
+
             }.padding()
         }
         .modifier(DashBoardChartBorderModifier())
