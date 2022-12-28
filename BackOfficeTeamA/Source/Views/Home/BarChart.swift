@@ -9,30 +9,48 @@ import Charts
 import SwiftUI
 
 struct BarChart: View {
-    var data: [SalesChart] = [
-        .init(type: "광고수익", count: 500),
-        .init(type: "중계수수료", count: 400),
-        .init(type: "후원", count: 220)
-    ]
-    
+    // 중계수수료, 광고수익, 후원,
+    @State private var data: [ProfitByCategory] = []
+    let title: String
     var body: some View {
         VStack {
-            Chart {
-                BarMark(
-                    x: .value("Shape Type", data[0].type),
-                    y: .value("Total Count", data[0].count)
-                )
-                BarMark(
-                     x: .value("Shape Type", data[1].type),
-                     y: .value("Total Count", data[1].count)
-                )
-                BarMark(
-                     x: .value("Shape Type", data[2].type),
-                     y: .value("Total Count", data[2].count)
-                )
+            HStack {
+                Text(title)
+                    .modifier(DashBoardChartTitleModifier())
+                Spacer()
             }
-            .chartXAxis(.hidden)
-            .chartYAxis(.hidden)
+            Chart(data) {
+//                RuleMark(y: .value("Break even Threshold", 20000))
+//                    .foregroundStyle(by: .value("손익분기점", "손익분기점"))
+                BarMark(
+                    x: .value("Month", $0.date),
+                    y: .value("Profit", $0.profit),
+                    width: .automatic
+                )
+                .foregroundStyle(by: .value("Product Category", $0.category))
+            }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .month)) {
+                    AxisGridLine()
+                    AxisValueLabel(format: .dateTime.month(.defaultDigits))
+                }
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading)
+            }
+            .onAppear {
+                var randomProfit: [Double] = []
+                
+                for _ in 0...11 {
+                    randomProfit.append(Double(Int.random(in: 1000...10000)))
+                }
+                
+                for i in 1...12 {
+                    data.append(ProfitByCategory(category: "중계수수료", profit: randomProfit.randomElement()!, month: i))
+                    data.append(ProfitByCategory(category: "광고수익", profit: randomProfit.randomElement()!, month: i))
+                    data.append(ProfitByCategory(category: "후원", profit: randomProfit.randomElement()!, month: i))
+                }
+            }
         }
 
     }
@@ -40,6 +58,6 @@ struct BarChart: View {
 
 struct Bar_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart()
+        BarChart(title: "Test")
     }
 }
