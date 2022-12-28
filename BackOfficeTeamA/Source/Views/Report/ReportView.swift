@@ -65,44 +65,44 @@ struct ReportView: View {
     }
     
     var body: some View {
-
-            List {
-                HStack {
-                    ForEach(0..<buttonOption.count, id: \.self) { idx in
-                        Button {
-                            searchDate = buttonOption[idx]
-                        } label: {
-                            Text(buttonLabel[idx])
-                        }
+        
+        List {
+            HStack {
+                ForEach(0..<buttonOption.count, id: \.self) { idx in
+                    Button {
+                        searchDate = buttonOption[idx]
+                    } label: {
+                        Text(buttonLabel[idx])
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .modifier(OptionsButtonModifier())
                 }
-                
-                
-                if !results.isEmpty {
-                    ForEach(results, id: \.self) { group in
-                        CellView(reportData: group)
-                    }
-                } else {
-                    // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
-                    VStack {
-                        Text("조건에 맞는 데이터가 없습니다")
-                    }
-                    
-                }
+                .buttonStyle(PlainButtonStyle())
+                .modifier(OptionsButtonModifier())
             }
-            .listStyle(.insetGrouped)
-            .searchable(text: $searchFor, prompt: "Search")
-//        .searchable(text: $searchFor, placement: .navigationBarDrawer(displayMode: .always))
-        .toolbar {
-                Picker("Select", selection: $pickerSelection) {
-                    ForEach(0..<pickerOptions.count, id: \.self) {
-                        Text(pickerOptions[$0])
-                    }
+            
+            
+            if !results.isEmpty {
+                ForEach(results, id: \.self) { group in
+                    CellView(reportData: group)
+                }
+            } else {
+                // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
+                VStack {
+                    Text("❗️조건에 맞는 데이터가 없습니다")
                 }
             }
         }
+        .listStyle(.insetGrouped)
+        .searchable(text: $searchFor, prompt: "Search")
+        //        .searchable(text: $searchFor, placement: .navigationBarDrawer(displayMode: .always))
+        .toolbar {
+            Picker("Select", selection: $pickerSelection) {
+                ForEach(0..<pickerOptions.count, id: \.self) {
+                    Text(pickerOptions[$0])
+                }
+            }
+        }
+        .navigationTitle(Text("Report"))
+    }
 }
 
 enum dayWeekMonthYear {
@@ -117,41 +117,6 @@ struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             ReportView().previewInterfaceOrientation(.landscapeRight)
-        }
-    }
-}
-
-struct CellView: View {
-    @State var reportData: tempReportModel
-    @State private var showDetail = false
-    
-    var body: some View {
-        
-        Button {
-            showDetail.toggle()
-        } label: {
-            VStack {
-                HStack {
-                    Text(reportData.createdDate)
-                        .foregroundColor(.black)
-                    Divider()
-                    Text(reportData.reporter)
-//                        .frame(width: 60)
-                    Text("님이 판매자")
-                        .foregroundColor(.black)
-                    Text(reportData.reported)
-                    Text("님을 신고했습니다.")
-                        .foregroundColor(.black)
-                    
-                    
-                }
-//                .lineLimit(1)
-                
-                if showDetail {
-                    Text(reportData.contents)
-                        .foregroundColor(.black)
-                }
-            }
         }
     }
 }
