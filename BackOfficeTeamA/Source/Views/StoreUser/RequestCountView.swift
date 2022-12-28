@@ -16,10 +16,11 @@ struct RequestCountView: View {
             HStack{
                 Text("3").foregroundColor(.secondary)
                 Text("/ 7")
+                Spacer()
             }
             .font(.title)
             
-        }.modifier(StoreComponentModifier())
+        }.modifier(StoreStateModifier())
     }
 }
 

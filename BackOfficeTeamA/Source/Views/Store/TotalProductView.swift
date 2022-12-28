@@ -1,23 +1,23 @@
 //
-//  TotalStoreView.swift
+//  TotalProductView.swift
 //  BackOfficeTeamA
 //
-//  Created by MacBook on 2022/12/27.
+//  Created by MacBook on 2022/12/28.
 //
 
 import SwiftUI
 
-struct TotalStoreView: View {
+struct TotalProductView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Total Store")
+            Text("Total Products")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("123")
+                Text("1551")
                     .font(.title)
                 Spacer()
-                Text("4%")
+                Text("7%")
                 Image(systemName: true ? "arrow.up" :"arrow.down")
             }
             
@@ -26,10 +26,8 @@ struct TotalStoreView: View {
     }
 }
 
-
-struct TotalStoreView_Previews: PreviewProvider {
+struct TotalProductView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalStoreView().frame(height: 100)
+        TotalProductView()
     }
 }
-

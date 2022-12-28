@@ -74,3 +74,25 @@ struct DashBoardChartBorderModifier: ViewModifier {
             .border(.black)
     }
 }
+
+// MARK: -Modifier : 스토어 상태 컴포넌트 뷰 속성
+struct StoreStateModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.black)
+            .padding()
+            .background(.white, in: RoundedRectangle(cornerRadius: 20))
+            .shadow(radius: 10)
+            .padding()
+    }
+}
+
+// MARK: -Modifier : 구분선 두께 속성
+struct DividerModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                Color.black
+            }
+    }
+}

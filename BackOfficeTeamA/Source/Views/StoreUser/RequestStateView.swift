@@ -17,10 +17,11 @@ struct RequestStateView: View {
                 Text("58").foregroundColor(.green)
                 Divider()
                 Text("37").foregroundColor(.red)
+                Spacer()
             }
             .font(.title)
             
-        }.modifier(StoreComponentModifier())
+        }.modifier(StoreStateModifier())
     }
 }
 
