@@ -102,6 +102,7 @@ struct ReportView: View {
                     }
                 }
             }
+        .navigationTitle(Text("Report"))
         }
 }
 
