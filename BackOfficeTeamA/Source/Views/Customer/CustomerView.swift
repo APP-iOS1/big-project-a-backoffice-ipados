@@ -8,51 +8,73 @@
 import SwiftUI
 
 struct CustomerView: View {
-    @State private var searchUseridText: String = ""
+    @State private var searchUserText: String = ""
     @StateObject var userInfoStore: UserInfoStore = UserInfoStore()
+    @StateObject var orderInfoStore: OrderInfoStore = OrderInfoStore()
+    @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
+    
+    // 피커
+    var pickerOptions = ["이름", "이메일", "전화번호"]
+    @State private var pickerSelection = 0
+    
+    var results: [UserInfo] {
+        //filter를 날짜로 한번하고 그 이후 필터 진행
+        let dateFilteredData = userInfoStore.userInfos
+        
+        if !searchUserText.isEmpty && pickerSelection == 0 {
+            return dateFilteredData.filter {
+                $0.userName.contains(searchUserText)
+            }
+        } else if !searchUserText.isEmpty && pickerSelection == 1 {
+            return dateFilteredData.filter {
+                $0.userEmail.contains(searchUserText)
+            }
+        } else if !searchUserText.isEmpty && pickerSelection == 2 {
+            return dateFilteredData.filter {
+                $0.phoneNumber.contains(searchUserText)
+            }
+        }
+        return dateFilteredData
+    }
+    
+    var navigationTitle: String {
+        var titleText = ""
+        if searchUserText.isEmpty {
+            titleText = "All Customer"
+        } else {
+            titleText = "'\(searchUserText)'에 대한 검색결과"
+        }
+        return titleText
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
-                HStack {
-                    Text("All customers")
-                        .font(Font.title)
-                        .bold()
-                    
-                    Spacer()
-                    TextField("User ID", text: $searchUseridText)
-                        .frame(width: 150, height: 40)
-                        .border(Color.black, width: 2)
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                        Text("Quick Search")
-                            .font(Font.footnote)
-                    }
-                    .modifier(OptionsButtonModifier())
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("All members")
-                            .font(Font.footnote)
-                    }
-                    .modifier(OptionsButtonModifier())
-                    
-                }
-                
                 List {
-                    ForEach(userInfoStore.userInfos) { userInfo in
-                        NavigationLink(destination: CustomerInfoDetailView(userInfo: userInfo)){
-                            CustomerListCell(userInfo: userInfo)
-                            
+                    if !results.isEmpty {
+                        ForEach(results) { userInfo in
+                            NavigationLink(destination: CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)){
+                                CustomerListCell(userInfo: userInfo)
+                            }
+                        }
+                    } else {
+                        // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
+                        VStack {
+                            Text("조건에 맞는 데이터가 없습니다")
+                        }
+                    }
+                } //List
+                .toolbar {
+                    Picker("Select", selection: $pickerSelection) {
+                        ForEach(0..<pickerOptions.count, id: \.self) {
+                            Text(pickerOptions[$0])
                         }
                     }
                 }
+                .searchable(text: $searchUserText, prompt: "Search")
             }
         }
+        .navigationTitle(navigationTitle)
     }
 }
 
@@ -65,56 +87,30 @@ struct CustomerListCell: View {
                 Circle()
                     .stroke(Color.black)
                     .frame(width: 50, height: 50)
+                    .padding(.horizontal, 10)
                 Text(userInfo.userName)
+                    .frame(width: 100, alignment: .leading)
+                    .padding(.leading, 20)
                 Text(lastTransactionDate)
-                Text(userInfo.userEmail)
+                    .frame(width: 200, alignment: .leading)
                 Text(userInfo.userNickname)
+                    .frame(width: 150, alignment: .leading)
+                Text(userInfo.userEmail)
+                    .frame(width: 200, alignment: .leading)
+                Text(userInfo.phoneNumber)
+                    .frame(width: 200, alignment: .leading)
                 
                 Spacer()
-
             }
         }
     }
 }
 
-struct CustomerInfoDetailView: View {
-    var userInfo: UserInfo
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Circle()
-                    .stroke(Color.black)
-                    .frame(width: 100, height: 100)
-                Text(userInfo.userName)
-                    .font(Font.largeTitle)
-                    .bold()
-                
-            }
-            Divider()
-            Spacer()
-            List {
-                Section(header: Text("유저정보")) {
-                    Text("이메일 : \(userInfo.userEmail)")
-                    Text("닉네임 : \(userInfo.userNickname)")
-                    Text("주소 : \(userInfo.userNickname)")
-                    Text("전화번호 : \(userInfo.phoneNumber)")
-                    Text("생년월일 : \(userInfo.birthDate)")
-                }
-                Section(header: Text("주문정보")) {
-                    Text("주문정보")
-                }
-                Section(header: Text("구매내역")) {
-                    Text("구매내역")
-                }
-            }
-        }
-    }
-}
+
 
 struct CustomerView_Previews: PreviewProvider {
     static var previews: some View {
         CustomerView()
-//            .previewInterfaceOrientation(.landscapeRight)
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }

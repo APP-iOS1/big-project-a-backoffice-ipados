@@ -65,7 +65,7 @@ struct ReportView: View {
     }
     
     var body: some View {
-        
+
             List {
                 HStack {
                     ForEach(0..<buttonOption.count, id: \.self) { idx in
