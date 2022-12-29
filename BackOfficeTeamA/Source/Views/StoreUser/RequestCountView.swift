@@ -10,7 +10,7 @@ import SwiftUI
 struct RequestCountView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("New / Enroll Request")
+            Text("신규 / 등록 요청")
                 .font(.headline)
             Spacer()
             HStack{

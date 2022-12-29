@@ -12,7 +12,7 @@ struct ManageEnrollView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Enroll Request History")
+            Text("요청 기록")
                 .font(.largeTitle)
                 .padding()
             List {
@@ -22,7 +22,7 @@ struct ManageEnrollView: View {
                         isShowingSheet.toggle()
                     }) {
                         HStack{
-                            Text("A Store Pass - 22/11/11")
+                            Text("정우 상점  [승인] - 22/11/11")
                             Image(systemName: "checkmark")
                                 .foregroundColor(.green)
                         }
@@ -33,7 +33,7 @@ struct ManageEnrollView: View {
                         isShowingSheet.toggle()
                     }) {
                         HStack{
-                            Text("C Store Reject - 22/11/11")
+                            Text("시현 상점 [거부] - 22/11/11")
                             Image(systemName: "xmark")
                                 .foregroundColor(.red)
                         }
