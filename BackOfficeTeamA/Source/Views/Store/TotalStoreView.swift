@@ -10,7 +10,7 @@ import SwiftUI
 struct TotalStoreView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Total Store")
+            Text("총 입점 수")
                 .font(.headline)
             Spacer()
             HStack{

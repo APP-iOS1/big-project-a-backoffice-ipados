@@ -27,7 +27,7 @@ struct StoreView: View {
                     Button {
                         
                     } label: {
-                        Text("All Store")
+                        Text("총 입점 수")
                             .font(Font.footnote)
                     }
                     .modifier(OptionsButtonModifier())
@@ -36,7 +36,7 @@ struct StoreView: View {
                     Button {
                         
                     } label: {
-                        Text("Available Store")
+                        Text("영업중인 가게")
                             .font(Font.footnote)
                     }
                     .modifier(OptionsButtonModifier())
@@ -45,7 +45,7 @@ struct StoreView: View {
                     Button {
                         
                     } label: {
-                        Text("Closed Store")
+                        Text("폐점한 가게")
                             .font(Font.footnote)
                     }
                     .modifier(OptionsButtonModifier())
@@ -56,7 +56,7 @@ struct StoreView: View {
             }
             
         }
-        .navigationTitle("Store")
+        .navigationTitle("가게 정보")
         .sheet(isPresented: $isShowingSheet) {
             EnrollRequestModal()
         }
