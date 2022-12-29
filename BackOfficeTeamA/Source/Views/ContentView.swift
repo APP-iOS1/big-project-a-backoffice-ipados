@@ -15,6 +15,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(selection: $selected){
+                Section() {
+                    Text("Master")
+                        .frame(height:60)
+                        .listRowBackground(Color.accentColor)
+                        .font(.largeTitle)
+                }
+                
+                
                 Section{
                     NavigationLink(tag: 0, selection: $selected) {
                         HomeView()
@@ -66,6 +74,7 @@ struct ContentView: View {
                 }
                 
             }
+            .toolbar(.hidden)
             .listStyle(.insetGrouped)
             .searchable(text: $searchText,prompt: "Search")
             .navigationTitle("태영전자")
