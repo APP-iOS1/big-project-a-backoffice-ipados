@@ -40,7 +40,7 @@ struct CustomerView: View {
     var navigationTitle: String {
         var titleText = ""
         if searchUserText.isEmpty {
-            titleText = "All Customer"
+            titleText = "고객 관리"
         } else {
             titleText = "'\(searchUserText)'에 대한 검색결과"
         }
@@ -71,7 +71,7 @@ struct CustomerView: View {
                         }
                     }
                 }
-                .searchable(text: $searchUserText, prompt: "Search")
+                .searchable(text: $searchUserText, prompt: "검색")
             }
         }
         .navigationTitle(navigationTitle)
