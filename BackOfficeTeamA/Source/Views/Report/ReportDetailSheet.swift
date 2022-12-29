@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReportDetailSheet: View {
-    @State var reportData: tempReportModel
+    @State var reportData: TempReportModel
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -16,13 +16,13 @@ struct ReportDetailSheet: View {
             VStack {
                 HStack {
                     // TODO: 각자 이름에 따라 정보를 조회할 수 있는 뷰로 링크 걸기
-                    Text("Reporter :")
+                    Text("신고자 :")
                     NavigationLink(destination: ReportCustomerUserDetailView()) {
                         Text(reportData.reporter)
                             .foregroundColor(.accentColor)
                     }
                     Text("/")
-                    Text("Reported :")
+                    Text("신고받은 사람 :")
                     NavigationLink(destination: ReportStoreUserDetailView()) {
                         Text(reportData.reported)
                             .foregroundColor(.accentColor)
@@ -60,7 +60,7 @@ struct ReportDetailGridView: View {
 struct ReportDetailSheet_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ReportDetailSheet(reportData: tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970))
+            ReportDetailSheet(reportData: TempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970))
         }
     }
 }
