@@ -10,16 +10,21 @@ import SwiftUI
 struct ContentView: View {
     @State private var searchText = ""
     @State private var selected: Int? = 0
+    @State private var isSignIn = false
     
     
     var body: some View {
         NavigationView {
             List(selection: $selected){
                 Section() {
-                    Text("Master")
-                        .frame(height:60)
-                        .listRowBackground(Color.accentColor)
-                        .font(.largeTitle)
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Master")
+                            .frame(height:60)
+                            .font(.largeTitle)
+                    }
+                    
                 }
                 
                 
