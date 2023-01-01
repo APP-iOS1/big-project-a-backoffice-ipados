@@ -12,6 +12,14 @@ struct SignInView: View {
     @State private var password = ""
     @FocusState private var emailFieldIsFocused: Bool
     @State private var emailIsValid = true
+    @State private var _isSigninAbled = false
+    private var isSigninAbled: Binding<Bool> {
+        Binding(get: {
+            !email.isEmpty && !password.isEmpty && emailIsValid
+        }) { _ in
+            _isSigninAbled = true
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,16 +27,20 @@ struct SignInView: View {
                 .modifier(TextFieldModifier())
                 .focused($emailFieldIsFocused)
                 .onChange(of: email) { _ in
-                    validateEmail()
+                    validate()
                 }
             
             SecureField("비밀번호", text: $password)
                 .modifier(TextFieldModifier())
+                .onChange(of: password) { _ in
+                    validate()
+                }
             
             Button("Sign in") {
                 //TODO: Sign in action
             }
             .modifier(MainButtonModifier())
+            .disabled(!_isSigninAbled)
             
             if !emailIsValid {
                 Text("이메일 형식이 올바르지 않습니다")
@@ -41,9 +53,12 @@ struct SignInView: View {
         .padding()
     }
     
-    func validateEmail() {
+    func validate() {
         if email.contains("@") && !email.contains(" ") {
             emailIsValid = true
+            if !password.isEmpty {
+                _isSigninAbled = true
+            }
         } else {
             emailIsValid = false
         }
