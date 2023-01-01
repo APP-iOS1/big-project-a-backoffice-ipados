@@ -8,18 +8,13 @@
 import SwiftUI
 
 struct SignInView: View {
+    @State private var isSigninProgress = false
     @State private var email = ""
     @State private var password = ""
     @FocusState private var emailFieldIsFocused: Bool
     @State private var emailIsValid = true
     @State private var _isSigninAbled = false
-    private var isSigninAbled: Binding<Bool> {
-        Binding(get: {
-            !email.isEmpty && !password.isEmpty && emailIsValid
-        }) { _ in
-            _isSigninAbled = true
-        }
-    }
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,11 +31,20 @@ struct SignInView: View {
                     validate()
                 }
             
-            Button("Sign in") {
-                //TODO: Sign in action
+            if !isSigninProgress {
+                Button("Sign in") {
+                    isSigninProgress = true
+                    //TODO: Sign in action
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        dismiss()
+                    }
+                }
+                .modifier(MainButtonModifier())
+                .disabled(!_isSigninAbled)
+            } else {
+                ProgressView()
+                    .modifier(MainButtonModifier())
             }
-            .modifier(MainButtonModifier())
-            .disabled(!_isSigninAbled)
             
             if !emailIsValid {
                 Text("이메일 형식이 올바르지 않습니다")
