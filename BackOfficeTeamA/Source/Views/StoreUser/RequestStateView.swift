@@ -10,7 +10,7 @@ import SwiftUI
 struct RequestStateView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Pass | Reject Request")
+            Text("승인 | 거절")
                 .font(.headline)
             Spacer()
             HStack{

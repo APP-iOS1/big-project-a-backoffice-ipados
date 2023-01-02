@@ -40,7 +40,7 @@ struct CustomerView: View {
     var navigationTitle: String {
         var titleText = ""
         if searchUserText.isEmpty {
-            titleText = "All Customer"
+            titleText = "고객 관리"
         } else {
             titleText = "'\(searchUserText)'에 대한 검색결과"
         }
@@ -50,8 +50,28 @@ struct CustomerView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                List {
-                    if !results.isEmpty {
+                Table(results) {
+                    TableColumn("Name", value: \.userName)
+                    TableColumn("Nickname") { user in
+                        Text(user.userNickname)
+                            .foregroundColor(Color.black)
+                    }
+                    TableColumn("Email", value: \.userEmail)
+                    TableColumn("PhoneNumber", value: \.phoneNumber)
+                }
+                .toolbar {
+                    Picker("Select", selection: $pickerSelection) {
+                        ForEach(0..<pickerOptions.count, id: \.self) {
+                            Text(pickerOptions[$0])
+                        }
+                    }
+                }
+                .foregroundColor(Color.black)
+                .searchable(text: $searchUserText, prompt: "검색")
+                
+                /*
+                 List {
+                 if !results.isEmpty {
                         ForEach(results) { userInfo in
                             NavigationLink(destination: CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)){
                                 CustomerListCell(userInfo: userInfo)
@@ -71,7 +91,8 @@ struct CustomerView: View {
                         }
                     }
                 }
-                .searchable(text: $searchUserText, prompt: "Search")
+                .searchable(text: $searchUserText, prompt: "검색")
+                 */
             }
         }
         .navigationTitle(navigationTitle)

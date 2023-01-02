@@ -13,18 +13,18 @@ struct LineChart: View {
     
     let data =
     [
-        MonthlyCustomerTraffic(name: "customer", month: 1, customerTraffic: 14),
-        MonthlyCustomerTraffic(name: "customer", month: 2, customerTraffic: 23),
-        MonthlyCustomerTraffic(name: "customer", month: 3, customerTraffic: 35),
-        MonthlyCustomerTraffic(name: "customer", month: 4, customerTraffic: 46),
-        MonthlyCustomerTraffic(name: "customer", month: 5, customerTraffic: 53),
-        MonthlyCustomerTraffic(name: "customer", month: 6, customerTraffic: 49),
-        MonthlyCustomerTraffic(name: "customer", month: 7, customerTraffic: 61),
-        MonthlyCustomerTraffic(name: "customer", month: 8, customerTraffic: 76),
-        MonthlyCustomerTraffic(name: "customer", month: 9, customerTraffic: 65),
-        MonthlyCustomerTraffic(name: "customer", month: 10, customerTraffic: 58),
-        MonthlyCustomerTraffic(name: "customer", month: 11, customerTraffic: 65),
-        MonthlyCustomerTraffic(name: "customer", month: 12, customerTraffic: 82)
+        MonthlyCustomerTraffic(name: "트래픽", month: 1, customerTraffic: 14),
+        MonthlyCustomerTraffic(name: "트래픽", month: 2, customerTraffic: 23),
+        MonthlyCustomerTraffic(name: "트래픽", month: 3, customerTraffic: 35),
+        MonthlyCustomerTraffic(name: "트래픽", month: 4, customerTraffic: 46),
+        MonthlyCustomerTraffic(name: "트래픽", month: 5, customerTraffic: 53),
+        MonthlyCustomerTraffic(name: "트래픽", month: 6, customerTraffic: 49),
+        MonthlyCustomerTraffic(name: "트래픽", month: 7, customerTraffic: 61),
+        MonthlyCustomerTraffic(name: "트래픽", month: 8, customerTraffic: 76),
+        MonthlyCustomerTraffic(name: "트래픽", month: 9, customerTraffic: 65),
+        MonthlyCustomerTraffic(name: "트래픽", month: 10, customerTraffic: 58),
+        MonthlyCustomerTraffic(name: "트래픽", month: 11, customerTraffic: 65),
+        MonthlyCustomerTraffic(name: "트래픽", month: 12, customerTraffic: 82)
     ]
     
     var body: some View {
