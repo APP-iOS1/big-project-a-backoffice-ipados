@@ -38,6 +38,8 @@ enum StoreSubcollectionType: String {
     case orderInfo = "OrderInfo"
 }
 
+
+
 //MARK: - Old Data > SellerInfo
 //enum SellerSubcollectionType: String {
 //    case itemInfo = "ItemInfo"
