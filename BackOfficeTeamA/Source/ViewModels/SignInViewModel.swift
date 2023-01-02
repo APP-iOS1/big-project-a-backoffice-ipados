@@ -5,8 +5,8 @@
 //  Created by 서광현 on 2023/01/02.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 /// `SignInView`의 로그인 기능 ViewModel입니다.
 /// - currentUser: AdminModel? : 현재 접속한 사용자에 대한 정보입니다.
