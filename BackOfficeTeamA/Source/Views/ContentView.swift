@@ -10,16 +10,27 @@ import SwiftUI
 struct ContentView: View {
     @State private var searchText = ""
     @State private var selected: Int? = 0
-    
+    @State private var isSignedin = false
+    @State private var isShowingSigninProfileSheet = false
     
     var body: some View {
         NavigationView {
-            List(selection: $selected){
+            List(selection: $selected) {
+                Section() {
+                    Button {
+                        isShowingSigninProfileSheet.toggle()
+                    } label: {
+                        Text("Master")
+                            .frame(height:60)
+                            .font(.largeTitle)
+                    }
+                }
+                
                 Section{
                     NavigationLink(tag: 0, selection: $selected) {
                         HomeView()
                     } label: {
-                        Text("Home")
+                        Text("대시보드")
                     }
                 }
                 
@@ -27,17 +38,17 @@ struct ContentView: View {
                     NavigationLink {
                         CustomerView()
                     } label: {
-                        Text("Customer")
+                        Text("고객 관리")
                     }
                     NavigationLink {
                         StoreView()
                     } label: {
-                        Text("Store")
+                        Text("가게 정보")
                     }
                     NavigationLink {
                         StoreUserView()
                     } label: {
-                        Text("Store User")
+                        Text("입점 관리")
                     }
                 }
                 
@@ -45,30 +56,15 @@ struct ContentView: View {
                     NavigationLink {
                         PaymentView()
                     } label: {
-                        Text("Payment")
-                    }
-                    NavigationLink {
-                        LogView()
-                    } label: {
-                        Text("Log")
-                    }
-                    NavigationLink {
-                        AdView()
-                    } label: {
-                        Text("Ad")
+                        Text("가게별 결제 내역")
                     }
                 }
                 
                 Section {
                     NavigationLink {
-                        NoticeView()
-                    } label: {
-                        Text("Notice")
-                    }
-                    NavigationLink {
                         NotificationView()
                     } label: {
-                        Text("Notification")
+                        Text("앱 알림 관리")
                     }
                 }
                 
@@ -76,14 +72,20 @@ struct ContentView: View {
                     NavigationLink {
                         ReportView()
                     } label: {
-                        Text("Report")
+                        Text("신고")
                     }
                 }
                 
             }
+            .sheet(isPresented: $isShowingSigninProfileSheet, content: {
+                if !isSignedin {
+                    SignInView()
+                }
+            })
+            .toolbar(.hidden)
             .listStyle(.insetGrouped)
             .searchable(text: $searchText,prompt: "Search")
-            .navigationTitle("Back Office")
+            .navigationTitle("태영전자")
         }
     }
 }

@@ -13,7 +13,7 @@ struct StoreList: View {
     @State private var searchUseridText: String = ""
     @StateObject var userInfoStore: UserInfoStore = UserInfoStore()
     @Binding var searchFor : String
-    let item = ["Store Name","Adress","Date","Availbale"]
+    let item = ["상호명","주소","개점일","가능여부"]
     let columns = [
             GridItem(.flexible())
         ]
@@ -45,7 +45,7 @@ struct StoreList: View {
                 }.buttonStyle(ThemeAnimationStyle())
             }
         }.modifier(StoreComponentModifier())
-            .searchable(text: $searchFor, prompt: "Search")
+            .searchable(text: $searchFor, prompt: "검색")
         
     }
 }

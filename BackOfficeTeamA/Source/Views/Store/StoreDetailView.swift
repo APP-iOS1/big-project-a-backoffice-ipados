@@ -24,7 +24,7 @@ struct StoreDetailView: View {
             Divider()
             Spacer()
             List {
-                Section(header: Text("Store Info")) {
+                Section(header: Text("가게 정보")) {
                     Text("이름 : 이세화")
                     Text("사업자번호 : 110-42-15742")
                     Text("이메일 : test@test.com")

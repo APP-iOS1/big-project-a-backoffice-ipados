@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CellView: View {
-    @State var reportData: tempReportModel
+    @State var reportData: TempReportModel
     @State private var showDetail = false
     @State var isShowingReportDetailSheet = false
     
@@ -47,7 +47,7 @@ struct CellView_Previews: PreviewProvider {
     @State static private var isShowingReportDetailSheet = false
     
     static var previews: some View {
-        CellView(reportData: tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970), isShowingReportDetailSheet: isShowingReportDetailSheet)
+        CellView(reportData: TempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970), isShowingReportDetailSheet: isShowingReportDetailSheet)
             .previewLayout(.fixed(width: 500, height: 70))
     }
 }
