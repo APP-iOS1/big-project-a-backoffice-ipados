@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TotalCustomerView: View {
+    @State var isIncrease: Bool = true
     var body: some View {
         VStack(alignment: .leading){
             Text("총 회원 수")
@@ -17,8 +18,11 @@ struct TotalCustomerView: View {
                 Text("12345")
                     .font(.title)
                 Spacer()
-                Text("7%")
-                Image(systemName: true ? "arrow.up" :"arrow.down")
+                HStack {
+                    Text("7%")
+                    Image(systemName: isIncrease ? "arrow.up" :"arrow.down")
+                }
+                .foregroundColor(isIncrease ? Color.green : Color.red)
             }
             
         }
