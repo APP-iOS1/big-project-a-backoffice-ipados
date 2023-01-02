@@ -10,18 +10,21 @@ import SwiftUI
 struct ContentView: View {
     @State private var searchText = ""
     @State private var selected: Int? = 0
-    
+    @State private var isSignedin = false
+    @State private var isShowingSigninProfileSheet = false
     
     var body: some View {
         NavigationView {
-            List(selection: $selected){
+            List(selection: $selected) {
                 Section() {
-                    Text("Master")
-                        .frame(height:60)
-                        .listRowBackground(Color.accentColor)
-                        .font(.largeTitle)
+                    Button {
+                        isShowingSigninProfileSheet.toggle()
+                    } label: {
+                        Text("Master")
+                            .frame(height:60)
+                            .font(.largeTitle)
+                    }
                 }
-                
                 
                 Section{
                     NavigationLink(tag: 0, selection: $selected) {
@@ -74,6 +77,11 @@ struct ContentView: View {
                 }
                 
             }
+            .sheet(isPresented: $isShowingSigninProfileSheet, content: {
+                if !isSignedin {
+                    SignInView()
+                }
+            })
             .toolbar(.hidden)
             .listStyle(.insetGrouped)
             .searchable(text: $searchText,prompt: "Search")
