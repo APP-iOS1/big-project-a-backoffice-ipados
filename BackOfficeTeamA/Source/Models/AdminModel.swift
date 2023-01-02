@@ -13,5 +13,6 @@ struct AdminModel: Codable, Identifiable {
     var id: String
     var lastLoginDate: Date
     var createdDate: Date
-    var email: String
+    var userEmail: String
+    var level: String
 }

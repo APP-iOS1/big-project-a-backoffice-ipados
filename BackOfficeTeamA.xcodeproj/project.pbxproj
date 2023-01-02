@@ -15,8 +15,11 @@
 		6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */; };
 		6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3C295AC31900426E61 /* LineChart.swift */; };
 		6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */; };
+		6F35387429626D4200968382 /* AuthorityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35387329626D4200968382 /* AuthorityLevel.swift */; };
+		6F353876296272DE00968382 /* UserAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F353875296272DE00968382 /* UserAuthenticationManager.swift */; };
 		6F70E0E1295D85C200413B76 /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F70E0E0295D85C200413B76 /* FirebaseNetworkManager.swift */; };
 		6F70E0E3295D861900413B76 /* CollectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F70E0E2295D861900413B76 /* CollectionTypes.swift */; };
+		6FC03D2F2962770C0092AAE1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC03D2E2962770C0092AAE1 /* SignInViewModel.swift */; };
 		6FCB064C295C32A10051DA3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FCB064B295C32A10051DA3C /* GoogleService-Info.plist */; };
 		6FCB064F295C33140051DA3C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6FCB064E295C33140051DA3C /* FirebaseAnalytics */; };
 		6FCB0651295C33140051DA3C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6FCB0650295C33140051DA3C /* FirebaseAuth */; };
@@ -79,8 +82,11 @@
 		6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCustomerTraffic.swift; sourceTree = "<group>"; };
 		6A2E7D3C295AC31900426E61 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerGrowth.swift; sourceTree = "<group>"; };
+		6F35387329626D4200968382 /* AuthorityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorityLevel.swift; sourceTree = "<group>"; };
+		6F353875296272DE00968382 /* UserAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationManager.swift; sourceTree = "<group>"; };
 		6F70E0E0295D85C200413B76 /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		6F70E0E2295D861900413B76 /* CollectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTypes.swift; sourceTree = "<group>"; };
+		6FC03D2E2962770C0092AAE1 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		6FCB064B295C32A10051DA3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FCB0658295C346C0051DA3C /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		6FCB065A295C36430051DA3C /* Timestamp+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamp+.swift"; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				6FCB0661295C394F0051DA3C /* AppCategoryEnum.swift */,
+				6F35387329626D4200968382 /* AuthorityLevel.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -237,6 +244,8 @@
 			children = (
 				FA71BAC8295A802C001D0AB3 /* StoreViewModel.swift */,
 				6F70E0E0295D85C200413B76 /* FirebaseNetworkManager.swift */,
+				6F353875296272DE00968382 /* UserAuthenticationManager.swift */,
+				6FC03D2E2962770C0092AAE1 /* SignInViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -512,6 +521,8 @@
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
 				FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */,
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
+				6FC03D2F2962770C0092AAE1 /* SignInViewModel.swift in Sources */,
+				6F35387429626D4200968382 /* AuthorityLevel.swift in Sources */,
 				FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */,
 				FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */,
 				6FCB065D295C367C0051DA3C /* AdminModel.swift in Sources */,
@@ -519,6 +530,7 @@
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
 				6FCB065F295C388E0051DA3C /* NotificationModel.swift in Sources */,
 				FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */,
+				6F353876296272DE00968382 /* UserAuthenticationManager.swift in Sources */,
 				FA71BAC5295A7FFE001D0AB3 /* StoreUserView.swift in Sources */,
 				8F70A091295BE62300C74131 /* ReportStoreUserDetailView.swift in Sources */,
 				FA71BAC1295A7FE8001D0AB3 /* ReportView.swift in Sources */,
