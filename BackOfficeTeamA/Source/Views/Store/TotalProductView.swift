@@ -17,8 +17,10 @@ struct TotalProductView: View {
                 Text("1551")
                     .font(.title)
                 Spacer()
-                Text("7%")
-                Image(systemName: true ? "arrow.up" :"arrow.down")
+                HStack{
+                    Text("7%")
+                    Image(systemName: true ? "arrow.up" :"arrow.down")
+                }.foregroundColor(.green)
             }
             
         }
@@ -28,6 +30,6 @@ struct TotalProductView: View {
 
 struct TotalProductView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalProductView()
+        TotalProductView().frame(width:300,height: 50)
     }
 }
