@@ -11,7 +11,7 @@ import FirebaseFirestore
 //TODO: subCollection들을 어떻게 접근할지 고민
 //TODO: subCollection들 중 MyPurchaseHistory에만 접근하면 되는지
 //TODO: 뷰의주문정보에서 배송완료 상태인 것들을 구매내역에 보여주는게 맞는지
-final class customerNetworkManager: ObservableObject {
+final class CustomerNetworkManager: ObservableObject {
     @Published var customerInfos: [CustomerInfo] = []
     @Published var customerPurchaseHistory: [MyPurchaseHistory] = []
     //@Published var 
