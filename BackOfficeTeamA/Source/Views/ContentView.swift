@@ -82,9 +82,9 @@ struct ContentView: View {
                     SignInView()
                 }
             })
-            .toolbar(.hidden)
+//            .toolbar(.hidden)
             .listStyle(.insetGrouped)
-            .searchable(text: $searchText,prompt: "Search")
+//            .searchable(text: $searchText,prompt: "Search")
             .navigationTitle("태영전자")
         }
     }

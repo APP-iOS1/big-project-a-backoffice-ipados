@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyVisitorView: View {
+    @State var isIncrease: Bool = false
     var body: some View {
         VStack(alignment: .leading){
             Text("일일 방문자 수")
@@ -17,8 +18,11 @@ struct DailyVisitorView: View {
                 Text("345")
                     .font(.title)
                 Spacer()
-                Text("-2%")
-                Image(systemName: true ? "arrow.up" :"arrow.down")
+                HStack {
+                    Text("-2%")
+                    Image(systemName: isIncrease ? "arrow.up" :"arrow.down")
+                }
+                .foregroundColor(isIncrease ? Color.green : Color.red)
             }
             
         }
