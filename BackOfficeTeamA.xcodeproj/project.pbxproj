@@ -24,6 +24,8 @@
 		AEB8B839295C10200004562B /* UserInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8B838295C101F0004562B /* UserInfoDetailView.swift */; };
 		AEB8B83B295C10320004562B /* OrderInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8B83A295C10320004562B /* OrderInfoDetailView.swift */; };
 		AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8B83C295C10520004562B /* PurchaseHistoryInfoDetailView.swift */; };
+		AEB8B85929626D930004562B /* TotalCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8B85829626D930004562B /* TotalCustomerView.swift */; };
+		AEB8B85B29626EC10004562B /* DailyVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8B85A29626EC10004562B /* DailyVisitorView.swift */; };
 		AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7873F295AD7D9003F46E9 /* TestModel.swift */; };
 		FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */; };
 		FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71BA96295A7CAE001D0AB3 /* ContentView.swift */; };
@@ -73,6 +75,8 @@
 		AEB8B838295C101F0004562B /* UserInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDetailView.swift; sourceTree = "<group>"; };
 		AEB8B83A295C10320004562B /* OrderInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoDetailView.swift; sourceTree = "<group>"; };
 		AEB8B83C295C10520004562B /* PurchaseHistoryInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryInfoDetailView.swift; sourceTree = "<group>"; };
+		AEB8B85829626D930004562B /* TotalCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCustomerView.swift; sourceTree = "<group>"; };
+		AEB8B85A29626EC10004562B /* DailyVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVisitorView.swift; sourceTree = "<group>"; };
 		AEE7873F295AD7D9003F46E9 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		FA71BA91295A7CAE001D0AB3 /* BackOfficeTeamA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackOfficeTeamA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA71BA94295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfficeTeamAApp.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				AEB8B838295C101F0004562B /* UserInfoDetailView.swift */,
 				AEB8B83A295C10320004562B /* OrderInfoDetailView.swift */,
 				AEB8B83C295C10520004562B /* PurchaseHistoryInfoDetailView.swift */,
+				AEB8B85829626D930004562B /* TotalCustomerView.swift */,
+				AEB8B85A29626EC10004562B /* DailyVisitorView.swift */,
 				AEE7873F295AD7D9003F46E9 /* TestModel.swift */,
 			);
 			path = Customer;
@@ -405,6 +411,7 @@
 				FADAD305295C079A000528D9 /* StoreDetailView.swift in Sources */,
 				6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */,
 				6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */,
+				AEB8B85929626D930004562B /* TotalCustomerView.swift in Sources */,
 				AEE78740295AD7D9003F46E9 /* TestModel.swift in Sources */,
 				FA71BAD2295A810F001D0AB3 /* Constants.swift in Sources */,
 				AEB8B83B295C10320004562B /* OrderInfoDetailView.swift in Sources */,
@@ -425,6 +432,7 @@
 				8F70A093295C0B1F00C74131 /* ReportCustomerUserDetailView.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
 				6A037417295BFC440082F37C /* ChartFooter.swift in Sources */,
+				AEB8B85B29626EC10004562B /* DailyVisitorView.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				6A037419295C01B00082F37C /* CircleProgressBar.swift in Sources */,
 				AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */,

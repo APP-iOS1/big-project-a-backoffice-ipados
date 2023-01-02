@@ -9,7 +9,7 @@ import Foundation
 
 
 // Test용 UserInfo 데이터
-struct UserInfo: Codable, Identifiable {
+struct UserInfo: Codable, Identifiable, Hashable {
     var id: String
     var userName: String
     var userEmail: String

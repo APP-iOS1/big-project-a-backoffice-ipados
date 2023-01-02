@@ -13,6 +13,9 @@ struct CustomerView: View {
     @StateObject var orderInfoStore: OrderInfoStore = OrderInfoStore()
     @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
     
+    @State private var selection : UserInfo.ID?
+    @State var path : [UserInfo] = []
+    
     // 피커
     var pickerOptions = ["이름", "이메일", "전화번호"]
     @State private var pickerSelection = 0
@@ -48,9 +51,9 @@ struct CustomerView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
-                Table(results) {
+                Table(results, selection: $selection) {
                     TableColumn("Name", value: \.userName)
                     TableColumn("Nickname") { user in
                         Text(user.userNickname)
@@ -66,7 +69,13 @@ struct CustomerView: View {
                         }
                     }
                 }
-                .foregroundColor(Color.black)
+                .onChange(of: selection) { newSelection in
+                    if let newSelection, let userInfo = userInfoStore.userInfos.first(where: { $0.id == newSelection
+                    }) {
+                        path.append(userInfo)
+                    }
+                }
+//                .foregroundColor(Color.black)
                 .searchable(text: $searchUserText, prompt: "검색")
                 
                 /*
@@ -93,6 +102,9 @@ struct CustomerView: View {
                 }
                 .searchable(text: $searchUserText, prompt: "검색")
                  */
+            }
+            .navigationDestination(for: UserInfo.self) { userInfo in
+                CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
             }
         }
         .navigationTitle(navigationTitle)
