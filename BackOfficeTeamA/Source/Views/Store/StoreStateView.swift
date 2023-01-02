@@ -10,23 +10,25 @@ import SwiftUI
 struct StoreStateView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("영업중 / 폐점")
-                .font(.headline)
+            HStack{
+                Text("영업중 / 폐점")
+                Spacer()
+            }.font(.headline)
             Spacer()
             HStack{
                 Text("100").foregroundColor(.green)
-                Divider()
+                Text("/").foregroundColor(.gray)
                 Text("23").foregroundColor(.red)
-                Spacer()
-            }
-            .font(.title)
+            }.font(.title)
             
-        }.modifier(StoreStateModifier())
+        }
+        .modifier(StoreStateModifier())
+        
     }
 }
 
 struct StoreStateView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreStateView()
+        StoreStateView().frame(width: 300,height: 100)
     }
 }
