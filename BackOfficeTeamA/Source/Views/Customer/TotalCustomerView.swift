@@ -1,20 +1,20 @@
 //
-//  TotalProductView.swift
+//  TotalCustomerView.swift
 //  BackOfficeTeamA
 //
-//  Created by MacBook on 2022/12/28.
+//  Created by 서찬호 on 2023/01/02.
 //
 
 import SwiftUI
 
-struct TotalProductView: View {
+struct TotalCustomerView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("총 판매 상품")
+            Text("총 회원 수")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("1551")
+                Text("12345")
                     .font(.title)
                 Spacer()
                 Text("7%")
@@ -26,8 +26,8 @@ struct TotalProductView: View {
     }
 }
 
-struct TotalProductView_Previews: PreviewProvider {
+struct TotalCustomerView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalProductView()
+        TotalCustomerView()
     }
 }

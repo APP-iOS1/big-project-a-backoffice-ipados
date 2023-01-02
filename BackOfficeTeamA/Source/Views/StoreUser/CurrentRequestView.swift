@@ -12,7 +12,7 @@ struct CurrentRequestView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Current Enroll Request ")
+            Text("등록 요청")
                 .font(.largeTitle)
                 .padding()
             List {
@@ -21,7 +21,7 @@ struct CurrentRequestView: View {
                     Button(action: {
                         isShowingSheet.toggle()
                     }) {
-                        Text("B Store request - before 5 min ")
+                        Text("두영상점 - 5분 전 ")
                     }
                 }
             }

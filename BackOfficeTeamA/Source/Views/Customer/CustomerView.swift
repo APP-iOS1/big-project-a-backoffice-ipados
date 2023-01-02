@@ -13,6 +13,9 @@ struct CustomerView: View {
     @StateObject var orderInfoStore: OrderInfoStore = OrderInfoStore()
     @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
     
+    @State private var selection : UserInfo.ID?
+    @State var path : [UserInfo] = []
+    
     // 피커
     var pickerOptions = ["이름", "이메일", "전화번호"]
     @State private var pickerSelection = 0
@@ -40,7 +43,7 @@ struct CustomerView: View {
     var navigationTitle: String {
         var titleText = ""
         if searchUserText.isEmpty {
-            titleText = "All Customer"
+            titleText = "고객 관리"
         } else {
             titleText = "'\(searchUserText)'에 대한 검색결과"
         }
@@ -48,10 +51,36 @@ struct CustomerView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
-                List {
-                    if !results.isEmpty {
+                Table(results, selection: $selection) {
+                    TableColumn("Name", value: \.userName)
+                    TableColumn("Nickname") { user in
+                        Text(user.userNickname)
+                            .foregroundColor(Color.black)
+                    }
+                    TableColumn("Email", value: \.userEmail)
+                    TableColumn("PhoneNumber", value: \.phoneNumber)
+                }
+                .toolbar {
+                    Picker("Select", selection: $pickerSelection) {
+                        ForEach(0..<pickerOptions.count, id: \.self) {
+                            Text(pickerOptions[$0])
+                        }
+                    }
+                }
+                .onChange(of: selection) { newSelection in
+                    if let newSelection, let userInfo = userInfoStore.userInfos.first(where: { $0.id == newSelection
+                    }) {
+                        path.append(userInfo)
+                    }
+                }
+//                .foregroundColor(Color.black)
+                .searchable(text: $searchUserText, prompt: "검색")
+                
+                /*
+                 List {
+                 if !results.isEmpty {
                         ForEach(results) { userInfo in
                             NavigationLink(destination: CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)){
                                 CustomerListCell(userInfo: userInfo)
@@ -71,7 +100,11 @@ struct CustomerView: View {
                         }
                     }
                 }
-                .searchable(text: $searchUserText, prompt: "Search")
+                .searchable(text: $searchUserText, prompt: "검색")
+                 */
+            }
+            .navigationDestination(for: UserInfo.self) { userInfo in
+                CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
             }
         }
         .navigationTitle(navigationTitle)

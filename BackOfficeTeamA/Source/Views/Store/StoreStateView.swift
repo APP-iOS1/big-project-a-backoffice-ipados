@@ -10,7 +10,7 @@ import SwiftUI
 struct StoreStateView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Available / closed Store")
+            Text("영업중 / 폐점")
                 .font(.headline)
             Spacer()
             HStack{

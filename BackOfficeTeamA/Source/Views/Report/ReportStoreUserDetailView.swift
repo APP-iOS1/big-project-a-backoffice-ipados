@@ -17,10 +17,10 @@ struct ReportStoreUserDetailView: View {
             List {
                 
                 HStack {
-                    Text("This user is reported")
+                    Text("해당 사용자는")
                     Text("5")
                         .foregroundColor(.accentColor)
-                    Text("times")
+                    Text("번 신고되었습니다.")
                     
                 }
                 Section {
@@ -29,13 +29,13 @@ struct ReportStoreUserDetailView: View {
                         Button {
                             isShowingAlert.toggle()
                         } label: {
-                            Text("Block")
+                            Text("이용 정지")
                                 .foregroundColor(.red)
                         }
                         .buttonStyle(.automatic)
-                        .alert("Are you really going to BLOCK this user", isPresented: $isShowingAlert) {
-                            Button("Cancel", role: .cancel) {}
-                            Button("Block", role: .destructive) {
+                        .alert("해당 사용자를 이용 정지 시키겠습니까?", isPresented: $isShowingAlert) {
+                            Button("취소", role: .cancel) {}
+                            Button("예", role: .destructive) {
                                 // block action here
                             }
                         }

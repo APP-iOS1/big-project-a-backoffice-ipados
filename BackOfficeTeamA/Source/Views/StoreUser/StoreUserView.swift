@@ -25,7 +25,7 @@ struct StoreUserView: View {
                 .padding()
                 
         }
-        .navigationTitle("Store Enrollment")
+        .navigationTitle("입점 관리")
         .sheet(isPresented: $isShowingSheet) {
             EnrollRequestModal()
         }

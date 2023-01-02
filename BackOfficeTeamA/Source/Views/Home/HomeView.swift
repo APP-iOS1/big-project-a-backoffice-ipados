@@ -18,11 +18,11 @@ struct HomeView: View {
     ]
     
     @State var customer2 = [
-        CustomerGrowth(type: "Instagram", count: 184, color: .red),
-        CustomerGrowth(type: "Google", count: 78, color: .orange),
-        CustomerGrowth(type: "Facebook", count:32, color: .yellow),
-        CustomerGrowth(type: "Kakao", count: 500, color: .green),
-        CustomerGrowth(type: "Naver", count: 900, color: .blue)
+        CustomerGrowth(type: "인스타그램", count: 184, color: .red),
+        CustomerGrowth(type: "구글", count: 78, color: .orange),
+        CustomerGrowth(type: "페이스북", count:32, color: .yellow),
+        CustomerGrowth(type: "카카오톡", count: 500, color: .green),
+        CustomerGrowth(type: "네이버", count: 900, color: .blue)
     ]
     
     var body: some View {
@@ -30,9 +30,9 @@ struct HomeView: View {
             VStack {
                 HStack {
                     VStack {
-                        BarChart(title: "Monthly Profit")
+                        BarChart(title: "월별 매출")
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter(label: "Monthly Profit", growth: 1200, percentage: 40)
+                        ChartFooter(label: "월별 매출", growth: 1200, percentage: 40)
                     }
 
                     VStack {
@@ -43,21 +43,21 @@ struct HomeView: View {
                 }
                 HStack {
                     VStack {
-                        LineChart(title: "Monthly Traffic")
+                        LineChart(title: "월별 트래픽")
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter(label: "Monthly Traffic", growth: 241, percentage: 2)
+                        ChartFooter(label: "월별 트래픽", growth: 241, percentage: 2)
                     }
                     VStack {
-                        PieChart(title: "Funnels", customer: customer2)
+                        PieChart(title: "유입 경로", customer: customer2)
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter(label: "Funnels", growth: 10560, percentage: 55)
+                        ChartFooter(label: "유입경로", growth: 10560, percentage: 55)
                     }
 
                 }
             }
             .padding()
         }
-        .navigationTitle("Dashboard")
+        .navigationTitle("대시보드")
     }
 }
 

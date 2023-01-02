@@ -17,7 +17,7 @@ struct EnrollRequestModal: View {
             Button {
                 dismiss()
             } label: {
-                Text("Pass")
+                Text("승인")
             }
         }.padding()
 

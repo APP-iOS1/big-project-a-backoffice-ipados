@@ -1,23 +1,23 @@
 //
-//  TotalProductView.swift
+//  DailyVisitorView.swift
 //  BackOfficeTeamA
 //
-//  Created by MacBook on 2022/12/28.
+//  Created by 서찬호 on 2023/01/02.
 //
 
 import SwiftUI
 
-struct TotalProductView: View {
+struct DailyVisitorView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("총 판매 상품")
+            Text("일일 방문자 수")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("1551")
+                Text("345")
                     .font(.title)
                 Spacer()
-                Text("7%")
+                Text("-2%")
                 Image(systemName: true ? "arrow.up" :"arrow.down")
             }
             
@@ -26,8 +26,8 @@ struct TotalProductView: View {
     }
 }
 
-struct TotalProductView_Previews: PreviewProvider {
+struct DailyVisitorView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalProductView()
+        DailyVisitorView()
     }
 }

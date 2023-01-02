@@ -11,18 +11,18 @@ struct ReportView: View {
     var pickerOptions = ["신고자", "신고대상자", "작성내용"]
     @State private var pickerSelection = 0
     @State var searchFor = ""
-    @State private var reportData: [tempReportModel] = [
-        tempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970),
-        tempReportModel(reporter: "이름이 긴 사람", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970),
-        tempReportModel(reporter: "이름이 긴 사람2", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 88400),
-        tempReportModel(reporter: "이름이 긴 사람3", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 804800),
-        tempReportModel(reporter: "이름이 긴 사람4", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 2892000),
-        tempReportModel(reporter: "이름이 긴 사람5", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 33536600),
+    @State private var reportData: [TempReportModel] = [
+        TempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970),
+        TempReportModel(reporter: "이름이 긴 사람", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970),
+        TempReportModel(reporter: "이름이 긴 사람2", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 88400),
+        TempReportModel(reporter: "이름이 긴 사람3", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 804800),
+        TempReportModel(reporter: "이름이 긴 사람4", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 2892000),
+        TempReportModel(reporter: "이름이 긴 사람5", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 33536600),
     ]
     @State var searchDate = dayWeekMonthYear.all
     let buttonOption: [dayWeekMonthYear] = [.all, .day, .week, .month, .year]
     let buttonLabel = ["전체", "하루 전", "일주일 전", "한달 전", "일년 전"]
-    var results: [tempReportModel] {
+    var results: [TempReportModel] {
         //filter를 날짜로 한번하고 그 이후 필터 진행
         var dateFilteredData = reportData
         
@@ -92,7 +92,7 @@ struct ReportView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .searchable(text: $searchFor, prompt: "Search")
+        .searchable(text: $searchFor, prompt: "검색")
         //        .searchable(text: $searchFor, placement: .navigationBarDrawer(displayMode: .always))
         .toolbar {
             Picker("Select", selection: $pickerSelection) {
@@ -101,7 +101,7 @@ struct ReportView: View {
                 }
             }
         }
-        .navigationTitle(Text("Report"))
+        .navigationTitle(Text("신고"))
     }
 }
 
@@ -122,7 +122,7 @@ struct ReportView_Previews: PreviewProvider {
 }
 
 // 테스트를 위한 신고 임시 모델
-struct tempReportModel: Hashable {
+struct TempReportModel: Hashable {
     var reporter: String
     var reported: String
     var contents: String

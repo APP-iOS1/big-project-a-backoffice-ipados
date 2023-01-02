@@ -15,13 +15,13 @@ struct ChartFooter: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(label) - in percentage")
+            Text("\(label) - 퍼센트")
                 .font(.title)
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(growth)")
                         .font(.title)
-                    Text("more than last month")
+                    Text("전월 대비")
                         .font(.title3)
                 }
                 Spacer()
