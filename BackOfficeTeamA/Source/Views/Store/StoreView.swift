@@ -11,55 +11,27 @@ struct StoreView: View {
     
     @State private var rowHeight: CGFloat = 80 //list cell 높이설정
     @State private var isShowingSheet = false
-    @State var searchFor = ""
+    @State private var path = [Store]()
     var body: some View {
-        ScrollView{
-            HStack{
-                TotalStoreView()
-                StoreStateView()
-                TotalProductView()
+        NavigationStack(path: $path){
+            VStack{
+                HStack{
+                    TotalStoreView()
+                    StoreStateView()
+                    TotalProductView()
+                }
+                .frame(height: 100)
+                .padding()
+                StoreList(path: $path)
+                
             }
-            .frame(height: 100)
-            .padding()
-            
-            VStack {
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Text("총 입점 수")
-                            .font(Font.footnote)
-                    }
-                    .modifier(OptionsButtonModifier())
-                    .padding()
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("영업중인 가게")
-                            .font(Font.footnote)
-                    }
-                    .modifier(OptionsButtonModifier())
-                    .padding()
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("폐점한 가게")
-                            .font(Font.footnote)
-                    }
-                    .modifier(OptionsButtonModifier())
-                    .padding()
-                    Spacer()
-                }.padding(.leading,100)
-                StoreList(searchFor: $searchFor)
+            //.navigationTitle("가게 정보")
+            .sheet(isPresented: $isShowingSheet) {
+                EnrollRequestModal()
             }
-            
+        
         }
         .navigationTitle("가게 정보")
-        .sheet(isPresented: $isShowingSheet) {
-            EnrollRequestModal()
-        }
         
     }
 }
