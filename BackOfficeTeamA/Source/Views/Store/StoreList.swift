@@ -114,6 +114,10 @@ struct StoreList: View {
                 StoreDetailView(storeID: storeInfo.id)
                     .environmentObject(manager)
             }
+            .onAppear{
+                path = []
+                selection = nil
+            }
         //}
         //.searchable(text: $searchFor, prompt: "검색")
         
