@@ -34,6 +34,9 @@
 		6F2B8B572962BF510022226C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B562962BF510022226C /* FirebaseAuthCombine-Community */; };
 		6F2B8B592962BF510022226C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B582962BF510022226C /* FirebaseFirestore */; };
 		6F2B8B5B2962BF510022226C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B5A2962BF510022226C /* FirebaseFirestoreSwift */; };
+		6FE265E929630A830055636C /* FirestoreCRUDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265E829630A830055636C /* FirestoreCRUDProtocol.swift */; };
+		6FE265ED29630F3C0055636C /* StoreNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265EC29630F3C0055636C /* StoreNetworkManager.swift */; };
+		6FE265EF296311F40055636C /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265EE296311F40055636C /* StoreInfo.swift */; };
 		8F70A08F295BD3C800C74131 /* ReportDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F70A08E295BD3C800C74131 /* ReportDetailSheet.swift */; };
 		8F70A091295BE62300C74131 /* ReportStoreUserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */; };
 		8F70A093295C0B1F00C74131 /* ReportCustomerUserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F70A092295C0B1F00C74131 /* ReportCustomerUserDetailView.swift */; };
@@ -101,6 +104,9 @@
 		6F2B8B4C2962BE730022226C /* CustomerNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerNetworkManager.swift; sourceTree = "<group>"; };
 		6F2B8B4D2962BE730022226C /* UserAuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationManager.swift; sourceTree = "<group>"; };
 		6F2B8B4E2962BE730022226C /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
+		6FE265E829630A830055636C /* FirestoreCRUDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCRUDProtocol.swift; sourceTree = "<group>"; };
+		6FE265EC29630F3C0055636C /* StoreNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreNetworkManager.swift; sourceTree = "<group>"; };
+		6FE265EE296311F40055636C /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
 		8F70A08E295BD3C800C74131 /* ReportDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailSheet.swift; sourceTree = "<group>"; };
 		8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStoreUserDetailView.swift; sourceTree = "<group>"; };
 		8F70A092295C0B1F00C74131 /* ReportCustomerUserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCustomerUserDetailView.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 				FA71BAD0295A80EA001D0AB3 /* Constants */,
 				FA71BACA295A804A001D0AB3 /* Extension */,
 				FA71BACB295A805F001D0AB3 /* UIConfig */,
+				6FE265E829630A830055636C /* FirestoreCRUDProtocol.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 			children = (
 				6F2B8B4C2962BE730022226C /* CustomerNetworkManager.swift */,
 				6F2B8B4E2962BE730022226C /* FirebaseNetworkManager.swift */,
+				6FE265EC29630F3C0055636C /* StoreNetworkManager.swift */,
 				6F2B8B4B2962BE730022226C /* SignInViewModel.swift */,
 				6F2B8B4D2962BE730022226C /* UserAuthenticationManager.swift */,
 				FA71BAC8295A802C001D0AB3 /* StoreViewModel.swift */,
@@ -270,6 +278,7 @@
 				6F2B8B3B2962BE520022226C /* AdminModel.swift */,
 				6F2B8B422962BE530022226C /* CollectionTypes.swift */,
 				6F2B8B402962BE530022226C /* CustomerInfo.swift */,
+				6FE265EE296311F40055636C /* StoreInfo.swift */,
 				6F2B8B3F2962BE520022226C /* MyPurchaseHistory.swift */,
 				6F2B8B3C2962BE520022226C /* NotificationModel.swift */,
 				6F2B8B3E2962BE520022226C /* OrderInfo.swift */,
@@ -497,6 +506,7 @@
 				FA71BAC3295A7FF2001D0AB3 /* StoreView.swift in Sources */,
 				FA71BAE6295ACE97001D0AB3 /* ManageEnrollView.swift in Sources */,
 				FA71BAD4295A87B9001D0AB3 /* AppDelegate.swift in Sources */,
+				6FE265E929630A830055636C /* FirestoreCRUDProtocol.swift in Sources */,
 				AEB8B837295C0F920004562B /* CustomerInfoDetailView.swift in Sources */,
 				6F2B8B442962BE530022226C /* NotificationModel.swift in Sources */,
 				FA71BACD295A8090001D0AB3 /* Modifiers.swift in Sources */,
@@ -513,10 +523,12 @@
 				8F70A08F295BD3C800C74131 /* ReportDetailSheet.swift in Sources */,
 				6A2E7D35295AB56D00426E61 /* PieChart.swift in Sources */,
 				8F70A093295C0B1F00C74131 /* ReportCustomerUserDetailView.swift in Sources */,
+				6FE265EF296311F40055636C /* StoreInfo.swift in Sources */,
 				6F2B8B3A2962BE100022226C /* Timestamp+.swift in Sources */,
 				FA71BAB5295A7F97001D0AB3 /* CustomerView.swift in Sources */,
 				6A037417295BFC440082F37C /* ChartFooter.swift in Sources */,
 				AEB8B85B29626EC10004562B /* DailyVisitorView.swift in Sources */,
+				6FE265ED29630F3C0055636C /* StoreNetworkManager.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
 				6A037419295C01B00082F37C /* CircleProgressBar.swift in Sources */,
 				AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */,
