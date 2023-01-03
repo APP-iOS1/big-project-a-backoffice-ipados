@@ -14,8 +14,7 @@ struct StoreComponentModifier: ViewModifier {
         content
             .foregroundColor(.black)
             .padding()
-            .background(.white, in: RoundedRectangle(cornerRadius: 20))
-        //.shadow(color: .gray,radius: 10)
+            .background(.quaternary, in: RoundedRectangle(cornerRadius: 20))
             .padding()
     }
 }
@@ -92,7 +91,7 @@ struct DividerModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay {
-                Color.black
+                Color.black.opacity(0.5)
             }
     }
 }
