@@ -23,11 +23,11 @@ struct OrderInfoDetailView: View {
                             Text("배송 상황 :")
                         }
                         VStack(alignment: .leading, spacing: 5) {
-//                            Text("\(order.orderItem.itemName)")
-//                            Text("\(order.orderItem.itemPrice)")
-//                            Text("\(order.orderItem.itemColor)")
-//                            Text("\(order.orderItem.amount)")
-//                            Text("\(order.orderItem.deliveryStatus)")
+                            Text("\(order.orderItem.itemName)")
+                            Text("\(order.orderItem.itemPrice)")
+                            Text("\(order.orderItem.itemColor)")
+                            Text("\(order.orderItem.amount)")
+                            Text("\(order.orderItem.deliveryStatus)")
                         }
                     }
                     .padding()
@@ -41,9 +41,9 @@ struct OrderInfoDetailView: View {
                             Text("결제 수단 :")
                         }
                         VStack(alignment: .leading, spacing: 5) {
-//                            Text("\(order.orderTime)")
-//                            Text("\(order.orderMessage)")
-//                            Text("\(order.payment)")
+                            Text("\(order.orderTime)")
+                            Text("\(order.orderMessage)")
+                            Text("\(order.payment)")
                         }
                     }
                     .padding(.leading, 20)
