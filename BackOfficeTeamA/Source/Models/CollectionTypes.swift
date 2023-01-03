@@ -32,7 +32,7 @@ enum AdminSubcollectionType: String {
 
 // MARK: - StoreInfo / 하위 콜렉션
 enum StoreSubcollectionType: String {
-    case itemInfo = "Item"
+    case itemInfo = "Items"
     case storeNotification = "StoreNotification"
     case storeSales = "StoreSales"
     case allUserReviews = "AllUserReviews"
