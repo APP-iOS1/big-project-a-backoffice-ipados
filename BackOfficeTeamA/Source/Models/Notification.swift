@@ -23,11 +23,17 @@ struct Notification: Identifiable, Hashable {
         return dateFormatter.string(from: notificationDate)
     }
     
+    var receiverName: String {
+        "정우"
+    }
+    
     static var sample: [Notification] {
-        Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Store1", notificationDescription: "테스트 메시지1입니다.", notificationDate: Date(), appCategory: "store")
-        Notification(receiverId: UUID().uuidString, isViewed: false, notificationTitle: "Store2", notificationDescription: "테스트 메시지2입니다.", notificationDate: Date(), appCategory: "store")
-        Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Customer1", notificationDescription: "테스트 메시지3입니다.", notificationDate: Date(), appCategory: "customer")
-        Notification(receiverId: UUID().uuidString, isViewed: false, notificationTitle: "Customer2", notificationDescription: "테스트 메시지4입니다.", notificationDate: Date(), appCategory: "customer")
-        Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Backoffice", notificationDescription: "테스트 메시지5입니다.", notificationDate: Date(), appCategory: "backoffice")
+        [
+            Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Store1", notificationDescription: "테스트 메시지1입니다.", notificationDate: Date(), appCategory: "store"),
+            Notification(receiverId: UUID().uuidString, isViewed: false, notificationTitle: "Store2", notificationDescription: "테스트 메시지2입니다.", notificationDate: Date(), appCategory: "store"),
+            Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Customer1", notificationDescription: "테스트 메시지3입니다.", notificationDate: Date(), appCategory: "customer"),
+            Notification(receiverId: UUID().uuidString, isViewed: false, notificationTitle: "Customer2", notificationDescription: "테스트 메시지4입니다.", notificationDate: Date(), appCategory: "customer"),
+            Notification(receiverId: UUID().uuidString, isViewed: true, notificationTitle: "Backoffice", notificationDescription: "테스트 메시지5입니다.", notificationDate: Date(), appCategory: "backoffice")
+        ]
     }
 }
