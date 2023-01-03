@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CustomerInfoDetailView: View {
-    var userInfo: UserInfo
+    var customerInfo: CustomerInfo
     var orderInfos: [OrderInfo]
     var purchaseHistoryInfos: [PurchaseHistoryInfo]
     
     var body: some View {
         List {
             // 유저정보 섹션
-            UserInfoDetailView(userInfo: userInfo)
+            UserInfoDetailView(customerInfo: customerInfo)
             // 주문정보 섹션
             OrderInfoDetailView(orderInfos: orderInfos)
             // 구매내역 섹션
