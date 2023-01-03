@@ -15,6 +15,7 @@ struct SignInView: View {
     @State private var emailIsValid = true
     @State private var _isSigninAbled = false
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var signInViewModel: SignInViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,9 +35,15 @@ struct SignInView: View {
             if !isSigninProgress {
                 Button("Sign in") {
                     isSigninProgress = true
-                    //TODO: Sign in action
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                        dismiss()
+//                    //TODO: Sign in action
+                    Task {
+                        do {
+                            let check = try await signInViewModel.requestUserLogin(withEmail: email, withPassword: password)
+                            dismiss()
+                            print(check)
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
                 .modifier(MainButtonModifier())
@@ -45,7 +52,9 @@ struct SignInView: View {
                 ProgressView()
                     .modifier(MainButtonModifier())
             }
-            
+            Button("logout") {
+                signInViewModel.requestUserSignOut()
+            }
             if !emailIsValid {
                 Text("이메일 형식이 올바르지 않습니다")
                     .padding(.leading, 7)
@@ -71,7 +80,7 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(signInViewModel: SignInViewModel())
     }
 }
 

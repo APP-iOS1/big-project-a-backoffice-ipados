@@ -10,6 +10,7 @@ import FirebaseCore
 
 @main
 struct BackOfficeTeamAApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     init() {
         setupAuthentication()
