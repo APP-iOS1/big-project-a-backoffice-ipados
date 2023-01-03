@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CustomerInfoDetailView: View {
     var customerInfo: CustomerInfo
-    var orderInfos: [OrderedItemInfo]
-    var purchaseHistoryInfos: [PurchaseHistoryInfo]
+    var orderInfos: [OrderInfo]
+//    var purchaseHistoryInfos: [PurchaseHistoryInfo]
     
     var body: some View {
         List {
@@ -19,7 +19,7 @@ struct CustomerInfoDetailView: View {
             // 주문정보 섹션
             OrderInfoDetailView(orderInfos: orderInfos)
             // 구매내역 섹션
-            PurchaseHistoryInfoDetailView(purchaseHistoryInfos: purchaseHistoryInfos)
+//            PurchaseHistoryInfoDetailView(purchaseHistoryInfos: purchaseHistoryInfos)
         }
         .padding(.top, -20)
     }
