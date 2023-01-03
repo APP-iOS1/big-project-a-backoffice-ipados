@@ -33,10 +33,10 @@ struct StoreView: View {
             }
         
         }
-        .navigationTitle("가게 정보")
+        .navigationBarTitle("가게 정보", displayMode: .inline)
         .task {
-            await manager.requestInfo()
             
+            await manager.requestInfo()
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
 //              // 5초 후 실행될 부분
 //                //print(manager.storeInfos)
