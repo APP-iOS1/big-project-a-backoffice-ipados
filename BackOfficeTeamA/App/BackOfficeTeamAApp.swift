@@ -10,10 +10,7 @@ import FirebaseCore
 
 @main
 struct BackOfficeTeamAApp: App {
-    
-    init() {
-        setupAuthentication()
-    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {

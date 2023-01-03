@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var selected: Int? = 0
     @State private var isSignedin = false
     @State private var isShowingSigninProfileSheet = false
+    @StateObject var signInViewModel = SignInViewModel()
     
     var body: some View {
         NavigationView {
@@ -20,7 +21,7 @@ struct ContentView: View {
                     Button {
                         isShowingSigninProfileSheet.toggle()
                     } label: {
-                        Text("Master")
+                        Text(signInViewModel.currentUser == nil ? "Sign In" : signInViewModel.currentUser?.level ?? "")
                             .frame(height:60)
                             .font(.largeTitle)
                     }
@@ -79,7 +80,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isShowingSigninProfileSheet, content: {
                 if !isSignedin {
-                    SignInView()
+                    SignInView(signInViewModel: signInViewModel)
                 }
             })
 //            .toolbar(.hidden)
