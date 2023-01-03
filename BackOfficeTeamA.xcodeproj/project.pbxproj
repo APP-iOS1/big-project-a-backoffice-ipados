@@ -34,6 +34,8 @@
 		6F2B8B572962BF510022226C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B562962BF510022226C /* FirebaseAuthCombine-Community */; };
 		6F2B8B592962BF510022226C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B582962BF510022226C /* FirebaseFirestore */; };
 		6F2B8B5B2962BF510022226C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6F2B8B5A2962BF510022226C /* FirebaseFirestoreSwift */; };
+		6F5F44EA2963BD6400715CCD /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F44E92963BD6400715CCD /* ItemModel.swift */; };
+		6F5F44EC2963CE1800715CCD /* ReviewPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F44EB2963CE1800715CCD /* ReviewPostModel.swift */; };
 		6FE265E929630A830055636C /* FirestoreCRUDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265E829630A830055636C /* FirestoreCRUDProtocol.swift */; };
 		6FE265ED29630F3C0055636C /* StoreNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265EC29630F3C0055636C /* StoreNetworkManager.swift */; };
 		6FE265EF296311F40055636C /* StoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE265EE296311F40055636C /* StoreInfo.swift */; };
@@ -104,6 +106,8 @@
 		6F2B8B4C2962BE730022226C /* CustomerNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerNetworkManager.swift; sourceTree = "<group>"; };
 		6F2B8B4D2962BE730022226C /* UserAuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationManager.swift; sourceTree = "<group>"; };
 		6F2B8B4E2962BE730022226C /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
+		6F5F44E92963BD6400715CCD /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		6F5F44EB2963CE1800715CCD /* ReviewPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostModel.swift; sourceTree = "<group>"; };
 		6FE265E829630A830055636C /* FirestoreCRUDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCRUDProtocol.swift; sourceTree = "<group>"; };
 		6FE265EC29630F3C0055636C /* StoreNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreNetworkManager.swift; sourceTree = "<group>"; };
 		6FE265EE296311F40055636C /* StoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfo.swift; sourceTree = "<group>"; };
@@ -279,8 +283,10 @@
 				6F2B8B422962BE530022226C /* CollectionTypes.swift */,
 				6F2B8B402962BE530022226C /* CustomerInfo.swift */,
 				6FE265EE296311F40055636C /* StoreInfo.swift */,
+				6F5F44E92963BD6400715CCD /* ItemModel.swift */,
 				6F2B8B3F2962BE520022226C /* MyPurchaseHistory.swift */,
 				6F2B8B3C2962BE520022226C /* NotificationModel.swift */,
+				6F5F44EB2963CE1800715CCD /* ReviewPostModel.swift */,
 				6F2B8B3E2962BE520022226C /* OrderInfo.swift */,
 				6F2B8B3D2962BE520022226C /* OrderItemInfo.swift */,
 				6F2B8B412962BE530022226C /* ReportModel.swift */,
@@ -537,12 +543,14 @@
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
 				AEB8B85D2962B2CC0004562B /* SignUpAndWithdrawalView.swift in Sources */,
 				FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */,
+				6F5F44EA2963BD6400715CCD /* ItemModel.swift in Sources */,
 				FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */,
 				FA71BADC295AC982001D0AB3 /* RequestStateView.swift in Sources */,
 				6F2B8B492962BE530022226C /* ReportModel.swift in Sources */,
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
 				FA71BAEA295AD5F7001D0AB3 /* StoreList.swift in Sources */,
 				6F2B8B462962BE530022226C /* OrderInfo.swift in Sources */,
+				6F5F44EC2963CE1800715CCD /* ReviewPostModel.swift in Sources */,
 				FA71BAC5295A7FFE001D0AB3 /* StoreUserView.swift in Sources */,
 				8F70A091295BE62300C74131 /* ReportStoreUserDetailView.swift in Sources */,
 				6F2B8B482962BE530022226C /* CustomerInfo.swift in Sources */,
