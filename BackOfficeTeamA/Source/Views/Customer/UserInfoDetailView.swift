@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserInfoDetailView: View {
-    var userInfo: UserInfo
+    var customerInfo: CustomerInfo
     
     var body: some View {
         Section(header: Text("유저정보").font(Font.largeTitle)
@@ -18,7 +18,7 @@ struct UserInfoDetailView: View {
                     Circle()
                         .stroke(Color.black)
                         .frame(width: 100, height: 100)
-                    Text(userInfo.userName)
+                    Text(customerInfo.userName)
                         .font(Font.largeTitle)
                         .bold()
                 }
@@ -41,11 +41,11 @@ struct UserInfoDetailView: View {
                         Text(" : ")
                     }
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("\(userInfo.userEmail)")
-                        Text("\(userInfo.userNickname)")
-                        Text("\(userInfo.userAddress)")
-                        Text("\(userInfo.phoneNumber)")
-                        Text("\(userInfo.birthDate)")
+                        Text("\(customerInfo.userEmail)")
+                        Text("\(customerInfo.userNickname)")
+                        Text("\(customerInfo.userAdress)")
+                        Text("\(customerInfo.phoneNumber)")
+//                        Text("\(customerInfo.birthDate)")
                     }
                 }
                 .padding(.leading, 30)

@@ -31,10 +31,14 @@ struct CustomerView: View {
         return dateFormatter.string(from: selectDay)
     }
     
-    var results: [UserInfo] {
+    // Data
+    @StateObject var customerNetworkManager: CustomerNetworkManager = CustomerNetworkManager()
+    
+    var results: [CustomerInfo] {
         //filter를 날짜로 한번하고 그 이후 필터 진행
-        let dateFilteredData = userInfoStore.userInfos
+        let dateFilteredData = customerNetworkManager.customerInfos
         
+        /*
         if isSelectedDay {
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
@@ -57,6 +61,7 @@ struct CustomerView: View {
                 }
             }
         }else{
+         */
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
                     $0.userName.contains(searchUserText)
@@ -70,7 +75,7 @@ struct CustomerView: View {
                     $0.phoneNumber.contains(searchUserText)
                 }
             }
-        }
+//        }
         return dateFilteredData
     }
     
@@ -95,7 +100,8 @@ struct CustomerView: View {
                 .frame(height: 100)
                 .padding()
                 
-                Table(results, selection: $selection, sortOrder: $sortUserInfo) {
+                //, selection: $selection, sortOrder: $sortUserInfo
+                Table(results) {
                     TableColumn("Name", value: \.userName)
                     TableColumn("Nickname", value: \.userNickname)
                     TableColumn("Email", value: \.userEmail)
@@ -118,20 +124,20 @@ struct CustomerView: View {
                         }
                     }
                 }
-                .onChange(of: sortUserInfo) { newOrder in
-                    userInfoStore.userInfos.sort(using: newOrder)
-                }
-                .onChange(of: selection) { newSelection in
-                    if let newSelection, let userInfo = userInfoStore.userInfos.first(where: { $0.id == newSelection
-                    }) {
-                        path.append(userInfo)
-                    }
-                }
+//                .onChange(of: sortUserInfo) { newOrder in
+//                    customerNetworkManager.customerInfos.sort(using: newOrder)
+//                }
+//                .onChange(of: selection) { newSelection in
+//                    if let newSelection, let userInfo = customerNetworkManager.customerInfos.first(where: { $0.id == newSelection
+//                    }) {
+//                        path.append(userInfo)
+//                    }
+//                }
                 .searchable(text: $searchUserText, prompt: "검색")
             }
-            .navigationDestination(for: UserInfo.self) { userInfo in
-                CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
-            }
+//            .navigationDestination(for: CustomerInfo.self) { customerInfo in
+//                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
+//            }
         }
         .navigationTitle(navigationTitle)
     }
