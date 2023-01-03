@@ -13,30 +13,62 @@ struct CustomerView: View {
     @StateObject var orderInfoStore: OrderInfoStore = OrderInfoStore()
     @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
     
+    // 정렬
     @State private var selection : UserInfo.ID?
     @State var path : [UserInfo] = []
-    
     @State private var sortUserInfo = [KeyPathComparator(\UserInfo.lastPurchaseDate)]
     
     // 피커
     var pickerOptions = ["이름", "이메일", "전화번호"]
     @State private var pickerSelection = 0
     
+    // 날짜 필터링
+    @State private var isSelectedDay : Bool = false
+    @State private var selectDay : Date = Date()
+    var dayAt : String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.string(from: selectDay)
+    }
+    
     var results: [UserInfo] {
         //filter를 날짜로 한번하고 그 이후 필터 진행
         let dateFilteredData = userInfoStore.userInfos
         
-        if !searchUserText.isEmpty && pickerSelection == 0 {
-            return dateFilteredData.filter {
-                $0.userName.contains(searchUserText)
+        if isSelectedDay {
+            if !searchUserText.isEmpty && pickerSelection == 0 {
+                return dateFilteredData.filter {
+                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.userName.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 1 {
+                return dateFilteredData.filter {
+                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.userEmail.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 2 {
+                return dateFilteredData.filter {
+                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.phoneNumber.contains(searchUserText)
+                }
+            } else {
+                return dateFilteredData.filter {
+                    $0.lastPurchaseDate.contains(dayAt)
+                }
             }
-        } else if !searchUserText.isEmpty && pickerSelection == 1 {
-            return dateFilteredData.filter {
-                $0.userEmail.contains(searchUserText)
-            }
-        } else if !searchUserText.isEmpty && pickerSelection == 2 {
-            return dateFilteredData.filter {
-                $0.phoneNumber.contains(searchUserText)
+        }else{
+            if !searchUserText.isEmpty && pickerSelection == 0 {
+                return dateFilteredData.filter {
+                    $0.userName.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 1 {
+                return dateFilteredData.filter {
+                    $0.userEmail.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 2 {
+                return dateFilteredData.filter {
+                    $0.phoneNumber.contains(searchUserText)
+                }
             }
         }
         return dateFilteredData
@@ -70,6 +102,16 @@ struct CustomerView: View {
                     TableColumn("PhoneNumber", value: \.phoneNumber)
                 }
                 .toolbar {
+                    DatePicker(selection: $selectDay, in: ...Date(),displayedComponents: [.date]) {
+                        Button {
+                            isSelectedDay.toggle()
+                        } label: {
+                            Image(systemName: isSelectedDay ? "arrow.counterclockwise" : "calendar")
+                        }
+                    }.onTapGesture {
+                        isSelectedDay = true
+                    }
+                    
                     Picker("Select", selection: $pickerSelection) {
                         ForEach(0..<pickerOptions.count, id: \.self) {
                             Text(pickerOptions[$0])
@@ -94,36 +136,6 @@ struct CustomerView: View {
         .navigationTitle(navigationTitle)
     }
 }
-
-struct CustomerListCell: View {
-    var userInfo: UserInfo
-    @State var lastTransactionDate: String = "2022-12-27"
-    var body: some View {
-        VStack {
-            HStack {
-                Circle()
-                    .stroke(Color.black)
-                    .frame(width: 50, height: 50)
-                    .padding(.horizontal, 10)
-                Text(userInfo.userName)
-                    .frame(width: 100, alignment: .leading)
-                    .padding(.leading, 20)
-                Text(lastTransactionDate)
-                    .frame(width: 200, alignment: .leading)
-                Text(userInfo.userNickname)
-                    .frame(width: 150, alignment: .leading)
-                Text(userInfo.userEmail)
-                    .frame(width: 200, alignment: .leading)
-                Text(userInfo.phoneNumber)
-                    .frame(width: 200, alignment: .leading)
-                
-                Spacer()
-            }
-        }
-    }
-}
-
-
 
 struct CustomerView_Previews: PreviewProvider {
     static var previews: some View {
