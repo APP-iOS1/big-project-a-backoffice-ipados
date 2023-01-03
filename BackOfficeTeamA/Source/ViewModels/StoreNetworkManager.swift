@@ -18,6 +18,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     @Published var storeInfos: [StoreInfo] = []
     @Published var itemInfos: [ItemModel] = []
     @Published var reviewInfos: [ReviewPostModel] = []
+    @Published var orderInfos: [OrderInfo] = []
     
     /// storeID, ItemID, ReviewID
     /// 필요한 상점 > 필요한 상품 > 필요한 리뷰
@@ -111,9 +112,67 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
+    func requestOrderInfo(storeId: String) async {
+        do {
+            // path: ./StoreInfo/{id}/Item/*
+            let path = collectionPath.document(storeId).collection(StoreSubcollectionType.itemInfo.rawValue)
+            
+            let snapshot = try await path.getDocuments()
+            
+            for document in snapshot.documents {
+                let id: String = document.documentID
+                
+                do {
+                    // path: ./StoreInfo/{store_id}/Item/{item_id}/AllUserReviews/*
+                    let deepPath = path
+                        .document(id)
+                        .collection(StoreSubcollectionType.orderInfo.rawValue)
+                    
+                    let data = try await deepPath
+                            .getDocuments()
+                            .documents
+                            .compactMap(decodeOrderInfo)
+                    self.orderInfos = data
+                    
+                } catch {
+                    dump("\(#function) - DEBUG: REQUEST FAILED")
+                }
+            }
+        } catch {
+            dump("\(#function) - DEBUG: REQUEST FAILED")
+        }
+    }
+    
 }
 
 private extension StoreNetworkManager {
+    func decodeOrderInfo(with requestData: QueryDocumentSnapshot) -> OrderInfo? {
+        let dict: [String: Any] = requestData.data()
+        guard
+            let id: String = dict["id"] as? String,
+            let orderedUserInfo: String = dict["orderedUserInfo"] as? String,
+            let orderTime: Date = (dict["orderTime"] as? Timestamp)?.dateValue(),
+            // TODO: OrederedItemInfo가 구체적으로 정의되면 사용하기, default: []
+            let orderedItems: [OrderedItemInfo] = dict["orderedItems"] as? [OrderedItemInfo],
+            let orderAddress: String = dict["orderAddress"] as? String
+        else {
+            return nil
+        }
+        
+        let orderMessage: String? = dict["orderMessage"] as? String
+        
+        return OrderInfo(
+            id: id,
+            orderedUserInfo: orderedUserInfo,
+            orderTime: orderTime,
+            orderedItems: [],
+            orderAddress: orderAddress,
+            orderMessage: orderMessage
+        )
+        
+    }
+
+    
     func decodeReviewInfo(with requestData: QueryDocumentSnapshot) -> ReviewPostModel? {
         let dict: [String: Any] = requestData.data()
         guard

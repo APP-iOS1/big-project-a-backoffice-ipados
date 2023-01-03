@@ -24,11 +24,11 @@ struct PurchaseHistoryInfoDetailView: View {
                             Text("배송 상황 :")
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("\(history.orderItem.itemName)")
-                            Text("\(history.orderItem.itemPrice)")
-                            Text("\(history.orderItem.itemColor)")
-                            Text("\(history.orderItem.amount)")
-                            Text("\(history.orderItem.deliveryStatus)")
+//                            Text("\(history.orderItem.itemName)")
+//                            Text("\(history.orderItem.itemPrice)")
+//                            Text("\(history.orderItem.itemColor)")
+//                            Text("\(history.orderItem.amount)")
+//                            Text("\(history.orderItem.deliveryStatus)")
                         }
                     }
                     .padding()
@@ -42,9 +42,9 @@ struct PurchaseHistoryInfoDetailView: View {
                             Text("결제 수단 :")
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("\(history.orderTime)")
-                            Text("\(history.orderMessage)")
-                            Text("\(history.payment)")
+//                            Text("\(history.orderTime)")
+//                            Text("\(history.orderMessage)")
+//                            Text("\(history.payment)")
                         }
                     }
                     .padding(.leading, 20)

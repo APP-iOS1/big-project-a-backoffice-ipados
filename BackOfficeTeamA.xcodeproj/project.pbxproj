@@ -20,7 +20,7 @@
 		6F2B8B3A2962BE100022226C /* Timestamp+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B392962BE100022226C /* Timestamp+.swift */; };
 		6F2B8B432962BE530022226C /* AdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3B2962BE520022226C /* AdminModel.swift */; };
 		6F2B8B442962BE530022226C /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3C2962BE520022226C /* NotificationModel.swift */; };
-		6F2B8B452962BE530022226C /* OrderItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3D2962BE520022226C /* OrderItemInfo.swift */; };
+		6F2B8B452962BE530022226C /* OrderedItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3D2962BE520022226C /* OrderedItemInfo.swift */; };
 		6F2B8B462962BE530022226C /* OrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3E2962BE520022226C /* OrderInfo.swift */; };
 		6F2B8B472962BE530022226C /* MyPurchaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B3F2962BE520022226C /* MyPurchaseHistory.swift */; };
 		6F2B8B482962BE530022226C /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B402962BE530022226C /* CustomerInfo.swift */; };
@@ -96,7 +96,7 @@
 		6F2B8B392962BE100022226C /* Timestamp+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timestamp+.swift"; sourceTree = "<group>"; };
 		6F2B8B3B2962BE520022226C /* AdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminModel.swift; sourceTree = "<group>"; };
 		6F2B8B3C2962BE520022226C /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
-		6F2B8B3D2962BE520022226C /* OrderItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemInfo.swift; sourceTree = "<group>"; };
+		6F2B8B3D2962BE520022226C /* OrderedItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedItemInfo.swift; sourceTree = "<group>"; };
 		6F2B8B3E2962BE520022226C /* OrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfo.swift; sourceTree = "<group>"; };
 		6F2B8B3F2962BE520022226C /* MyPurchaseHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchaseHistory.swift; sourceTree = "<group>"; };
 		6F2B8B402962BE530022226C /* CustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfo.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 				6F2B8B3C2962BE520022226C /* NotificationModel.swift */,
 				6F5F44EB2963CE1800715CCD /* ReviewPostModel.swift */,
 				6F2B8B3E2962BE520022226C /* OrderInfo.swift */,
-				6F2B8B3D2962BE520022226C /* OrderItemInfo.swift */,
+				6F2B8B3D2962BE520022226C /* OrderedItemInfo.swift */,
 				6F2B8B412962BE530022226C /* ReportModel.swift */,
 				6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */,
 				6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */,
@@ -516,7 +516,7 @@
 				AEB8B837295C0F920004562B /* CustomerInfoDetailView.swift in Sources */,
 				6F2B8B442962BE530022226C /* NotificationModel.swift in Sources */,
 				FA71BACD295A8090001D0AB3 /* Modifiers.swift in Sources */,
-				6F2B8B452962BE530022226C /* OrderItemInfo.swift in Sources */,
+				6F2B8B452962BE530022226C /* OrderedItemInfo.swift in Sources */,
 				FA71BA97295A7CAE001D0AB3 /* ContentView.swift in Sources */,
 				6F2B8B522962BE730022226C /* FirebaseNetworkManager.swift in Sources */,
 				FA71BADA295AC846001D0AB3 /* RequestCountView.swift in Sources */,

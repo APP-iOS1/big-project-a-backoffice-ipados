@@ -18,6 +18,4 @@ struct ReviewPostModel {
     var orderedItem: [OrderedItemInfo] = []
 }
 
-struct OrderedItemInfo {
-    
-}
+
