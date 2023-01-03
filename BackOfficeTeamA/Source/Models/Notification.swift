@@ -23,6 +23,10 @@ struct Notification: Identifiable, Hashable {
         return dateFormatter.string(from: notificationDate)
     }
     
+    var isViewedInt: Int{
+        isViewed ? 1 : 0
+    }
+    
     var receiverName: String {
         "정우"
     }
