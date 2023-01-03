@@ -12,7 +12,7 @@ import FirebaseFirestore
 /// 1. StoreInfo - fetching
 /// 2. ItemInfo - fetching
 /// 3. ReviewInfo - fetching
-
+///
 final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     
     @Published var storeInfos: [StoreInfo] = []
@@ -31,8 +31,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         core = Firestore.firestore()
         collectionPath = core.collection(path)
     }
-    
-    func requestInfo() async {
+    @MainActor func requestInfo() async {
         do {
             let snapshot = try await collectionPath.getDocuments()
             storeInfos = snapshot.documents.compactMap(decodeStoreInfo)
@@ -41,7 +40,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
-    func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
+    @MainActor func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
         do {
             // path: ./StoreInfo/*
             let snapshot = try await collectionPath.getDocuments()
@@ -203,7 +202,7 @@ private extension StoreNetworkManager {
     func decodeItemInfo(with requestData: QueryDocumentSnapshot) -> ItemModel? {
         let dict: [String: Any] = requestData.data()
         guard
-            let id: String = dict["id"] as? String,
+            let id: String = dict["itemId"] as? String,
             let storeId: String = dict["storeId"] as? String,
             let itemName: String = dict["itemName"] as? String,
             let itemCategory: String = dict["itemCategory"] as? String,
@@ -236,7 +235,7 @@ private extension StoreNetworkManager {
               let storeLocation: String = dict["storeLocation"] as? String,
               let registerDate: Date = (dict["registerDate"] as? Timestamp)?.dateValue(),
               let reportingCount: Int = dict["reportingCount"] as? Int,
-              let storeImage: String = dict["storeImage"] as? String,
+              //let storeImage: String = dict["storeImage"] as? String,
               let phoneNumber: String = dict["phoneNumber"] as? String,
               let isVerified: Bool = dict["isVerified"] as? Bool,
               let isSubmitted: Bool = dict["isSubmitted"] as? Bool,
@@ -244,7 +243,6 @@ private extension StoreNetworkManager {
         else {
             return nil
         }
-        
         return StoreInfo(
             id: id,
             storeName: storeName,
@@ -252,7 +250,7 @@ private extension StoreNetworkManager {
             storeLocation: storeLocation,
             registerDate: registerDate,
             reportingCount: reportingCount,
-            storeImage: storeImage,
+            //storeImage: storeImage,
             phoneNumber: phoneNumber,
             isVerified: isVerified,
             isSubmitted: isSubmitted,
