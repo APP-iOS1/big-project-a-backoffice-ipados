@@ -14,9 +14,9 @@ struct CustomerView: View {
     @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
     
     // 정렬
-    @State private var selection : UserInfo.ID?
-    @State var path : [UserInfo] = []
-    @State private var sortUserInfo = [KeyPathComparator(\UserInfo.lastPurchaseDate)]
+    @State private var selection : CustomerInfo.ID?
+    @State var path : [CustomerInfo] = []
+    @State private var sortUserInfo = [KeyPathComparator(\CustomerInfo.userName)]
     
     // 피커
     var pickerOptions = ["이름", "이메일", "전화번호"]
@@ -33,6 +33,7 @@ struct CustomerView: View {
     
     // Data
     @StateObject var customerNetworkManager: CustomerNetworkManager = CustomerNetworkManager()
+    @StateObject var storeNetworkManager: StoreNetworkManager = StoreNetworkManager(with: "StoreInfo")
     
     var results: [CustomerInfo] {
         //filter를 날짜로 한번하고 그 이후 필터 진행
@@ -101,7 +102,7 @@ struct CustomerView: View {
                 .padding()
                 
                 //, selection: $selection, sortOrder: $sortUserInfo
-                Table(results) {
+                Table(results, selection: $selection, sortOrder: $sortUserInfo) {
 //                    TableColumn("Name", value: \.userName)
                     TableColumn("Nickname", value: \.userNickname)
                     TableColumn("Email", value: \.userEmail)
@@ -124,20 +125,20 @@ struct CustomerView: View {
                         }
                     }
                 }
-//                .onChange(of: sortUserInfo) { newOrder in
-//                    customerNetworkManager.customerInfos.sort(using: newOrder)
-//                }
-//                .onChange(of: selection) { newSelection in
-//                    if let newSelection, let userInfo = customerNetworkManager.customerInfos.first(where: { $0.id == newSelection
-//                    }) {
-//                        path.append(userInfo)
-//                    }
-//                }
+                .onChange(of: sortUserInfo) { newOrder in
+                    customerNetworkManager.customerInfos.sort(using: newOrder)
+                }
+                .onChange(of: selection) { newSelection in
+                    if let newSelection, let userInfo = customerNetworkManager.customerInfos.first(where: { $0.id == newSelection
+                    }) {
+                        path.append(userInfo)
+                    }
+                }
                 .searchable(text: $searchUserText, prompt: "검색")
             }
-//            .navigationDestination(for: CustomerInfo.self) { customerInfo in
-//                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
-//            }
+            .navigationDestination(for: CustomerInfo.self) { customerInfo in
+                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: storeNetworkManager.orderInfos)
+            }
         }
         .task {
             await customerNetworkManager.requestCustomerInfo()

@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 // MARK: 앱의 사용자 중 customer에 관한 데이터를 담고있는 구조체
-struct CustomerInfo: Identifiable {
+struct CustomerInfo: Identifiable, Equatable, Hashable {
     var id: String
     var userName: String
     var userEmail: String

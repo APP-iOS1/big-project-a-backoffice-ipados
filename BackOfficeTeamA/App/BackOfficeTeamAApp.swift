@@ -14,10 +14,11 @@ struct BackOfficeTeamAApp: App {
     init() {
         setupAuthentication()
     }
-    
+    @StateObject var manager = StoreNetworkManager(with: "StoreInfo")
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(manager)
         }
     }
 }
