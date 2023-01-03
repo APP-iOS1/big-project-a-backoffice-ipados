@@ -34,6 +34,7 @@ enum AdminSubcollectionType: String {
 enum StoreSubcollectionType: String {
     case itemInfo = "ItemInfo"
     case storeNotification = "StoreNotification"
+    case storeSales = "StoreSales"
     case allUserReviews = "AllUserReviews"
     case orderInfo = "OrderInfo"
 }

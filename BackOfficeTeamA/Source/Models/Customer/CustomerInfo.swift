@@ -16,6 +16,6 @@ struct CustomerInfo: Identifiable {
     var userNickname: String
     var userAdress: String
     var phoneNumber: String
-    var birthDate: Timestamp
-    //var userProfileImage
+    var birthDate: Timestamp?
+    var userProfileImage: String?
 }
