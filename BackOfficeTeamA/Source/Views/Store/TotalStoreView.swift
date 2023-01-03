@@ -17,8 +17,10 @@ struct TotalStoreView: View {
                 Text("123")
                     .font(.title)
                 Spacer()
-                Text("4%")
-                Image(systemName: true ? "arrow.up" :"arrow.down")
+                HStack{
+                    Text("4%")
+                    Image(systemName: true ? "arrow.up" :"arrow.down")
+                }.foregroundColor(.green)
             }
             
         }

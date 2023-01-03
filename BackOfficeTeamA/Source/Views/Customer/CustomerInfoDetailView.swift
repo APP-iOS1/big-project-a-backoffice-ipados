@@ -21,6 +21,7 @@ struct CustomerInfoDetailView: View {
             // 구매내역 섹션
             PurchaseHistoryInfoDetailView(purchaseHistoryInfos: purchaseHistoryInfos)
         }
+        .padding(.top, -20)
     }
 }
 

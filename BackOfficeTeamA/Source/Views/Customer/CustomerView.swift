@@ -13,6 +13,11 @@ struct CustomerView: View {
     @StateObject var orderInfoStore: OrderInfoStore = OrderInfoStore()
     @StateObject var purchaseHistoryInfoStore: PurchaseHistoryInfoStore = PurchaseHistoryInfoStore()
     
+    @State private var selection : UserInfo.ID?
+    @State var path : [UserInfo] = []
+    
+    @State private var sortUserInfo = [KeyPathComparator(\UserInfo.lastPurchaseDate)]
+    
     // 피커
     var pickerOptions = ["이름", "이메일", "전화번호"]
     @State private var pickerSelection = 0
@@ -48,22 +53,22 @@ struct CustomerView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
-                List {
-                    if !results.isEmpty {
-                        ForEach(results) { userInfo in
-                            NavigationLink(destination: CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)){
-                                CustomerListCell(userInfo: userInfo)
-                            }
-                        }
-                    } else {
-                        // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
-                        VStack {
-                            Text("조건에 맞는 데이터가 없습니다")
-                        }
-                    }
-                } //List
+                HStack{
+                    TotalCustomerView()
+                    DailyVisitorView()
+                    SignUpAndWithdrawalView()
+                }
+                .frame(height: 100)
+                .padding()
+                
+                Table(results, selection: $selection, sortOrder: $sortUserInfo) {
+                    TableColumn("Name", value: \.userName)
+                    TableColumn("Nickname", value: \.userNickname)
+                    TableColumn("Email", value: \.userEmail)
+                    TableColumn("PhoneNumber", value: \.phoneNumber)
+                }
                 .toolbar {
                     Picker("Select", selection: $pickerSelection) {
                         ForEach(0..<pickerOptions.count, id: \.self) {
@@ -71,7 +76,19 @@ struct CustomerView: View {
                         }
                     }
                 }
+                .onChange(of: sortUserInfo) { newOrder in
+                    userInfoStore.userInfos.sort(using: newOrder)
+                }
+                .onChange(of: selection) { newSelection in
+                    if let newSelection, let userInfo = userInfoStore.userInfos.first(where: { $0.id == newSelection
+                    }) {
+                        path.append(userInfo)
+                    }
+                }
                 .searchable(text: $searchUserText, prompt: "검색")
+            }
+            .navigationDestination(for: UserInfo.self) { userInfo in
+                CustomerInfoDetailView(userInfo: userInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
             }
         }
         .navigationTitle(navigationTitle)
