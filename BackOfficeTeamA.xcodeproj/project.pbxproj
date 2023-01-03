@@ -15,6 +15,8 @@
 		6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */; };
 		6A2E7D3D295AC31900426E61 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3C295AC31900426E61 /* LineChart.swift */; };
 		6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */; };
+		6AED4CDD2963BACE0069694D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED4CDC2963BACE0069694D /* Notification.swift */; };
+		6AFAB3542963E62F00CA0A11 /* NotificationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAB3532963E62F00CA0A11 /* NotificationTable.swift */; };
 		6F2B8B372962BDEB0022226C /* AuthorityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B352962BDEB0022226C /* AuthorityLevel.swift */; };
 		6F2B8B382962BDEB0022226C /* AppCategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B362962BDEB0022226C /* AppCategoryEnum.swift */; };
 		6F2B8B3A2962BE100022226C /* Timestamp+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B392962BE100022226C /* Timestamp+.swift */; };
@@ -90,6 +92,8 @@
 		6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCustomerTraffic.swift; sourceTree = "<group>"; };
 		6A2E7D3C295AC31900426E61 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerGrowth.swift; sourceTree = "<group>"; };
+		6AED4CDC2963BACE0069694D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		6AFAB3532963E62F00CA0A11 /* NotificationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTable.swift; sourceTree = "<group>"; };
 		6F2B8B352962BDEB0022226C /* AuthorityLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityLevel.swift; sourceTree = "<group>"; };
 		6F2B8B362962BDEB0022226C /* AppCategoryEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCategoryEnum.swift; sourceTree = "<group>"; };
 		6F2B8B392962BE100022226C /* Timestamp+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timestamp+.swift"; sourceTree = "<group>"; };
@@ -291,13 +295,20 @@
 				D5E5ACF42963C52C005CEF75 /* Customer */,
 				6F2B8B3B2962BE520022226C /* AdminModel.swift */,
 				6F2B8B422962BE530022226C /* CollectionTypes.swift */,
+				6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */,
+				6F2B8B402962BE530022226C /* CustomerInfo.swift */,
+				6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */,
 				6FE265EE296311F40055636C /* StoreInfo.swift */,
 				6F2B8B3F2962BE520022226C /* MyPurchaseHistory.swift */,
+				6AED4CDC2963BACE0069694D /* Notification.swift */,
 				6F2B8B3C2962BE520022226C /* NotificationModel.swift */,
+				6F2B8B3E2962BE520022226C /* OrderInfo.swift */,
+				6F2B8B3D2962BE520022226C /* OrderItemInfo.swift */,
 				6F2B8B412962BE530022226C /* ReportModel.swift */,
 				6A2E7D38295AC26700426E61 /* MonthlyCustomerTraffic.swift */,
 				6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */,
 				6A2E7D32295AB1C200426E61 /* ProfitByCategory.swift */,
+				6F2B8B412962BE530022226C /* ReportModel.swift */,
 				FA71BAC6295A8019001D0AB3 /* Store.swift */,
 			);
 			path = Models;
@@ -370,6 +381,7 @@
 		FA71BAB0295A7E81001D0AB3 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				6AFAB3532963E62F00CA0A11 /* NotificationTable.swift */,
 				FA71BABC295A7FD1001D0AB3 /* NotificationView.swift */,
 			);
 			path = Notification;
@@ -501,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2E7D33295AB1C200426E61 /* ProfitByCategory.swift in Sources */,
+				6AFAB3542963E62F00CA0A11 /* NotificationTable.swift in Sources */,
 				FADAD305295C079A000528D9 /* StoreDetailView.swift in Sources */,
 				6A2E7D37295AB60200426E61 /* BarChart.swift in Sources */,
 				6F2B8B472962BE530022226C /* MyPurchaseHistory.swift in Sources */,
@@ -542,6 +555,7 @@
 				AEB8B85B29626EC10004562B /* DailyVisitorView.swift in Sources */,
 				6FE265ED29630F3C0055636C /* StoreNetworkManager.swift in Sources */,
 				6A2E7D39295AC26700426E61 /* MonthlyCustomerTraffic.swift in Sources */,
+				6AED4CDD2963BACE0069694D /* Notification.swift in Sources */,
 				6A037419295C01B00082F37C /* CircleProgressBar.swift in Sources */,
 				AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
