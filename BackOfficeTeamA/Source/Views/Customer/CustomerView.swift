@@ -102,10 +102,10 @@ struct CustomerView: View {
                 
                 //, selection: $selection, sortOrder: $sortUserInfo
                 Table(results) {
-                    TableColumn("Name", value: \.userName)
+//                    TableColumn("Name", value: \.userName)
                     TableColumn("Nickname", value: \.userNickname)
                     TableColumn("Email", value: \.userEmail)
-                    TableColumn("PhoneNumber", value: \.phoneNumber)
+//                    TableColumn("PhoneNumber", value: \.phoneNumber)
                 }
                 .toolbar {
                     DatePicker(selection: $selectDay, in: ...Date(),displayedComponents: [.date]) {
@@ -117,7 +117,7 @@ struct CustomerView: View {
                     }.onTapGesture {
                         isSelectedDay = true
                     }
-                    
+
                     Picker("Select", selection: $pickerSelection) {
                         ForEach(0..<pickerOptions.count, id: \.self) {
                             Text(pickerOptions[$0])
@@ -138,6 +138,9 @@ struct CustomerView: View {
 //            .navigationDestination(for: CustomerInfo.self) { customerInfo in
 //                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: orderInfoStore.OrderInfos, purchaseHistoryInfos: purchaseHistoryInfoStore.PurchaseHistoryInfos)
 //            }
+        }
+        .task {
+            await customerNetworkManager.requestCustomerInfo()
         }
         .navigationTitle(navigationTitle)
     }

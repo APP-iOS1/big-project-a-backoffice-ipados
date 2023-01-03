@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct BackOfficeTeamAApp: App {
+    
+    init() {
+        setupAuthentication()
+    }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
+}
+
+extension BackOfficeTeamAApp {
+  private func setupAuthentication() {
+    FirebaseApp.configure()
+  }
 }
