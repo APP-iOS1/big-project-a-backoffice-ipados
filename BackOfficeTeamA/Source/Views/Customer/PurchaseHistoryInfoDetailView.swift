@@ -32,8 +32,8 @@ struct PurchaseHistoryInfoDetailView: View {
                         }
                         VStack(alignment: .leading, spacing: 10) {
                             Text("\(history.orderItem.itemName)")
-                            Text("\(history.orderItem.itemPrice)")
-                            Text("\(history.orderItem.itemColor)")
+                            Text("\(history.orderItem.price)")
+                            Text("\(history.orderItem.color)")
                             Text("\(history.orderItem.amount)")
                             Text("\(history.orderItem.deliveryStatus)")
                         }

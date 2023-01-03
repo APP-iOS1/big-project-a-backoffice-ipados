@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderInfoDetailView: View {
-    var orderInfos: [OrderInfo]
+    var orderInfos: [OrderedItemInfo]
     var body: some View {
         Section(header: Text("주문정보").font(Font.largeTitle)
             .foregroundColor(Color.black).bold()) {
@@ -30,11 +30,11 @@ struct OrderInfoDetailView: View {
                             Text(" : ")
                         }
                         VStack(alignment: .leading, spacing: 10) {
-                            Text("\(order.orderItem.itemName)")
-                            Text("\(order.orderItem.itemPrice)")
-                            Text("\(order.orderItem.itemColor)")
-                            Text("\(order.orderItem.amount)")
-                            Text("\(order.orderItem.deliveryStatus)")
+                            Text("\(order.itemName)")
+                            Text("\(order.price)")
+                            Text("\(order.color)")
+                            Text("\(order.amount)")
+                            Text("\(order.deliveryStatus)")
                         }
                     }
                     .padding()
@@ -52,11 +52,11 @@ struct OrderInfoDetailView: View {
                             Text(" : ")
                             Text(" : ")
                         }
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("\(order.orderTime)")
-                            Text("\(order.orderMessage)")
-                            Text("\(order.payment)")
-                        }
+//                        VStack(alignment: .leading, spacing: 10) {
+//                            Text("\(order.orderTime)")
+//                            Text("\(order.orderMessage)")
+//                            Text("\(order.payment)")
+//                        }
                     }
                     .padding(.leading, 20)
                 }

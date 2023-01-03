@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomerInfoDetailView: View {
     var customerInfo: CustomerInfo
-    var orderInfos: [OrderInfo]
+    var orderInfos: [OrderedItemInfo]
     var purchaseHistoryInfos: [PurchaseHistoryInfo]
     
     var body: some View {
