@@ -10,12 +10,12 @@ import SwiftUI
 struct RequestStateView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("승인 | 거절")
+            Text("승인 / 거절")
                 .font(.headline)
             Spacer()
             HStack{
                 Text("58").foregroundColor(.green)
-                Divider()
+                Text("/").foregroundColor(.gray)
                 Text("37").foregroundColor(.red)
                 Spacer()
             }
