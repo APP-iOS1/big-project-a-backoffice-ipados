@@ -37,7 +37,6 @@ final class SignInViewModel: ObservableObject {
     func requestUserSignOut() {
         manager.requestUserSignOut()
         currentUser = nil
-        print("logout, uid : \(manager.requestUid())")
     }
     
     /// 로그인한 관리자의 `uid`를 이용해 Firestore에 저장된 관리자 정보를 불러옵니다. 이 정보는 `currentUser`프로퍼티에서 접근할 수 있습니다.

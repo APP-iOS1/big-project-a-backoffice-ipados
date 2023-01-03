@@ -19,50 +19,61 @@ struct SignInView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextField("이메일", text: $email)
-                .modifier(TextFieldModifier())
-                .focused($emailFieldIsFocused)
-                .onChange(of: email) { _ in
-                    validate()
-                }
-            
-            SecureField("비밀번호", text: $password)
-                .modifier(TextFieldModifier())
-                .onChange(of: password) { _ in
-                    validate()
-                }
-            
-            if !isSigninProgress {
-                Button("Sign in") {
-                    isSigninProgress = true
-//                    //TODO: Sign in action
-                    Task {
-                        do {
-                            let check = try await signInViewModel.requestUserLogin(withEmail: email, withPassword: password)
-                            dismiss()
-                            print(check)
-                        } catch {
-                            print(error)
+            // Login 전
+            if signInViewModel.currentUser == nil {
+                Group {
+                    TextField("이메일", text: $email)
+                        .modifier(TextFieldModifier())
+                        .focused($emailFieldIsFocused)
+                        .onChange(of: email) { _ in
+                            validate()
                         }
+                    
+                    SecureField("비밀번호", text: $password)
+                        .modifier(TextFieldModifier())
+                        .onChange(of: password) { _ in
+                            validate()
+                        }
+                    
+                    if !isSigninProgress {
+                        Button("Sign in") {
+                            isSigninProgress = true
+        //                    //TODO: Sign in action
+                            Task {
+                                do {
+                                    let check = try await signInViewModel.requestUserLogin(withEmail: email, withPassword: password)
+                                    dismiss()
+                                    print(check)
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                        .modifier(MainButtonModifier())
+                        .disabled(!_isSigninAbled)
+                    } else {
+                        ProgressView()
+                            .modifier(MainButtonModifier())
+                    }
+
+                    if !emailIsValid {
+                        Text("이메일 형식이 올바르지 않습니다")
+                            .padding(.leading, 7)
+                            .foregroundColor(.red)
+                    } else {
+                        Text(" ")
                     }
                 }
-                .modifier(MainButtonModifier())
-                .disabled(!_isSigninAbled)
             } else {
-                ProgressView()
-                    .modifier(MainButtonModifier())
+                Button("logout") {
+                    signInViewModel.requestUserSignOut()
+                }
             }
-            Button("logout") {
-                signInViewModel.requestUserSignOut()
+
+            
+            // Login 후
             }
-            if !emailIsValid {
-                Text("이메일 형식이 올바르지 않습니다")
-                    .padding(.leading, 7)
-                    .foregroundColor(.red)
-            } else {
-                Text(" ")
-            }
-        }
+        .navigationTitle("로그인/로그아웃")
         .padding()
     }
     
@@ -79,6 +90,7 @@ struct SignInView: View {
 }
 
 struct SignInView_Previews: PreviewProvider {
+
     static var previews: some View {
         SignInView(signInViewModel: SignInViewModel())
     }
