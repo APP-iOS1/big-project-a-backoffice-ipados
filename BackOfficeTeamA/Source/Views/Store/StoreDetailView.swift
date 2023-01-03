@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct StoreDetailView: View {
-    var store : Store
-    
+    var storeID : String
+    @EnvironmentObject var manager: StoreNetworkManager
     var body: some View {
             VStack(alignment: .leading) {
                 HStack {
@@ -39,15 +39,24 @@ struct StoreDetailView: View {
                         }
                     }
                     Section(header: Text("상품 목록")) {
-                        Text("상품 정보")
+                        ForEach(manager.itemInfos.filter({
+                            print($0.id)
+                            return $0.id == storeID
+                        })) { item in
+                            Text(item.itemName)
+                        }
                     }
                     Section(header: Text("리뷰 목록")) {
                         Text("리뷰 내역")
                     }
                 }
             }
-            .onAppear{
-                print(store.email)
+            .task{
+                await manager.requestSubCollectionInfo()
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                              // 5초 후 실행될 부분
+                                print(manager.itemInfos)
+                            }
             }
     }
 }
