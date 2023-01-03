@@ -9,10 +9,11 @@ import Foundation
 
 // MARK: customer의 구매한 아이템을 저장하는 구조체
 // TODO: deliveryStatus enum정의, redeclartion 찾기
-//struct OrderItemInfo: Identifiable, Codable {
-//    var id: String
-//    var privce: Int
-//    var option: [String:Any]
-//    // var deliveryStatus
-//}
+struct OrderItemInfo: Identifiable, Codable {
+    var id: String
+    var itemName: String
+    var price: Int
+    var option: [String:Any]
+    // var deliveryStatus
+}
 
