@@ -15,7 +15,8 @@ struct RequestCountView: View {
             Spacer()
             HStack{
                 Text("3").foregroundColor(.secondary)
-                Text("/ 7")
+                Text("/")
+                Text("7")
                 Spacer()
             }
             .font(.title)

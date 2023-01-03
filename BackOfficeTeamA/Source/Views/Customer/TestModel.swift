@@ -27,7 +27,42 @@ class UserInfoStore: ObservableObject {
     init() {
         userInfos = [
             UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
-            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2022-12-31"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
+            UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
+            ,
+            UserInfo(id: UUID().uuidString, userName: "서찬호", userEmail: "test@test.com", userNickname: "chano", userAddress: "인천시 부평구", phoneNumber: "010-1111-1111", birthDate: "1995-06-13", lastPurchaseDate: "2022-12-28"),
+            UserInfo(id: UUID().uuidString, userName: "전준수", userEmail: "test2@test.com", userNickname: "jun", userAddress: "서울시 강동구", phoneNumber: "010-2222-2222", birthDate: "2002-12-17", lastPurchaseDate: "2023-01-02"),
             UserInfo(id: UUID().uuidString, userName: "기태욱", userEmail: "test3@test.com", userNickname: "ki", userAddress: "부산시 해운대구", phoneNumber: "010-3333-3333", birthDate: "2002-01-02", lastPurchaseDate: "2023-01-02")
         ]
     }

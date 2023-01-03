@@ -27,7 +27,7 @@ struct StoreView: View {
             }
             //.navigationTitle("가게 정보")
             .sheet(isPresented: $isShowingSheet) {
-                EnrollRequestModal()
+                //EnrollRequestModal()
             }
         
         }

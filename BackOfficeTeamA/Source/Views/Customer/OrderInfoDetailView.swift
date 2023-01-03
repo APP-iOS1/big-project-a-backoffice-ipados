@@ -15,14 +15,21 @@ struct OrderInfoDetailView: View {
             ForEach(orderInfos) { order in
                 HStack {
                     HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("상품명 :")
-                            Text("가격 :")
-                            Text("색상 :")
-                            Text("주문 개수 :")
-                            Text("배송 상황 :")
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("상품명")
+                            Text("가격")
+                            Text("색상")
+                            Text("주문 개수")
+                            Text("배송 상황")
                         }
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                        }
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("\(order.orderItem.itemName)")
                             Text("\(order.orderItem.itemPrice)")
                             Text("\(order.orderItem.itemColor)")
@@ -35,12 +42,17 @@ struct OrderInfoDetailView: View {
                     
                     Divider()
                     HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("주문 시간 :")
-                            Text("요청 사항 :")
-                            Text("결제 수단 :")
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("주문 시간")
+                            Text("요청 사항")
+                            Text("결제 수단")
                         }
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                        }
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("\(order.orderTime)")
                             Text("\(order.orderMessage)")
                             Text("\(order.payment)")
