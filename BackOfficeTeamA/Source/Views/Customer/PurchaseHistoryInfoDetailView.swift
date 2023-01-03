@@ -16,14 +16,21 @@ struct PurchaseHistoryInfoDetailView: View {
             ForEach(purchaseHistoryInfos) { history in
                 HStack {
                     HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("상품명 :")
-                            Text("가격 :")
-                            Text("색상 :")
-                            Text("주문 개수 :")
-                            Text("배송 상황 :")
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("상품명")
+                            Text("가격")
+                            Text("색상")
+                            Text("주문 개수")
+                            Text("배송 상황")
                         }
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                        }
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("\(history.orderItem.itemName)")
                             Text("\(history.orderItem.itemPrice)")
                             Text("\(history.orderItem.itemColor)")
@@ -36,12 +43,17 @@ struct PurchaseHistoryInfoDetailView: View {
                     
                     Divider()
                     HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("주문 시간 :")
-                            Text("요청 사항 :")
-                            Text("결제 수단 :")
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("주문 시간")
+                            Text("요청 사항")
+                            Text("결제 수단")
                         }
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(" : ")
+                            Text(" : ")
+                            Text(" : ")
+                        }
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("\(history.orderTime)")
                             Text("\(history.orderMessage)")
                             Text("\(history.payment)")

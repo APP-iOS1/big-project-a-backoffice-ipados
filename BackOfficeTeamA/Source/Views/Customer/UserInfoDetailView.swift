@@ -26,14 +26,21 @@ struct UserInfoDetailView: View {
                 .padding(.horizontal, 10)
                 Divider()
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("이메일 :")
-                        Text("닉네임 :")
-                        Text("주소 :")
-                        Text("전화번호 :")
-                        Text("생년월일 :")
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("이메일")
+                        Text("닉네임")
+                        Text("주소")
+                        Text("전화번호")
+                        Text("생년월일")
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(" : ")
+                        Text(" : ")
+                        Text(" : ")
+                        Text(" : ")
+                        Text(" : ")
+                    }
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("\(userInfo.userEmail)")
                         Text("\(userInfo.userNickname)")
                         Text("\(userInfo.userAddress)")
