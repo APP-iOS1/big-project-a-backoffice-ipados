@@ -61,7 +61,8 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
                             .getDocuments()
                             .documents
                             .compactMap(decodeItemInfo)
-                        self.itemInfos = data
+                        print(" storeManager.itemInfos :\(self.itemInfos)")
+                        self.itemInfos += data
                     // TODO: StoreNotification Data request
                     case .storeNotification:
                         break
@@ -201,14 +202,15 @@ private extension StoreNetworkManager {
     
     func decodeItemInfo(with requestData: QueryDocumentSnapshot) -> ItemModel? {
         let dict: [String: Any] = requestData.data()
+        print(String(describing: dict["price"]) ?? "없음")
         guard
             let id: String = dict["itemId"] as? String,
             let storeId: String = dict["storeId"] as? String,
             let itemName: String = dict["itemName"] as? String,
-            let itemCategory: String = dict["itemCategory"] as? String,
-            let itemAmount: Int = dict["itemAmount"] as? Int,
-            let itemAllOption: [String: Any] = dict["itemAllOption"] as? [String: Any],
-            let itemImage: [String] = dict["itemImage"] as? [String],
+            //let itemCategory: String = dict["itemCategory"] as? String,
+            //let itemAmount: Int = dict["itemAmount"] as? Int,
+            //let itemAllOption: [String: Any] = dict["itemAllOption"] as? [String: Any],
+            //let itemImage: [String] = dict["itemImage"] as? [String],
             let price: Int = dict["price"] as? Int
         else {
             return nil
@@ -218,10 +220,10 @@ private extension StoreNetworkManager {
             id: id,
             storeId: storeId,
             itemName: itemName,
-            itemCategory: itemCategory,
-            itemAmount: itemAmount,
-            itemAllOption: itemAllOption,
-            itemImage: itemImage,
+            //itemCategory: itemCategory,
+            //itemAmount: itemAmount,
+            //itemAllOption: itemAllOption,
+            //itemImage: itemImage,
             price: price
         )
 
