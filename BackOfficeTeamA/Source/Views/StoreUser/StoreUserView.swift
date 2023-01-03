@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoreUserView: View {
     @State private var isShowingSheet = false
+    @State private var stores : [Store] = testStores
     var body: some View {
         VStack{
                 HStack{
@@ -27,7 +28,7 @@ struct StoreUserView: View {
         }
         .navigationTitle("입점 관리")
         .sheet(isPresented: $isShowingSheet) {
-            EnrollRequestModal()
+            EnrollRequestModal(store: $stores[0])
         }
         
     }
