@@ -32,8 +32,25 @@ struct StoreList: View {
         let dateFilteredData = manager.storeInfos
         
         if isSelectedDay {
-            return dateFilteredData.filter {
-                $0.registerDateAt.contains(dayAt)
+            if !searchUserText.isEmpty && pickerSelection == 0{
+                return dateFilteredData.filter {
+                    $0.registerDateAt.contains(dayAt) &&
+                    $0.storeName.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 1 {
+                return dateFilteredData.filter {
+                    $0.registerDateAt.contains(dayAt) &&
+                    $0.storeEmail.contains(searchUserText)
+                }
+            } else if !searchUserText.isEmpty && pickerSelection == 2 {
+                return dateFilteredData.filter {
+                    $0.registerDateAt.contains(dayAt) &&
+                    $0.registerDateAt.contains(searchUserText)
+                }
+            } else {
+                return dateFilteredData.filter {
+                    $0.registerDateAt.contains(dayAt)
+                }
             }
         }else{
             
@@ -80,7 +97,7 @@ struct StoreList: View {
             }
             .toolbar {
                 //날짜 피커
-                DatePicker(selection: $selectDay, in: Date()...,displayedComponents: [.date]) {
+                DatePicker(selection: $selectDay, in: ...Date(),displayedComponents: [.date]) {
                     Button {
                         isSelectedDay.toggle()
                     } label: {
