@@ -39,30 +39,30 @@ struct CustomerView: View {
         //filter를 날짜로 한번하고 그 이후 필터 진행
         let dateFilteredData = customerNetworkManager.customerInfos
         
-        /*
+        
         if isSelectedDay {
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.userName.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 1 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.userEmail.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 2 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.phoneNumber.contains(searchUserText)
                 }
             } else {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt)
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt)
                 }
             }
         }else{
-         */
+         
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
                     $0.userName.contains(searchUserText)
@@ -76,7 +76,7 @@ struct CustomerView: View {
                     $0.phoneNumber.contains(searchUserText)
                 }
             }
-//        }
+        }
         return dateFilteredData
     }
     
@@ -94,7 +94,7 @@ struct CustomerView: View {
         NavigationStack(path: $path) {
             VStack {
                 HStack{
-                    TotalCustomerView()
+                    TotalCustomerView(totalCustomer: customerNetworkManager.totalCustomer)
                     DailyVisitorView()
                     SignUpAndWithdrawalView()
                 }

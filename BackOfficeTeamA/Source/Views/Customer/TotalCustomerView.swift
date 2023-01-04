@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TotalCustomerView: View {
     @State var isIncrease: Bool = true
+    var totalCustomer = 0
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("총 회원 수")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("12345")
+                Text("\(totalCustomer)")
                     .font(.title)
                 Spacer()
                 HStack {
