@@ -12,7 +12,8 @@ struct StoreList: View {
     
     @EnvironmentObject var manager: StoreNetworkManager
     @State private var pickerSelection : Int = 0
-    @State private var sortOrder = [KeyPathComparator(\StoreInfo.registerDateAt)]
+    @State private var sortOredrTapped : Int = 0
+    @State private var sortOrder = [KeyPathComparator(\StoreInfo.storeName)]
     @State var searchUserText : String = ""
     @State private var selection : StoreInfo.ID?
     @Binding var path : [StoreInfo]
@@ -26,8 +27,8 @@ struct StoreList: View {
         return dateFormatter.string(from: selectDay)
     }
     
+    //필터링 검색버튼(검색목록피커설정에 대한 텍스트에 대해),날짜피커
     var results: [StoreInfo] {
-        //filter를 날짜로 한번하고 그 이후 필터 진행
         let dateFilteredData = manager.storeInfos
         
         if isSelectedDay {
@@ -50,7 +51,9 @@ struct StoreList: View {
                 }
             }
         }
-        
+        if sortOrder.last != nil {
+            return dateFilteredData.sorted(using: sortOrder)
+        }
         return dateFilteredData
     }
     
@@ -58,9 +61,8 @@ struct StoreList: View {
     
     
     var body: some View {
-        //NavigationStack(path: $path){
         VStack{
-            Table(manager.storeInfos, selection: $selection ,sortOrder: $sortOrder) {
+            Table(results, selection: $selection ,sortOrder: $sortOrder) {
                 TableColumn("이름", value: \.storeName)
                 TableColumn("이메일", value: \.storeEmail)
                 TableColumn("전화번호", value: \.phoneNumber)
@@ -77,6 +79,7 @@ struct StoreList: View {
                 }
             }
             .toolbar {
+                //날짜 피커
                 DatePicker(selection: $selectDay, in: Date()...,displayedComponents: [.date]) {
                     Button {
                         isSelectedDay.toggle()
@@ -86,23 +89,29 @@ struct StoreList: View {
                 }.onTapGesture {
                     isSelectedDay = true
                 }
-
+                
                 Picker("Select", selection: $pickerSelection) {
                     ForEach(0..<pickerOptions.count, id: \.self) {
                         Text(pickerOptions[$0])
                     }
                 }
             }
+            //Table 검색
             .searchable(text: $searchUserText, prompt: "검색")
-            
+            //Table을 당기면 리프레쉬 후 다시 스토어인포 리드
             .refreshable {
-                //
+                Task{
+                    await manager.requestInfo()
+                }
             }
+            //선택한 order에 따라 manager.storeInfos를 sort
             .onChange(of: sortOrder) { newOrder in
-                manager.storeInfos.sort(using: newOrder)
+                //print("order가 추가되었습니다")
+                //manager.storeInfos.sort(using: newOrder)
             }
+            //선택한 셀의 정보(storeInfo)를 불러와 path에 추가
             .onChange(of: selection) { newSelection in
-                if let newSelection, let storeInfo = manager.storeInfos.first(where: { $0.id == newSelection
+                if let newSelection, let storeInfo = manager.storeInfos.first(where: { $0.id == newSelection // 첫번째로 같은 id를 찾을때까지 반복
                 }) {
                     path.append(storeInfo)
                 }
@@ -110,17 +119,16 @@ struct StoreList: View {
             
         }
         .padding()
-            .navigationDestination(for: StoreInfo.self) { storeInfo in
-                StoreDetailView(storeID: storeInfo.id)
-                    .environmentObject(manager)
-            }
-            .onAppear{
-                path = []
-                selection = nil
-            }
-        //}
-        //.searchable(text: $searchFor, prompt: "검색")
-        
+        //선택된 셀의 ID(selection)로 뷰를 이동할 수 있도록
+        //각 셀에 따른 destination 설정
+        .navigationDestination(for: StoreInfo.self) { storeInfo in
+            StoreDetailView(storeID: storeInfo.id)
+                .environmentObject(manager)
+        }
+        .onAppear{
+            path = []
+            selection = nil
+        }
     }
 }
 
@@ -132,13 +140,3 @@ struct StoreList: View {
 //        }
 //    }
 //}
-
-// MARK: -ButtonStyle : 버튼 선택시 애니메이션 효과 적용
-struct ThemeAnimationStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .background(configuration.isPressed ? .gray.opacity(0.3) : .white)
-            .cornerRadius(8)
-            .scaleEffect(configuration.isPressed ? 0.8 : 1.0) //<- change scale value as per need. scaleEffect(configuration.isPressed ? 1.2 : 1.0)
-    }
-}
