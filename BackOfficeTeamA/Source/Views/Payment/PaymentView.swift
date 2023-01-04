@@ -36,7 +36,7 @@ struct PaymentView: View {
                 paymentData.sort(using: newOrder)
             })
             .navigationDestination(for: PaymentModel.self) { paymentData in
-                EmptyView()
+                PaymentDetailView(paymentData: paymentData)
             }
             .searchable(text: $searchFor, prompt: "검색")
             .toolbar {
