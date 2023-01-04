@@ -112,7 +112,11 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
-    func requestOrderInfo(storeId: String) async {
+    @MainActor
+    func requestOrderInfo(storeId: String, merge: Bool = false) async {
+        if !merge {
+            self.orderInfos = []
+        }
         do {
             // path: ./StoreInfo/{id}/Item/*
             let path = collectionPath.document(storeId).collection(StoreSubcollectionType.itemInfo.rawValue)
@@ -132,7 +136,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
                             .getDocuments()
                             .documents
                             .compactMap(decodeOrderInfo)
-                    self.orderInfos = data
+                    self.orderInfos += data
                     
                 } catch {
                     dump("\(#function) - DEBUG: REQUEST FAILED")
@@ -148,30 +152,23 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
 private extension StoreNetworkManager {
     func decodeOrderInfo(with requestData: QueryDocumentSnapshot) -> OrderInfo? {
         let dict: [String: Any] = requestData.data()
-        guard
-            let id: String = dict["id"] as? String,
-            let orderedUserInfo: String = dict["orderedUserInfo"] as? String,
-            let orderTime: Date = (dict["orderTime"] as? Timestamp)?.dateValue(),
-            // TODO: OrederedItemInfo가 구체적으로 정의되면 사용하기, default: []
-            let orderedItems: [OrderedItemInfo] = dict["orderedItems"] as? [OrderedItemInfo],
-            let orderAddress: String = dict["orderAddress"] as? String
-        else {
-            return nil
-        }
         
-        let orderMessage: String? = dict["orderMessage"] as? String
+        let id = dict["id"] as? String
+        let orderedUserInfo = dict["orderedUserInfo"] as? String
+        let orderTime = (dict["orderTime"] as? Timestamp)?.dateValue()
+        let orderedItems = dict["orderedItemInfo"] as? [String: Any]
+        let orderAddress = dict["orderAddress"] as? String
+        let orderMessage = dict["orderMessage"] as? String
         
         return OrderInfo(
             id: id,
             orderedUserInfo: orderedUserInfo,
             orderTime: orderTime,
-            orderedItems: [],
+            orderedItems: orderedItems,
             orderAddress: orderAddress,
             orderMessage: orderMessage
         )
-        
     }
-
     
     func decodeReviewInfo(with requestData: QueryDocumentSnapshot) -> ReviewPostModel? {
         let dict: [String: Any] = requestData.data()

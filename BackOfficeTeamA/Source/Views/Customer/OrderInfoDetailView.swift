@@ -8,65 +8,86 @@
 import SwiftUI
 
 struct OrderInfoDetailView: View {
-//    @EnvironmentObject var manager: StoreNetworkManager
-    @StateObject var manager: StoreNetworkManager = StoreNetworkManager(with: "StoreInfo")
+    @EnvironmentObject var manager: StoreNetworkManager
+//    @StateObject var manager: StoreNetworkManager = StoreNetworkManager(with: "StoreInfo")
+    var customerInfo: CustomerInfo
     
-    var orderInfos: [OrderInfo]
+    @State var orderInfos: [OrderInfo] = []
+    
+    func getOrderInfos() async {
+        self.orderInfos = manager.orderInfos.filter {
+            $0.orderedUserInfo == customerInfo.id
+        }
+    }
+    
     var body: some View {
         Section(header: Text("주문정보").font(Font.largeTitle)
             .foregroundColor(Color.black).bold()) {
-                ForEach(manager.orderInfos) { order in
+                ForEach(orderInfos) { order in
                     HStack {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("주문 ID")
+                                Text("주문 날짜")
+                                Text("주소")
+                                Text("요청 사항")
+                            }
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(" : ")
+                                Text(" : ")
+                                Text(" : ")
+                                Text(" : ")
+                            }
+                            VStack(alignment: .leading, spacing: 10) {
+                                // 아래와 같이 옵셔널처리를 해주어야 뷰를 띄울수 있습니다.
+                                Text("\(order.id ?? "")")
+                                Text("\(order.orderTime?.formattedKoreanTime() ?? "")")
+                                Text("\(order.orderAddress ?? "")")
+                                Text("\(order.orderMessage ?? "")")
+//                                Text("Test : \(order.orderedUserInfo ?? "")")
+                                
+                                /// order.orderedItems: [String: Any]같은 경우에는 옵셔널처리를 한 후,
+                                
+//                                if let orderedItems = order.orderedItems {
+//                                    Text("\((orderedItems["itemName"] as? String) ?? "")")
+//                                }
+                            }
+                        }
+                        .padding()
+                        .frame(width: 350, alignment: .leading)
+                        
+                        Divider()
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text("상품명")
                                 Text("가격")
-                                Text("색상")
-                                Text("주문 개수")
                                 Text("배송 상황")
                             }
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(" : ")
                                 Text(" : ")
                                 Text(" : ")
-                                Text(" : ")
-                                Text(" : ")
                             }
                             VStack(alignment: .leading, spacing: 10) {
-                                Text("\(order.orderedUserInfo)")
-                                //                            Text("\(order.price)")
-                                //                            Text("\(order.color)")
-                                //                            Text("\(order.amount)")
-                                //                            Text("\(order.deliveryStatus)")
+                                if let orderedItems = order.orderedItems {
+                                    Text("\((orderedItems["itemName"] as? String) ?? "")")
+                                    Text("\((orderedItems["price"] as? String) ?? "")")
+                                    Text("\((orderedItems["deleveryStatus"] as? String) ?? "")")
+                                }
                             }
-                        }
-                        .padding()
-                        .frame(width: 250, alignment: .leading)
-                        
-                        Divider()
-                        HStack {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("주문 시간")
-                                Text("요청 사항")
-                                Text("결제 수단")
-                            }
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(" : ")
-                                Text(" : ")
-                                Text(" : ")
-                            }
-                            //                        VStack(alignment: .leading, spacing: 10) {
-                            //                            Text("\(order.orderTime)")
-                            //                            Text("\(order.orderMessage)")
-                            //                            Text("\(order.payment)")
-                            //                        }
                         }
                         .padding(.leading, 20)
                     }
                 }
             }
             .task {
-                await manager.requestOrderInfo(storeId: "1Z1k5rkjKHzO6MNCiOOk")
+                for store in manager.storeInfos {
+                    await manager.requestOrderInfo(storeId: store.id)
+                }
+                await getOrderInfos()
+            }
+            .onDisappear {
+                manager.orderInfos.removeAll(keepingCapacity: false)
             }
         //주문정보 Section
     }

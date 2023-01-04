@@ -62,7 +62,6 @@ struct CustomerView: View {
                 }
             }
         }else{
-         
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
                     $0.userName.contains(searchUserText)
@@ -101,12 +100,11 @@ struct CustomerView: View {
                 .frame(height: 100)
                 .padding()
                 
-                //, selection: $selection, sortOrder: $sortUserInfo
                 Table(results, selection: $selection, sortOrder: $sortUserInfo) {
-//                    TableColumn("Name", value: \.userName)
+                    TableColumn("Name", value: \.userName)
                     TableColumn("Nickname", value: \.userNickname)
                     TableColumn("Email", value: \.userEmail)
-//                    TableColumn("PhoneNumber", value: \.phoneNumber)
+                    TableColumn("PhoneNumber", value: \.phoneNumber)
                 }
                 .toolbar {
                     DatePicker(selection: $selectDay, in: ...Date(),displayedComponents: [.date]) {
@@ -137,11 +135,13 @@ struct CustomerView: View {
                 .searchable(text: $searchUserText, prompt: "검색")
             }
             .navigationDestination(for: CustomerInfo.self) { customerInfo in
-                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: storeNetworkManager.orderInfos)
+                CustomerInfoDetailView(customerInfo: customerInfo)
+                    .environmentObject(storeNetworkManager)
             }
         }
         .task {
             await customerNetworkManager.requestCustomerInfo()
+            await storeNetworkManager.requestInfo()
         }
         .navigationTitle(navigationTitle)
     }

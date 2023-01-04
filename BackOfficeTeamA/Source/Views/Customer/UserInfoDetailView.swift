@@ -45,7 +45,7 @@ struct UserInfoDetailView: View {
                         Text("\(customerInfo.userNickname)")
                         Text("\(customerInfo.userAdress)")
                         Text("\(customerInfo.phoneNumber)")
-//                        Text("\(customerInfo.birthDate)")
+                        Text("\(customerInfo.birthDate!.formattedKoreanTime())")
                     }
                 }
                 .padding(.leading, 30)
