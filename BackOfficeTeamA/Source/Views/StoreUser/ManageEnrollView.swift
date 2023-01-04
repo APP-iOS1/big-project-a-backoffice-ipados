@@ -18,6 +18,14 @@ struct ManageEnrollView: View {
         }
     }
     
+    @StateObject var manager: StoreNetworkManager
+    
+    var examinationCompleteStores: [StoreInfo] {
+        get {
+            return manager.storeInfos.filter { $0.isSubmitted == false }
+        }
+    }
+    
     var body: some View {
         ScrollViewReader { proxy in
             List {
@@ -29,9 +37,15 @@ struct ManageEnrollView: View {
                     .font (.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    ForEach (0..<dummuys1.count, id: \.self) { index in
-                        VStack{
-                            Text (dummuys1[index])
+                    ForEach (examinationCompleteStores, id: \.id) { index in
+                        VStack {
+                            HStack {
+                                Text ("\(index.storeName)")
+                                Text("\(index.isVerified ? "[승인]" : "[거절]")")
+                                    .foregroundColor(index.isVerified ? Color.green : Color.red)
+                                Text("\(index.registerDateAt)")
+                                    .opacity(0.5)
+                            }
                             Divider()
                         }
                     }
@@ -43,6 +57,9 @@ struct ManageEnrollView: View {
                 .refreshable {
                     print ("리프레시 작동함! ")
                     //add()
+                    Task {
+                        await manager.requestInfo()
+                    }
                 }
                 .overlay (alignment: .bottomTrailing) {
                     Button {
@@ -95,6 +112,6 @@ struct ManageEnrollView: View {
 
 struct ManageEnrollView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageEnrollView()
+        ManageEnrollView(manager: StoreNetworkManager(with: "StoreInfo"))
     }
 }

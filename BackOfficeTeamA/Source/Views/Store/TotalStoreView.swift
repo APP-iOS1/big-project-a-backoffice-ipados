@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct TotalStoreView: View {
+    var totalStore: Int = 0
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("총 입점 수")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("123")
+                Text("\(totalStore)")
                     .font(.title)
                 Spacer()
                 HStack{

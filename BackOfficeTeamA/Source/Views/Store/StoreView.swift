@@ -17,7 +17,7 @@ struct StoreView: View {
         NavigationStack(path: $path){
             VStack{
                 HStack{
-                    TotalStoreView()
+                    TotalStoreView(totalStore: manager.totalStore)
                     StoreStateView()
                     TotalProductView()
                 }

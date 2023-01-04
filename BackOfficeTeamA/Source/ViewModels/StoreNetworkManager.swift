@@ -19,6 +19,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     @Published var itemInfos: [ItemModel] = []
     @Published var reviewInfos: [ReviewPostModel] = []
     @Published var orderInfos: [OrderInfo] = []
+    @Published var totalStore = 0
     
     /// storeID, ItemID, ReviewID
     /// 필요한 상점 > 필요한 상품 > 필요한 리뷰
@@ -38,6 +39,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         } catch {
             dump("\(#function) - DEBUG: REQUEST FAILED")
         }
+        totalStore = storeInfos.count
     }
     
     @MainActor func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
@@ -145,6 +147,21 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         } catch {
             dump("\(#function) - DEBUG: REQUEST FAILED")
         }
+    }
+    
+    func updateStoreInfo(_ storeInfo: StoreInfo, isVerified: Bool, isSubmitted: Bool) {
+        core.collection("StoreInfo").document(storeInfo.id)
+            .updateData(["id": storeInfo.id,
+                         "storeName": storeInfo.storeName,
+                         "storeEmail": storeInfo.storeEmail,
+                         "storeLocation": storeInfo.storeLocation,
+                         "registerDate": storeInfo.registerDate,
+                         "reportingCount": storeInfo.reportingCount,
+                         //storeImage: storeImage,
+                         "phoneNumber": storeInfo.phoneNumber,
+                         "isVerified": isVerified,
+                         "isSubmitted": isSubmitted,
+                         "isBanned": storeInfo.isBanned])
     }
     
 }
