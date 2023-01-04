@@ -11,7 +11,7 @@ struct RequestCountView: View {
     @StateObject var manager: StoreNetworkManager
     var newStores: Int {
         get {
-            return manager.storeInfos.filter { $0.isSubmitted == true }.count
+            return manager.storeInfos.filter { $0.isSubmitted == true && $0.isVerified == false }.count
         }
     }
     

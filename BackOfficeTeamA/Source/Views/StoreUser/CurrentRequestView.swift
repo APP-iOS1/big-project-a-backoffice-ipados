@@ -19,13 +19,13 @@ struct CurrentRequestView: View {
     @StateObject var manager: StoreNetworkManager
     var newStores: [StoreInfo] {
         get {
-            return manager.storeInfos.filter { $0.isSubmitted == true }
+            return manager.storeInfos.filter { $0.isSubmitted == true && $0.isVerified == false }
         }
     }
     
     var body: some View {
         ScrollViewReader { proxy in
-            List {
+
                 Group {
                     HStack {
                         Image (systemName: "flame")
@@ -34,6 +34,7 @@ struct CurrentRequestView: View {
                     .font(.largeTitle)
                     .padding()
                     .id("ScrollTop")
+                    List {
                     ForEach (newStores, id: \.id) { index in
                         VStack{
                             Button(action: {
@@ -42,7 +43,7 @@ struct CurrentRequestView: View {
                                 Text("\(index.storeName) - \(index.registerDateAt)")
                             }
                             .sheet(isPresented: $isShowingSheet) {
-                                EnrollRequestModal(storeInfo: index)
+                                EnrollRequestModal(manager: manager, storeInfo: index)
                             }
                         }
                         .frame(maxWidth: .infinity)

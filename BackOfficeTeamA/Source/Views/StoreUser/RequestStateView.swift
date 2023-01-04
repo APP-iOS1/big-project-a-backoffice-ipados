@@ -11,13 +11,13 @@ struct RequestStateView: View {
     @StateObject var manager: StoreNetworkManager
     var verifiedStores: Int {
         get {
-            return manager.storeInfos.filter { $0.isVerified == true }.count
+            return manager.storeInfos.filter { $0.isVerified == true && $0.isSubmitted == false }.count
         }
     }
     
     var notVerifiedStores: Int {
         get {
-            return manager.storeInfos.filter { $0.isVerified == false }.count
+            return manager.storeInfos.filter { $0.isVerified == false && $0.isSubmitted == false }.count
         }
     }
     

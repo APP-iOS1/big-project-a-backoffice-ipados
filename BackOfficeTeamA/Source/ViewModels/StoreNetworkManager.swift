@@ -143,6 +143,21 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
+    func updateStoreInfo(_ storeInfo: StoreInfo, isVerified: Bool, isSubmitted: Bool) {
+        core.collection("StoreInfo").document(storeInfo.id)
+            .updateData(["id": storeInfo.id,
+                         "storeName": storeInfo.storeName,
+                         "storeEmail": storeInfo.storeEmail,
+                         "storeLocation": storeInfo.storeLocation,
+                         "registerDate": storeInfo.registerDate,
+                         "reportingCount": storeInfo.reportingCount,
+                         //storeImage: storeImage,
+                         "phoneNumber": storeInfo.phoneNumber,
+                         "isVerified": isVerified,
+                         "isSubmitted": isSubmitted,
+                         "isBanned": storeInfo.isBanned])
+    }
+    
 }
 
 private extension StoreNetworkManager {

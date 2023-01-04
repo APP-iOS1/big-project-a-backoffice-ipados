@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EnrollRequestModal: View {
     @Environment(\.dismiss) var dismiss
+    @StateObject var manager: StoreNetworkManager
     var storeInfo: StoreInfo
 
     var body: some View {
@@ -52,8 +53,7 @@ struct EnrollRequestModal: View {
                 Section {
                     HStack {
                         Button {
-                            
-                            
+                            manager.updateStoreInfo(storeInfo, isVerified: true, isSubmitted: false)
                             dismiss()
                         } label: {
                             Text("입점 허가")
@@ -61,8 +61,7 @@ struct EnrollRequestModal: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                             .foregroundColor(.green)
                         Button {
-                            
-                            
+                            manager.updateStoreInfo(storeInfo, isVerified: false, isSubmitted: false)
                             dismiss()
                         } label: {
                             Text("입점 거절")
@@ -102,6 +101,6 @@ struct contentFieldModifier: ViewModifier {
 struct EnrollRequestModal_Previews: PreviewProvider {
     @State static var testStore = testStores[0]
     static var previews: some View {
-        EnrollRequestModal(storeInfo: StoreNetworkManager(with: "StoreInfo").storeInfos.first!)
+        EnrollRequestModal(manager: StoreNetworkManager(with: "StoreInfo"), storeInfo: StoreNetworkManager(with: "StoreInfo").storeInfos.first!)
     }
 }

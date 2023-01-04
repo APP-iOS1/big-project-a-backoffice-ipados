@@ -20,6 +20,12 @@ struct ManageEnrollView: View {
     
     @StateObject var manager: StoreNetworkManager
     
+    var examinationCompleteStores: [StoreInfo] {
+        get {
+            return manager.storeInfos.filter { $0.isSubmitted == false }
+        }
+    }
+    
     var body: some View {
         ScrollViewReader { proxy in
             List {
@@ -31,7 +37,7 @@ struct ManageEnrollView: View {
                     .font (.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    ForEach (manager.storeInfos, id: \.id) { index in
+                    ForEach (examinationCompleteStores, id: \.id) { index in
                         VStack{
                             Text ("\(index.storeName) \(index.isVerified ? "[승인]" : "[거부]") \(index.registerDateAt)")
                             Divider()
