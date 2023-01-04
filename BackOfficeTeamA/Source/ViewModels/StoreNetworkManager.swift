@@ -12,7 +12,7 @@ import FirebaseFirestore
 /// 1. StoreInfo - fetching
 /// 2. ItemInfo - fetching
 /// 3. ReviewInfo - fetching
-
+///
 final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     
     @Published var storeInfos: [StoreInfo] = []
@@ -31,8 +31,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         core = Firestore.firestore()
         collectionPath = core.collection(path)
     }
-    
-    func requestInfo() async {
+    @MainActor func requestInfo() async {
         do {
             let snapshot = try await collectionPath.getDocuments()
             storeInfos = snapshot.documents.compactMap(decodeStoreInfo)
@@ -41,7 +40,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
-    func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
+    @MainActor func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
         do {
             // path: ./StoreInfo/*
             let snapshot = try await collectionPath.getDocuments()
@@ -62,7 +61,8 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
                             .getDocuments()
                             .documents
                             .compactMap(decodeItemInfo)
-                        self.itemInfos = data
+                        print(" storeManager.itemInfos :\(self.itemInfos)")
+                        self.itemInfos += data
                     // TODO: StoreNotification Data request
                     case .storeNotification:
                         break
@@ -202,14 +202,15 @@ private extension StoreNetworkManager {
     
     func decodeItemInfo(with requestData: QueryDocumentSnapshot) -> ItemModel? {
         let dict: [String: Any] = requestData.data()
+        print(String(describing: dict["price"]) ?? "없음")
         guard
-            let id: String = dict["id"] as? String,
+            let id: String = dict["itemId"] as? String,
             let storeId: String = dict["storeId"] as? String,
             let itemName: String = dict["itemName"] as? String,
-            let itemCategory: String = dict["itemCategory"] as? String,
-            let itemAmount: Int = dict["itemAmount"] as? Int,
-            let itemAllOption: [String: Any] = dict["itemAllOption"] as? [String: Any],
-            let itemImage: [String] = dict["itemImage"] as? [String],
+            //let itemCategory: String = dict["itemCategory"] as? String,
+            //let itemAmount: Int = dict["itemAmount"] as? Int,
+            //let itemAllOption: [String: Any] = dict["itemAllOption"] as? [String: Any],
+            //let itemImage: [String] = dict["itemImage"] as? [String],
             let price: Int = dict["price"] as? Int
         else {
             return nil
@@ -219,10 +220,10 @@ private extension StoreNetworkManager {
             id: id,
             storeId: storeId,
             itemName: itemName,
-            itemCategory: itemCategory,
-            itemAmount: itemAmount,
-            itemAllOption: itemAllOption,
-            itemImage: itemImage,
+            //itemCategory: itemCategory,
+            //itemAmount: itemAmount,
+            //itemAllOption: itemAllOption,
+            //itemImage: itemImage,
             price: price
         )
 
@@ -236,7 +237,7 @@ private extension StoreNetworkManager {
               let storeLocation: String = dict["storeLocation"] as? String,
               let registerDate: Date = (dict["registerDate"] as? Timestamp)?.dateValue(),
               let reportingCount: Int = dict["reportingCount"] as? Int,
-              let storeImage: String = dict["storeImage"] as? String,
+              //let storeImage: String = dict["storeImage"] as? String,
               let phoneNumber: String = dict["phoneNumber"] as? String,
               let isVerified: Bool = dict["isVerified"] as? Bool,
               let isSubmitted: Bool = dict["isSubmitted"] as? Bool,
@@ -244,7 +245,6 @@ private extension StoreNetworkManager {
         else {
             return nil
         }
-        
         return StoreInfo(
             id: id,
             storeName: storeName,
@@ -252,7 +252,7 @@ private extension StoreNetworkManager {
             storeLocation: storeLocation,
             registerDate: registerDate,
             reportingCount: reportingCount,
-            storeImage: storeImage,
+            //storeImage: storeImage,
             phoneNumber: phoneNumber,
             isVerified: isVerified,
             isSubmitted: isSubmitted,

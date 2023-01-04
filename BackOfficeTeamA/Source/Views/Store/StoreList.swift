@@ -10,12 +10,12 @@ import SwiftUI
 struct StoreList: View {
     
     
-    
+    @EnvironmentObject var manager: StoreNetworkManager
     @State private var pickerSelection : Int = 0
-    @State private var sortOrder = [KeyPathComparator(\Store.registerDateAt)]
+    @State private var sortOrder = [KeyPathComparator(\StoreInfo.registerDateAt)]
     @State var searchUserText : String = ""
-    @State private var selection : Store.ID?
-    @Binding var path : [Store]
+    @State private var selection : StoreInfo.ID?
+    @Binding var path : [StoreInfo]
     var pickerOptions : [String] = ["이름","이메일","날짜"]
     
     @State private var isSelectedDay : Bool = false
@@ -26,9 +26,9 @@ struct StoreList: View {
         return dateFormatter.string(from: selectDay)
     }
     
-    var results: [Store] {
+    var results: [StoreInfo] {
         //filter를 날짜로 한번하고 그 이후 필터 진행
-        let dateFilteredData = testStores
+        let dateFilteredData = manager.storeInfos
         
         if isSelectedDay {
             return dateFilteredData.filter {
@@ -38,11 +38,11 @@ struct StoreList: View {
             
             if !searchUserText.isEmpty && pickerSelection == 0{
                 return dateFilteredData.filter {
-                    $0.name.contains(searchUserText)
+                    $0.storeName.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 1 {
                 return dateFilteredData.filter {
-                    $0.email.contains(searchUserText)
+                    $0.storeEmail.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 2 {
                 return dateFilteredData.filter {
@@ -60,20 +60,20 @@ struct StoreList: View {
     var body: some View {
         //NavigationStack(path: $path){
         VStack{
-            Table(results, selection: $selection ,sortOrder: $sortOrder) {
-                TableColumn("이름", value: \.name)
-                TableColumn("이메일", value: \.email)
+            Table(manager.storeInfos, selection: $selection ,sortOrder: $sortOrder) {
+                TableColumn("이름", value: \.storeName)
+                TableColumn("이메일", value: \.storeEmail)
                 TableColumn("전화번호", value: \.phoneNumber)
                 TableColumn("입점일", value:\.registerDateAt)
                 
                 //sort 형식때문에 Int값으로
-                TableColumn("입점", value:\.isVerifiedInt)  { store in
-                    Image(systemName: store.isVerified ? "checkmark" : "xmark")
-                        .foregroundColor(store.isVerified ? Color.green : Color.red)
+                TableColumn("입점", value:\.isVerifiedInt)  { storeInfo in
+                    Image(systemName: storeInfo.isVerified ? "checkmark" : "xmark")
+                        .foregroundColor(storeInfo.isVerified ? Color.green : Color.red)
                 }
-                TableColumn("밴", value:\.isBannedInt)  { store in
-                    Image(systemName: store.isBanned ? "checkmark" : "xmark")
-                        .foregroundColor(store.isBanned ? Color.red : Color.green)
+                TableColumn("밴", value:\.isBannedInt)  { storeInfo in
+                    Image(systemName: storeInfo.isBanned ? "checkmark" : "xmark")
+                        .foregroundColor(storeInfo.isBanned ? Color.red : Color.green)
                 }
             }
             .toolbar {
@@ -99,19 +99,24 @@ struct StoreList: View {
                 //
             }
             .onChange(of: sortOrder) { newOrder in
-                testStores.sort(using: newOrder)
+                manager.storeInfos.sort(using: newOrder)
             }
             .onChange(of: selection) { newSelection in
-                if let newSelection, let store = testStores.first(where: { $0.id == newSelection
+                if let newSelection, let storeInfo = manager.storeInfos.first(where: { $0.id == newSelection
                 }) {
-                    path.append(store)
+                    path.append(storeInfo)
                 }
             }
             
-        }.padding()
-            .navigationDestination(for: Store.self) { store in
-                StoreDetailView(store: store)
-                
+        }
+        .padding()
+            .navigationDestination(for: StoreInfo.self) { storeInfo in
+                StoreDetailView(storeID: storeInfo.id)
+                    .environmentObject(manager)
+            }
+            .onAppear{
+                path = []
+                selection = nil
             }
         //}
         //.searchable(text: $searchFor, prompt: "검색")

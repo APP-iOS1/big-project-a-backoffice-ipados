@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct StoreDetailView: View {
-    var store : Store
+    var storeID : String
+    @EnvironmentObject var manager: StoreNetworkManager
     
     var body: some View {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
+            List {
                 HStack {
                     Circle()
                         .stroke(Color.black)
@@ -21,34 +23,37 @@ struct StoreDetailView: View {
                         .font(Font.largeTitle)
                         .bold()
                 }
-                .padding(.leading,50)
-                Divider()
-                Spacer()
-                List {
-                    Section(header: Text("가게 정보")) {
-                        Text("이름 : 이세화")
-                        Text("사업자번호 : 110-42-15742")
-                        Text("이메일 : test@test.com")
-                        Text("주소 : 경기도 화성시 동탄반석로264 얼렁뚱땅 오피스 37-4")
-                        Text("전화번호 : 010-1111-1111")
-                        Text("등록일 : 2022년 12월 22일 11:40")
-                        HStack{
-                            Text("등록: ")
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.green)
-                        }
-                    }
-                    Section(header: Text("상품 목록")) {
-                        Text("상품 정보")
-                    }
-                    Section(header: Text("리뷰 목록")) {
-                        Text("리뷰 내역")
+                
+                Section(header: Text("가게 정보")) {
+                    Text("이름 : 이세화")
+                    Text("사업자번호 : 110-42-15742")
+                    Text("이메일 : test@test.com")
+                    Text("주소 : 경기도 화성시 동탄반석로264 얼렁뚱땅 오피스 37-4")
+                    Text("전화번호 : 010-1111-1111")
+                    Text("등록일 : 2022년 12월 22일 11:40")
+                    HStack{
+                        Text("등록: ")
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.green)
                     }
                 }
+                Section(header: Text("상품 목록")) {
+                    ForEach(manager.itemInfos) { item in
+                        Text(item.itemName)
+                    }
+                }
+                Section(header: Text("리뷰 목록")) {
+                    Text("리뷰 내역")
+                }
             }
-            .onAppear{
-                print(store.email)
+        }
+        .task{
+            await manager.requestSubCollectionInfo()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                // 5초 후 실행될 부분
+                print("detailView: \(manager.itemInfos)")
             }
+        }
     }
 }
 
