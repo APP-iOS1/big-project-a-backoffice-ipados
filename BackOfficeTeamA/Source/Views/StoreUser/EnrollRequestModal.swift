@@ -10,7 +10,7 @@ import SwiftUI
 struct EnrollRequestModal: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var manager: StoreNetworkManager
-    var storeInfo: StoreInfo
+    @State var storeInfo: StoreInfo
 
     var body: some View {
 //        VStack{
@@ -74,7 +74,7 @@ struct EnrollRequestModal: View {
             }
             
         }
-        .textInputAutocapitalization(.never)
+//        .textInputAutocapitalization(.never)
         .autocorrectionDisabled()
         
     }

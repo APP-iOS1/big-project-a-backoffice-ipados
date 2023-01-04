@@ -25,7 +25,7 @@ struct CurrentRequestView: View {
     
     var body: some View {
         ScrollViewReader { proxy in
-
+            List {
                 Group {
                     HStack {
                         Image (systemName: "flame")
@@ -34,7 +34,7 @@ struct CurrentRequestView: View {
                     .font(.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    List {
+                    
                     ForEach (newStores, id: \.id) { index in
                         VStack{
                             Button(action: {
