@@ -67,7 +67,7 @@ struct SignInView: View {
             } else {
                 Button("logout") {
                     signInViewModel.requestUserSignOut()
-                }
+                }.modifier(MainButtonModifier())
             }
 
             

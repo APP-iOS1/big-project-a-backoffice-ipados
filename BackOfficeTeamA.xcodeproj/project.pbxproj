@@ -17,6 +17,9 @@
 		6A2E7D3F295AC93200426E61 /* CustomerGrowth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */; };
 		6AED4CDD2963BACE0069694D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED4CDC2963BACE0069694D /* Notification.swift */; };
 		6AFAB3542963E62F00CA0A11 /* NotificationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAB3532963E62F00CA0A11 /* NotificationTable.swift */; };
+		6AFE2D6229651F2200D36AA5 /* ReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFE2D6129651F2200D36AA5 /* ReportDetailView.swift */; };
+		6AFE2D6429653E7B00D36AA5 /* PaymentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFE2D6329653E7B00D36AA5 /* PaymentDetailView.swift */; };
+		6AFE2D662965440A00D36AA5 /* PaymentHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFE2D652965440A00D36AA5 /* PaymentHistory.swift */; };
 		6F2B8B372962BDEB0022226C /* AuthorityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B352962BDEB0022226C /* AuthorityLevel.swift */; };
 		6F2B8B382962BDEB0022226C /* AppCategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B362962BDEB0022226C /* AppCategoryEnum.swift */; };
 		6F2B8B3A2962BE100022226C /* Timestamp+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B8B392962BE100022226C /* Timestamp+.swift */; };
@@ -96,6 +99,9 @@
 		6A2E7D3E295AC93200426E61 /* CustomerGrowth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerGrowth.swift; sourceTree = "<group>"; };
 		6AED4CDC2963BACE0069694D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6AFAB3532963E62F00CA0A11 /* NotificationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTable.swift; sourceTree = "<group>"; };
+		6AFE2D6129651F2200D36AA5 /* ReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailView.swift; sourceTree = "<group>"; };
+		6AFE2D6329653E7B00D36AA5 /* PaymentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailView.swift; sourceTree = "<group>"; };
+		6AFE2D652965440A00D36AA5 /* PaymentHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistory.swift; sourceTree = "<group>"; };
 		6F2B8B352962BDEB0022226C /* AuthorityLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityLevel.swift; sourceTree = "<group>"; };
 		6F2B8B362962BDEB0022226C /* AppCategoryEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCategoryEnum.swift; sourceTree = "<group>"; };
 		6F2B8B392962BE100022226C /* Timestamp+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timestamp+.swift"; sourceTree = "<group>"; };
@@ -373,6 +379,8 @@
 			isa = PBXGroup;
 			children = (
 				FA71BABE295A7FDC001D0AB3 /* PaymentView.swift */,
+				6AFE2D6329653E7B00D36AA5 /* PaymentDetailView.swift */,
+				6AFE2D652965440A00D36AA5 /* PaymentHistory.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -394,6 +402,7 @@
 				8F70A090295BE62300C74131 /* ReportStoreUserDetailView.swift */,
 				8F70A092295C0B1F00C74131 /* ReportCustomerUserDetailView.swift */,
 				8F70A094295C0F4800C74131 /* CellView.swift */,
+				6AFE2D6129651F2200D36AA5 /* ReportDetailView.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -529,6 +538,7 @@
 				AEB8B83B295C10320004562B /* OrderInfoDetailView.swift in Sources */,
 				FA71BABF295A7FDC001D0AB3 /* PaymentView.swift in Sources */,
 				AEB8B8662963F7010004562B /* CustomerInfo.swift in Sources */,
+				6AFE2D6429653E7B00D36AA5 /* PaymentDetailView.swift in Sources */,
 				FA71BAEC295AD602001D0AB3 /* StoreCell.swift in Sources */,
 				FA71BAC3295A7FF2001D0AB3 /* StoreView.swift in Sources */,
 				FA71BAE6295ACE97001D0AB3 /* ManageEnrollView.swift in Sources */,
@@ -560,12 +570,14 @@
 				6A037419295C01B00082F37C /* CircleProgressBar.swift in Sources */,
 				AEB8B83D295C10520004562B /* PurchaseHistoryInfoDetailView.swift in Sources */,
 				FA71BAC7295A8019001D0AB3 /* Store.swift in Sources */,
+				6AFE2D6229651F2200D36AA5 /* ReportDetailView.swift in Sources */,
 				FA71BAD7295AC46E001D0AB3 /* TotalStoreView.swift in Sources */,
 				FA71BAC9295A802C001D0AB3 /* StoreViewModel.swift in Sources */,
 				AEB8B85D2962B2CC0004562B /* SignUpAndWithdrawalView.swift in Sources */,
 				FA71BAB7295A7FAC001D0AB3 /* HomeView.swift in Sources */,
 				6F5F44EA2963BD6400715CCD /* ItemModel.swift in Sources */,
 				FA71BA95295A7CAE001D0AB3 /* BackOfficeTeamAApp.swift in Sources */,
+				6AFE2D662965440A00D36AA5 /* PaymentHistory.swift in Sources */,
 				FA71BADC295AC982001D0AB3 /* RequestStateView.swift in Sources */,
 				6F2B8B492962BE530022226C /* ReportModel.swift in Sources */,
 				FA71BACF295A80B7001D0AB3 /* View+.swift in Sources */,
