@@ -12,13 +12,14 @@ struct ReportView: View {
     @State private var pickerSelection = 0
     @State var searchFor = ""
     @State private var reportData: [TempReportModel] = [
-        TempReportModel(reporter: "Sihyun", reported: "ABCD", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970),
-        TempReportModel(reporter: "이름이 긴 사람", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970),
-        TempReportModel(reporter: "이름이 긴 사람2", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 88400),
-        TempReportModel(reporter: "이름이 긴 사람3", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 804800),
-        TempReportModel(reporter: "이름이 긴 사람4", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 2892000),
-        TempReportModel(reporter: "이름이 긴 사람5", reported: "EFGH", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 33536600),
+        TempReportModel(reporter: "태영아빠", reported: "두영상점", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다 이걸 어떻게 Use", createdAt: Date().timeIntervalSince1970),
+        TempReportModel(reporter: "태영맘", reported: "다영이네 CPU", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970),
+        TempReportModel(reporter: "태영삼촌", reported: "정우네 GPU", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 88400),
+        TempReportModel(reporter: "태영이모", reported: "광현 RAM샵", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 804800),
+        TempReportModel(reporter: "태영고모", reported: "찬호전자", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 2892000),
+        TempReportModel(reporter: "태영할아버지", reported: "두영전기", contents: "ABC 판매자를 신고합니다 왜냐하면 상품이 OOO이기 때문입니다", createdAt: Date().timeIntervalSince1970 - 33536600),
     ]
+    
     @State var searchDate = dayWeekMonthYear.all
     let buttonOption: [dayWeekMonthYear] = [.all, .day, .week, .month, .year]
     let buttonLabel = ["전체", "하루 전", "일주일 전", "한달 전", "일년 전"]
@@ -64,41 +65,69 @@ struct ReportView: View {
         return dateFilteredData
     }
     
+    @State private var sortOrder = [KeyPathComparator(\TempReportModel.reporter)]
+    @State private var selection: TempReportModel.ID?
+    @State var path = [TempReportModel]()
+    
     var body: some View {
-        
-        List {
-            HStack {
-                ForEach(0..<buttonOption.count, id: \.self) { idx in
-                    Button {
-                        searchDate = buttonOption[idx]
-                    } label: {
-                        Text(buttonLabel[idx])
+        NavigationStack(path: $path) {
+            List {
+                HStack {
+                    ForEach(0..<buttonOption.count, id: \.self) { idx in
+                        Button {
+                            searchDate = buttonOption[idx]
+                        } label: {
+                            Text(buttonLabel[idx])
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .modifier(OptionsButtonModifier())
+                }
+                
+                
+                if !results.isEmpty {
+                    ForEach(results, id: \.self) { group in
+                        CellView(reportData: group)
+                    }
+                } else {
+                    // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
+                    VStack {
+                        Text("❗️조건에 맞는 데이터가 없습니다")
                     }
                 }
-                .buttonStyle(PlainButtonStyle())
-                .modifier(OptionsButtonModifier())
             }
-            
-            
-            if !results.isEmpty {
-                ForEach(results, id: \.self) { group in
-                    CellView(reportData: group)
+            VStack(alignment: .leading) {
+                Text("신고 내역")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.top)
+                Table(reportData, selection: $selection) {
+                    TableColumn("신고당한 가게", value: \.reported)
+                    TableColumn("신고한 사람", value: \.reporter)
+                    //                TableColumn("제목", value: \.id)
+                    TableColumn("날짜", value: \.createdDate)
                 }
-            } else {
-                // 조건에 맞는 신고 데이터가 없는 경우 표시할 뷰
-                VStack {
-                    Text("❗️조건에 맞는 데이터가 없습니다")
+                .onChange(of: selection) { selection in
+                    if let selection = selection,
+                       let data = reportData.first(where: {$0.id == selection}) {
+                        path.append(data)
+                    }
+                }
+                //            .onChange(of: sortOrder, perform: { newOrder in
+                //                reportData.sorted(using: newOrder)
+                //            })
+                .listStyle(.insetGrouped)
+                .searchable(text: $searchFor, prompt: "검색")
+                .toolbar {
+                    Picker("Select", selection: $pickerSelection) {
+                        ForEach(0..<pickerOptions.count, id: \.self) {
+                            Text(pickerOptions[$0])
+                        }
+                    }
                 }
             }
-        }
-        .listStyle(.insetGrouped)
-        .searchable(text: $searchFor, prompt: "검색")
-        //        .searchable(text: $searchFor, placement: .navigationBarDrawer(displayMode: .always))
-        .toolbar {
-            Picker("Select", selection: $pickerSelection) {
-                ForEach(0..<pickerOptions.count, id: \.self) {
-                    Text(pickerOptions[$0])
-                }
+            .navigationDestination(for: TempReportModel.self) { data in
+                EmptyView()
             }
         }
         .navigationTitle(Text("신고"))
@@ -115,14 +144,14 @@ enum dayWeekMonthYear {
 
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ReportView().previewInterfaceOrientation(.landscapeRight)
-        }
+        ReportView().previewInterfaceOrientation(.landscapeRight)
     }
 }
 
 // 테스트를 위한 신고 임시 모델
-struct TempReportModel: Hashable {
+struct TempReportModel: Hashable, Identifiable {
+    var id = UUID().uuidString
+    
     var reporter: String
     var reported: String
     var contents: String
