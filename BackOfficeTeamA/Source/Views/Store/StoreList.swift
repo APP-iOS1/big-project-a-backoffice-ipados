@@ -86,14 +86,14 @@ struct StoreList: View {
                 TableColumn("입점일", value:\.registerDateAt)
                 
                 //sort 형식때문에 Int값으로
-                TableColumn("입점", value:\.isVerifiedInt)  { storeInfo in
-                    Image(systemName: storeInfo.isVerified ? "checkmark" : "xmark")
-                        .foregroundColor(storeInfo.isVerified ? Color.green : Color.red)
-                }
-                TableColumn("밴", value:\.isBannedInt)  { storeInfo in
-                    Image(systemName: storeInfo.isBanned ? "checkmark" : "xmark")
-                        .foregroundColor(storeInfo.isBanned ? Color.red : Color.green)
-                }
+//                TableColumn("입점", value:\.isVerifiedInt)  { storeInfo in
+//                    Image(systemName: storeInfo.isVerified ? "checkmark" : "xmark")
+//                        .foregroundColor(storeInfo.isVerified ? Color.green : Color.red)
+//                }
+//                TableColumn("밴", value:\.isBannedInt)  { storeInfo in
+//                    Image(systemName: storeInfo.isBanned ? "checkmark" : "xmark")
+//                        .foregroundColor(storeInfo.isBanned ? Color.red : Color.green)
+//                }
             }
             .toolbar {
                 //날짜 피커
@@ -136,6 +136,7 @@ struct StoreList: View {
             
         }
         .padding()
+
         //선택된 셀의 ID(selection)로 뷰를 이동할 수 있도록
         //각 셀에 따른 destination 설정
         .navigationDestination(for: StoreInfo.self) { storeInfo in
