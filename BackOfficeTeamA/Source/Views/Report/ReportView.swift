@@ -127,7 +127,7 @@ struct ReportView: View {
                 }
             }
             .navigationDestination(for: TempReportModel.self) { data in
-                EmptyView()
+                ReportDetailView()
             }
         }
         .navigationTitle(Text("신고"))
