@@ -13,7 +13,7 @@ import FirebaseFirestore
 /// - requestUserLogin() : 로그인 요청기능입니다.
 /// - requestUserSignOut() : 로그아웃 요청기능입니다.
 final class SignInViewModel: ObservableObject {
-    private let manager = UserAuthenticationManager()
+     let manager = UserAuthenticationManager()
     private let firestore = Firestore.firestore()
     @Published var currentUser: AdminModel?
     
@@ -24,8 +24,9 @@ final class SignInViewModel: ObservableObject {
     /// - Throws: `getCurrentUser(uid: String)`함수에서 나타날 수 있는 에러를 나타냅니다.
     /// - Returns: 로그인이 성공인지 실패인지 나타냅니다.
     func requestUserLogin(withEmail email: String, withPassword password: String) async throws -> Bool {
-        guard let uid = manager.firebaseAuthenticationInstance.currentUser?.uid else { return false }
+
         if await manager.requestUserLogin(withEmail: email, withPassword: password) {
+            guard let uid = await manager.requestUid() else { return false }
             try await getCurrentUser(uid: uid)
             return true
         }
@@ -41,6 +42,7 @@ final class SignInViewModel: ObservableObject {
     /// 로그인한 관리자의 `uid`를 이용해 Firestore에 저장된 관리자 정보를 불러옵니다. 이 정보는 `currentUser`프로퍼티에서 접근할 수 있습니다.
     /// - Parameter uid: 관리자의 로그인 `uid`
     /// - Throws: 관리자의 정보를 Firebase에서 불러올 때, 발생할 수 있는 에러를 나타냅니다.
+    @MainActor
     private func getCurrentUser(uid: String) async throws {
         self.currentUser = try await withCheckedThrowingContinuation { (continutaion: CheckedContinuation<AdminModel, Error>) in
             /// 관리자 정보가 있는 Firebase 경로: "~/AdminInfo/{uid}/"

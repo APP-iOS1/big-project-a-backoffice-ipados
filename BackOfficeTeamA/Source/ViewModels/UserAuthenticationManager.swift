@@ -37,4 +37,8 @@ final class UserAuthenticationManager {
             dump("DEBUG : LOG OUT FAILED \(error.localizedDescription)")
         }
     }
+    
+    public func requestUid() -> String? {
+        return firebaseAuthenticationInstance.currentUser?.uid
+    }
 }

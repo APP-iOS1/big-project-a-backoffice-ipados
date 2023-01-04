@@ -10,25 +10,14 @@ import FirebaseCore
 
 @main
 struct BackOfficeTeamAApp: App {
-//
-//    init() {
-//        setupAuthentication()
-//    }
-//
-    //@StateObject var manager = StoreNetworkManager(with: "StoreInfo")
-    
-    
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @StateObject var manager = StoreNetworkManager(with: "StoreInfo")
     var body: some Scene {
         WindowGroup {
             ContentView()
-                //.environmentObject(manager)
+                .environmentObject(manager)
         }
     }
-}
-
-extension BackOfficeTeamAApp {
-  private func setupAuthentication() {
-    FirebaseApp.configure()
-  }
 }
