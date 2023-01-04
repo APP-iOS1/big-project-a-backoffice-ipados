@@ -42,6 +42,7 @@ struct PaymentDetailView: View {
                 }
                 Section("판매 기록") {
                     PaymentHistory()
+                        .frame(height: 300)
                 }
             }
         }
