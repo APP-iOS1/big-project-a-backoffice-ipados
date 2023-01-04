@@ -38,8 +38,14 @@ struct ManageEnrollView: View {
                     .padding()
                     .id("ScrollTop")
                     ForEach (examinationCompleteStores, id: \.id) { index in
-                        VStack{
-                            Text ("\(index.storeName) \(index.isVerified ? "[승인]" : "[거부]") \(index.registerDateAt)")
+                        VStack {
+                            HStack {
+                                Text ("\(index.storeName)")
+                                Text("\(index.isVerified ? "[승인]" : "[거절]")")
+                                    .foregroundColor(index.isVerified ? Color.green : Color.red)
+                                Text("\(index.registerDateAt)")
+                                    .opacity(0.5)
+                            }
                             Divider()
                         }
                     }
@@ -51,6 +57,9 @@ struct ManageEnrollView: View {
                 .refreshable {
                     print ("리프레시 작동함! ")
                     //add()
+                    Task {
+                        await manager.requestInfo()
+                    }
                 }
                 .overlay (alignment: .bottomTrailing) {
                     Button {

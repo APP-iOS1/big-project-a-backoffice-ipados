@@ -10,7 +10,7 @@ import SwiftUI
 struct EnrollRequestModal: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var manager: StoreNetworkManager
-    @State var storeInfo: StoreInfo
+    @Binding var storeInfo: StoreInfo
 
     var body: some View {
 //        VStack{
@@ -24,27 +24,30 @@ struct EnrollRequestModal: View {
 //        }.padding()
         VStack {
             List {
-                    Group {
-                        Text ("입점 신청서")
-                    }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparatorTint(.clear)
-                    .listRowSeparator (.hidden)
-                    .font(.largeTitle)
+                Group {
+                    Text ("입점 신청서")
+                        .font(.largeTitle)
+                }
+                .listRowBackground(Color.clear)
+                .listRowSeparatorTint(.clear)
+                .listRowSeparator (.hidden)
+                .font(.largeTitle)
                 
                 Section {
                     HStack(alignment: .top) {
                         Text("스토어 이름")
                             .modifier(contentNameModifier())
+                        Divider()
                         Text("\(storeInfo.storeName)")
                             .modifier(contentNameModifier())
                     }
                     HStack(alignment: .top) {
                         Text("사업장소재지 주소")
                             .modifier(contentNameModifier())
+                        Divider()
                         Text("\(storeInfo.storeLocation)")
                             .modifier(contentNameModifier())
-//                            .modifier(contentFieldModifier())
+                        
                     }
                 } header: {
                     Text("입점 신청")
@@ -54,6 +57,9 @@ struct EnrollRequestModal: View {
                     HStack {
                         Button {
                             manager.updateStoreInfo(storeInfo, isVerified: true, isSubmitted: false)
+                            Task {
+                                await manager.requestInfo()
+                            }
                             dismiss()
                         } label: {
                             Text("입점 허가")
@@ -61,7 +67,10 @@ struct EnrollRequestModal: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                             .foregroundColor(.green)
                         Button {
-                            manager.updateStoreInfo(storeInfo, isVerified: false, isSubmitted: false)
+                            manager.updateStoreInfo(storeInfo, isVerified: false, isSubmitted: false) 
+                            Task {
+                                await manager.requestInfo()
+                            }
                             dismiss()
                         } label: {
                             Text("입점 거절")
@@ -70,13 +79,9 @@ struct EnrollRequestModal: View {
                             .foregroundColor(.red)
                         
                     }
-                }.listRowBackground(Color.clear)
+                }
             }
-            
         }
-//        .textInputAutocapitalization(.never)
-        .autocorrectionDisabled()
-        
     }
 }
 
@@ -98,9 +103,9 @@ struct contentFieldModifier: ViewModifier {
 }
 
 
-struct EnrollRequestModal_Previews: PreviewProvider {
-    @State static var testStore = testStores[0]
-    static var previews: some View {
-        EnrollRequestModal(manager: StoreNetworkManager(with: "StoreInfo"), storeInfo: StoreNetworkManager(with: "StoreInfo").storeInfos.first!)
-    }
-}
+//struct EnrollRequestModal_Previews: PreviewProvider {
+//    @State static var testStore = testStores[0]
+//    static var previews: some View {
+//        EnrollRequestModal(manager: StoreNetworkManager(with: "StoreInfo"), storeInfo: StoreNetworkManager(with: "StoreInfo").storeInfos.first!)
+//    }
+//}
