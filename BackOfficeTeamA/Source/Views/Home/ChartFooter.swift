@@ -19,7 +19,8 @@ struct ChartFooter: View {
                 .font(.title)
             HStack {
                 VStack(alignment: .leading) {
-                    Text("\(growth)")
+                    
+                    Text("+ \(growth)")
                         .font(.title)
                     Text("전월 대비")
                         .font(.title3)
@@ -36,10 +37,8 @@ struct ChartFooter: View {
                     
                     CircleProgressBar(progress: $progressValue, percentage: percentage)
                         .frame(width: 80.0, height: 80.0)
-                        .onAppear {
-                            progressValue = Float(percentage)/100.0
-                        }
                 }
+
 
             }.padding()
         }
