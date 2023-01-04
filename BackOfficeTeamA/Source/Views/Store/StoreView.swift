@@ -17,7 +17,7 @@ struct StoreView: View {
         NavigationStack(path: $path){
             VStack{
                 HStack{
-                    TotalStoreView()
+                    TotalStoreView(totalStore: manager.totalStore)
                     StoreStateView()
                     TotalProductView()
                 }
@@ -35,12 +35,8 @@ struct StoreView: View {
         }
         .navigationBarTitle("가게 정보", displayMode: .inline)
         .task {
-            
+            //Read StoreInfo
             await manager.requestInfo()
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-//              // 5초 후 실행될 부분
-//                //print(manager.storeInfos)
-//            }
         }
     }
 }

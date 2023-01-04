@@ -16,6 +16,13 @@ struct CurrentRequestView: View {
             proxy.scrollTo("ScrollTop",anchor: .top)
         }
     }
+    @StateObject var manager: StoreNetworkManager
+    var newStores: [StoreInfo] {
+        get {
+            return manager.storeInfos.filter { $0.isSubmitted == true && $0.isVerified == false }
+        }
+    }
+    @State var targetStoreInfo: StoreInfo = StoreInfo(id: "", storeName: "", storeEmail: "", storeLocation: "", registerDate: Date(), reportingCount: 0, storeImage: "", phoneNumber: "", isVerified: false, isSubmitted: false, isBanned: false)
     
     var body: some View {
         ScrollViewReader { proxy in
@@ -28,12 +35,17 @@ struct CurrentRequestView: View {
                     .font(.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    ForEach (0..<dummuys1.count, id: \.self) { index in
+                    
+                    ForEach (newStores, id: \.id) { index in
                         VStack{
                             Button(action: {
+                                targetStoreInfo = index
                                 isShowingSheet.toggle()
                             }) {
-                                Text(dummuys1[index])
+                                Text("\(index.storeName) - \(index.registerDateAt)")
+                            }
+                            .sheet(isPresented: $isShowingSheet) {
+                                EnrollRequestModal(manager: manager, storeInfo: $targetStoreInfo)
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -50,6 +62,9 @@ struct CurrentRequestView: View {
                 .refreshable {
                     print ("리프레시 작동함! ")
                     //add()
+                    Task {
+                        await manager.requestInfo()
+                    }
                 }
                 .overlay (alignment: .bottomTrailing) {
                     Button {
@@ -73,6 +88,6 @@ struct CurrentRequestView_Previews: PreviewProvider {
     @State static var isShowingSheet : Bool = false
     
     static var previews: some View {
-        CurrentRequestView(isShowingSheet: $isShowingSheet)
+        CurrentRequestView(isShowingSheet: $isShowingSheet, manager: StoreNetworkManager(with: "StoreInfo"))
     }
 }

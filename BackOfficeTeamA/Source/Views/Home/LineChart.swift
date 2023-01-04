@@ -11,7 +11,7 @@ import SwiftUI
 struct LineChart: View {
     let title: String
     
-    let data =
+    @State var data =
     [
         MonthlyCustomerTraffic(name: "트래픽", month: 1, customerTraffic: 14),
         MonthlyCustomerTraffic(name: "트래픽", month: 2, customerTraffic: 23),
@@ -38,7 +38,7 @@ struct LineChart: View {
                 ForEach(data) { item in
                     LineMark(
                         x: .value("Month", item.date),
-                        y: .value("Customer Traffic", item.customerTraffic)
+                        y: .value("Customer Traffic", item.animate ? item.customerTraffic : 0)
                     )
                     .foregroundStyle(by: .value("customer", item.name))
                 }
@@ -53,8 +53,16 @@ struct LineChart: View {
             .chartYAxis {
                 AxisMarks(position: .leading)
             }
+            .chartYScale(domain: 0...100)
             .chartPlotStyle { plotArea in
                 plotArea.background(.blue.opacity(0.1))
+            }
+            .onAppear {
+                for (index, _) in data.enumerated() {
+                    withAnimation(.easeInOut.delay(Double(12) * 0.05)) {
+                        data[index].animate = true
+                    }
+                }
             }
         }
         

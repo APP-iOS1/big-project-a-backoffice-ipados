@@ -22,6 +22,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     // 리뷰정보 - 목업
     @Published var reviewInfos: [ReviewPostModel] = []
     @Published var orderInfos: [OrderInfo] = []
+    @Published var totalStore = 0
     
     /// storeID, ItemID, ReviewID
     /// 필요한 상점 > 필요한 상품 > 필요한 리뷰
@@ -43,6 +44,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         } catch {
             dump("\(#function) - DEBUG: REQUEST FAILED")
         }
+        totalStore = storeInfos.count
     }
     
     // 아이템 정보 가져오기 -> 가게 누르면 서브컬렉션 정보 가져옴
@@ -121,13 +123,17 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
+
     // 스토어 영업 중지 여부 업데이트
     func updateStoreBannedState(storeId: String, isBanned: Bool) {
         collectionPath.document(storeId).setData(["isBanned" : isBanned], merge: true)
     }
     
-    
-    func requestOrderInfo(storeId: String) async {
+    @MainActor
+    func requestOrderInfo(storeId: String, merge: Bool = false) async {
+        if !merge {
+            self.orderInfos = []
+        }
         do {
             // path: ./StoreInfo/{id}/Item/*
             let path = collectionPath.document(storeId).collection(StoreSubcollectionType.itemInfo.rawValue)
@@ -147,7 +153,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
                             .getDocuments()
                             .documents
                             .compactMap(decodeOrderInfo)
-                    self.orderInfos = data
+                    self.orderInfos += data
                     
                 } catch {
                     dump("\(#function) - DEBUG: REQUEST FAILED")
@@ -158,35 +164,43 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
+    func updateStoreInfo(_ storeInfo: StoreInfo, isVerified: Bool, isSubmitted: Bool) {
+        core.collection("StoreInfo").document(storeInfo.id)
+            .updateData(["id": storeInfo.id,
+                         "storeName": storeInfo.storeName,
+                         "storeEmail": storeInfo.storeEmail,
+                         "storeLocation": storeInfo.storeLocation,
+                         "registerDate": storeInfo.registerDate,
+                         "reportingCount": storeInfo.reportingCount,
+                         //storeImage: storeImage,
+                         "phoneNumber": storeInfo.phoneNumber,
+                         "isVerified": isVerified,
+                         "isSubmitted": isSubmitted,
+                         "isBanned": storeInfo.isBanned])
+    }
+    
 }
 
 private extension StoreNetworkManager {
     func decodeOrderInfo(with requestData: QueryDocumentSnapshot) -> OrderInfo? {
         let dict: [String: Any] = requestData.data()
-        guard
-            let id: String = dict["id"] as? String,
-            let orderedUserInfo: String = dict["orderedUserInfo"] as? String,
-            let orderTime: Date = (dict["orderTime"] as? Timestamp)?.dateValue(),
-            // TODO: OrederedItemInfo가 구체적으로 정의되면 사용하기, default: []
-            let orderedItems: [OrderedItemInfo] = dict["orderedItems"] as? [OrderedItemInfo],
-            let orderAddress: String = dict["orderAddress"] as? String
-        else {
-            return nil
-        }
         
-        let orderMessage: String? = dict["orderMessage"] as? String
+        let id = dict["id"] as? String
+        let orderedUserInfo = dict["orderedUserInfo"] as? String
+        let orderTime = (dict["orderTime"] as? Timestamp)?.dateValue()
+        let orderedItems = dict["orderedItemInfo"] as? [String: Any]
+        let orderAddress = dict["orderAddress"] as? String
+        let orderMessage = dict["orderMessage"] as? String
         
         return OrderInfo(
             id: id,
             orderedUserInfo: orderedUserInfo,
             orderTime: orderTime,
-            orderedItems: [],
+            orderedItems: orderedItems,
             orderAddress: orderAddress,
             orderMessage: orderMessage
         )
-        
     }
-
     
     func decodeReviewInfo(with requestData: QueryDocumentSnapshot) -> ReviewPostModel? {
         let dict: [String: Any] = requestData.data()

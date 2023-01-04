@@ -39,30 +39,29 @@ struct CustomerView: View {
         //filter를 날짜로 한번하고 그 이후 필터 진행
         let dateFilteredData = customerNetworkManager.customerInfos
         
-        /*
+        
         if isSelectedDay {
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.userName.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 1 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.userEmail.contains(searchUserText)
                 }
             } else if !searchUserText.isEmpty && pickerSelection == 2 {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt) &&
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt) &&
                     $0.phoneNumber.contains(searchUserText)
                 }
             } else {
                 return dateFilteredData.filter {
-                    $0.lastPurchaseDate.contains(dayAt)
+                    $0.birthDate!.formattedKoreanTime().contains(dayAt)
                 }
             }
         }else{
-         */
             if !searchUserText.isEmpty && pickerSelection == 0 {
                 return dateFilteredData.filter {
                     $0.userName.contains(searchUserText)
@@ -76,7 +75,7 @@ struct CustomerView: View {
                     $0.phoneNumber.contains(searchUserText)
                 }
             }
-//        }
+        }
         return dateFilteredData
     }
     
@@ -94,19 +93,18 @@ struct CustomerView: View {
         NavigationStack(path: $path) {
             VStack {
                 HStack{
-                    TotalCustomerView()
+                    TotalCustomerView(totalCustomer: customerNetworkManager.totalCustomer)
                     DailyVisitorView()
                     SignUpAndWithdrawalView()
                 }
                 .frame(height: 100)
                 .padding()
                 
-                //, selection: $selection, sortOrder: $sortUserInfo
                 Table(results, selection: $selection, sortOrder: $sortUserInfo) {
-//                    TableColumn("Name", value: \.userName)
+                    TableColumn("Name", value: \.userName)
                     TableColumn("Nickname", value: \.userNickname)
                     TableColumn("Email", value: \.userEmail)
-//                    TableColumn("PhoneNumber", value: \.phoneNumber)
+                    TableColumn("PhoneNumber", value: \.phoneNumber)
                 }
                 .toolbar {
                     DatePicker(selection: $selectDay, in: ...Date(),displayedComponents: [.date]) {
@@ -137,11 +135,13 @@ struct CustomerView: View {
                 .searchable(text: $searchUserText, prompt: "검색")
             }
             .navigationDestination(for: CustomerInfo.self) { customerInfo in
-                CustomerInfoDetailView(customerInfo: customerInfo, orderInfos: storeNetworkManager.orderInfos)
+                CustomerInfoDetailView(customerInfo: customerInfo)
+                    .environmentObject(storeNetworkManager)
             }
         }
         .task {
             await customerNetworkManager.requestCustomerInfo()
+            await storeNetworkManager.requestInfo()
         }
         .navigationTitle(navigationTitle)
     }

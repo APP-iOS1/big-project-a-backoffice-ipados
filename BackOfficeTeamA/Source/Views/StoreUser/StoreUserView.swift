@@ -9,26 +9,29 @@ import SwiftUI
 
 struct StoreUserView: View {
     @State private var isShowingSheet = false
-    @State private var stores : [Store] = testStores
+    
+    @StateObject var manager: StoreNetworkManager = StoreNetworkManager(with: "StoreInfo")
+    
     var body: some View {
         VStack{
                 HStack{
-                    RequestCountView()
-                    RequestStateView()
+                    RequestCountView(manager: manager)
+                    RequestStateView(manager: manager)
                 }
                 .frame(height: 100)
                 .padding()
                 
                 HStack{
-                    CurrentRequestView(isShowingSheet: $isShowingSheet)
-                    ManageEnrollView()
+                    CurrentRequestView(isShowingSheet: $isShowingSheet, manager: manager)
+                    ManageEnrollView(manager: manager)
                 }
                 .padding()
                 
         }
         .navigationTitle("입점 관리")
-        .sheet(isPresented: $isShowingSheet) {
-            EnrollRequestModal(store: $stores[0])
+
+        .task {
+            await manager.requestInfo()
         }
         
     }
@@ -37,7 +40,7 @@ struct StoreUserView: View {
 struct StoreUserView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack{
-            StoreUserView()
+            StoreUserView(manager: StoreNetworkManager(with: "StoreInfo"))
         }
     }
 }

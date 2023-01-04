@@ -38,6 +38,7 @@ struct PieChart: View {
                         startAngle = endAngle
                     }
                 }
+                .saturation(0.5)
                 .aspectRatio(1, contentMode: .fit)
                 VStack(alignment: .leading) {
                     ForEach(customer) { customer in
@@ -45,6 +46,7 @@ struct PieChart: View {
                             Rectangle()
                                 .fill(customer.color)
                                 .frame(width: Screen.maxWidth / 30, height: Screen.maxWidth / 30)
+                                .saturation(0.5)
                             Text("\(customer.type) - \(customer.count)")
                         }
                     }
