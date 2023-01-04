@@ -45,7 +45,7 @@ struct HomeView: View {
                     VStack {
                         LineChart(title: "월별 트래픽")
                             .modifier(DashBoardChartBorderModifier())
-                        ChartFooter(label: "월별 트래픽", growth: 241, percentage: 2)
+                        ChartFooter(label: "월별 트래픽", growth: -200, percentage: -2)
                     }
                     VStack {
                         PieChart(title: "유입 경로", customer: customer2)

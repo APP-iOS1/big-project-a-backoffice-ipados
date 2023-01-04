@@ -13,6 +13,7 @@ struct ProfitByCategory: Identifiable {
     let category: String
     let profit: Double
     var date: Date
+    var animate: Bool = false
 
     init(category: String, profit: Double, month: Int) {
         let calendar = Calendar.autoupdatingCurrent

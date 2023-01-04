@@ -13,6 +13,7 @@ struct MonthlyCustomerTraffic: Identifiable, Hashable {
     var name: String
     var date: Date
     var customerTraffic: Double
+    var animate: Bool = false
     
     init(name: String, month: Int, customerTraffic: Double) {
         let calendar = Calendar.autoupdatingCurrent

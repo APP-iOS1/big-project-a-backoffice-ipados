@@ -23,8 +23,12 @@ struct CircleProgressBar: View {
                 .stroke(style: StrokeStyle(lineWidth: 6.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(color)
                 .rotationEffect(Angle(degrees: 270))
-                .animation(.easeInOut(duration: 1.0))
             Text("\(percentage)%")
+        }
+        .onAppear{
+            withAnimation(.easeInOut(duration: 1)){
+                progress = Float(percentage)/100.0
+            }
         }
     }
 }

@@ -24,11 +24,12 @@ struct BarChart: View {
 //                    .foregroundStyle(by: .value("손익분기점", "손익분기점"))
                 BarMark(
                     x: .value("Month", $0.date),
-                    y: .value("Profit", $0.profit),
+                    y: .value("Profit", $0.animate ? $0.profit : 0),
                     width: .automatic
                 )
                 .foregroundStyle(by: .value("Product Category", $0.category))
             }
+            .saturation(0.5)
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) {
                     AxisGridLine()
@@ -38,18 +39,30 @@ struct BarChart: View {
             .chartYAxis {
                 AxisMarks(position: .leading)
             }
+            .chartYScale(domain: 0...30000)
             .onAppear {
                 var randomProfit: [Double] = []
                 
                 for _ in 0...11 {
                     randomProfit.append(Double(Int.random(in: 1000...10000)))
+                    
                 }
+
                 
                 for i in 1...12 {
                     data.append(ProfitByCategory(category: "중계수수료", profit: randomProfit.randomElement()!, month: i))
                     data.append(ProfitByCategory(category: "광고수익", profit: randomProfit.randomElement()!, month: i))
                     data.append(ProfitByCategory(category: "후원", profit: randomProfit.randomElement()!, month: i))
+                    
                 }
+                
+                
+                for (index, _) in data.enumerated() {
+                    withAnimation(.easeInOut.delay(Double(12) *  0.05)) {
+                        data[index].animate = true
+                    }
+                }
+
             }
         }
 
