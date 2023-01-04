@@ -29,6 +29,7 @@ struct BarChart: View {
                 )
                 .foregroundStyle(by: .value("Product Category", $0.category))
             }
+            .saturation(0.5)
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) {
                     AxisGridLine()

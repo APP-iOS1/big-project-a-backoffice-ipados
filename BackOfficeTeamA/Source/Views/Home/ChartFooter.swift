@@ -36,7 +36,7 @@ struct ChartFooter: View {
                 HStack {
                     Group {
                         Image(systemName: "arrow.up")
-                        Text("+\(percentage)%")
+                        Text("\(percentage)%")
                     }
                     .font(.title3)
                     .padding(.trailing, 5)
