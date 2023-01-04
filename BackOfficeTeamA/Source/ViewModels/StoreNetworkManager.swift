@@ -15,8 +15,11 @@ import FirebaseFirestore
 ///
 final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
     
+    // 상점 정보들
     @Published var storeInfos: [StoreInfo] = []
+    // 상점 아이템 정보들
     @Published var itemInfos: [ItemModel] = []
+    // 리뷰정보 - 목업
     @Published var reviewInfos: [ReviewPostModel] = []
     @Published var orderInfos: [OrderInfo] = []
     
@@ -31,6 +34,8 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         core = Firestore.firestore()
         collectionPath = core.collection(path)
     }
+    
+    //리스트에서 가게 이름 가져옴
     @MainActor func requestInfo() async {
         do {
             let snapshot = try await collectionPath.getDocuments()
@@ -40,7 +45,10 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
         }
     }
     
+    // 아이템 정보 가져오기 -> 가게 누르면 서브컬렉션 정보 가져옴
     @MainActor func requestSubCollectionInfo(_ type: StoreSubcollectionType = .itemInfo) async {
+        self.itemInfos = []
+        
         do {
             // path: ./StoreInfo/*
             let snapshot = try await collectionPath.getDocuments()
@@ -62,6 +70,7 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
                             .documents
                             .compactMap(decodeItemInfo)
                         print(" storeManager.itemInfos :\(self.itemInfos)")
+                        // 과업 1
                         self.itemInfos += data
                     // TODO: StoreNotification Data request
                     case .storeNotification:
@@ -111,6 +120,12 @@ final class StoreNetworkManager: FirestoreCRUDProtocol, ObservableObject {
             dump("\(#function) - DEBUG: REQUEST FAILED")
         }
     }
+    
+    // 스토어 영업 중지 여부 업데이트
+    func updateStoreBannedState(storeId: String, isBanned: Bool) {
+        collectionPath.document(storeId).setData(["isBanned" : isBanned], merge: true)
+    }
+    
     
     func requestOrderInfo(storeId: String) async {
         do {

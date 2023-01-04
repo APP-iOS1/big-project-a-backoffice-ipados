@@ -58,7 +58,7 @@ struct StoreList: View {
     
     
     var body: some View {
-        //NavigationStack(path: $path){
+        //NavigationStack(path: $path) {
         VStack{
             Table(manager.storeInfos, selection: $selection ,sortOrder: $sortOrder) {
                 TableColumn("이름", value: \.storeName)
@@ -67,14 +67,14 @@ struct StoreList: View {
                 TableColumn("입점일", value:\.registerDateAt)
                 
                 //sort 형식때문에 Int값으로
-                TableColumn("입점", value:\.isVerifiedInt)  { storeInfo in
-                    Image(systemName: storeInfo.isVerified ? "checkmark" : "xmark")
-                        .foregroundColor(storeInfo.isVerified ? Color.green : Color.red)
-                }
-                TableColumn("밴", value:\.isBannedInt)  { storeInfo in
-                    Image(systemName: storeInfo.isBanned ? "checkmark" : "xmark")
-                        .foregroundColor(storeInfo.isBanned ? Color.red : Color.green)
-                }
+//                TableColumn("입점", value:\.isVerifiedInt)  { storeInfo in
+//                    Image(systemName: storeInfo.isVerified ? "checkmark" : "xmark")
+//                        .foregroundColor(storeInfo.isVerified ? Color.green : Color.red)
+//                }
+//                TableColumn("밴", value:\.isBannedInt)  { storeInfo in
+//                    Image(systemName: storeInfo.isBanned ? "checkmark" : "xmark")
+//                        .foregroundColor(storeInfo.isBanned ? Color.red : Color.green)
+//                }
             }
             .toolbar {
                 DatePicker(selection: $selectDay, in: Date()...,displayedComponents: [.date]) {
@@ -95,9 +95,9 @@ struct StoreList: View {
             }
             .searchable(text: $searchUserText, prompt: "검색")
             
-            .refreshable {
-                //
-            }
+//            .refreshable {
+//                //
+//            }
             .onChange(of: sortOrder) { newOrder in
                 manager.storeInfos.sort(using: newOrder)
             }
@@ -111,7 +111,7 @@ struct StoreList: View {
         }
         .padding()
             .navigationDestination(for: StoreInfo.self) { storeInfo in
-                StoreDetailView(storeID: storeInfo.id)
+                StoreDetailView(storeInfo: storeInfo)
                     .environmentObject(manager)
             }
             .onAppear{
