@@ -8,15 +8,28 @@
 import SwiftUI
 
 struct RequestStateView: View {
+    @StateObject var manager: StoreNetworkManager
+    var verifiedStores: Int {
+        get {
+            return manager.storeInfos.filter { $0.isVerified == true }.count
+        }
+    }
+    
+    var notVerifiedStores: Int {
+        get {
+            return manager.storeInfos.filter { $0.isVerified == false }.count
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("승인 / 거절")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("58").foregroundColor(.green)
+                Text("\(verifiedStores)").foregroundColor(.green)
                 Text("/").foregroundColor(.gray)
-                Text("37").foregroundColor(.red)
+                Text("\(notVerifiedStores)").foregroundColor(.red)
                 Spacer()
             }
             .font(.title)
@@ -27,6 +40,6 @@ struct RequestStateView: View {
 
 struct RequestStateView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestStateView().frame(height: 100)
+        RequestStateView(manager: StoreNetworkManager(with: "StoreInfo")).frame(height: 100)
     }
 }

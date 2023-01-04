@@ -16,6 +16,12 @@ struct CurrentRequestView: View {
             proxy.scrollTo("ScrollTop",anchor: .top)
         }
     }
+    @StateObject var manager: StoreNetworkManager
+    var newStores: [StoreInfo] {
+        get {
+            return manager.storeInfos.filter { $0.isSubmitted == true }
+        }
+    }
     
     var body: some View {
         ScrollViewReader { proxy in
@@ -28,12 +34,15 @@ struct CurrentRequestView: View {
                     .font(.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    ForEach (0..<dummuys1.count, id: \.self) { index in
+                    ForEach (newStores, id: \.id) { index in
                         VStack{
                             Button(action: {
                                 isShowingSheet.toggle()
                             }) {
-                                Text(dummuys1[index])
+                                Text("\(index.storeName) - \(index.registerDateAt)")
+                            }
+                            .sheet(isPresented: $isShowingSheet) {
+                                EnrollRequestModal(storeInfo: index)
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -73,6 +82,6 @@ struct CurrentRequestView_Previews: PreviewProvider {
     @State static var isShowingSheet : Bool = false
     
     static var previews: some View {
-        CurrentRequestView(isShowingSheet: $isShowingSheet)
+        CurrentRequestView(isShowingSheet: $isShowingSheet, manager: StoreNetworkManager(with: "StoreInfo"))
     }
 }

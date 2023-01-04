@@ -18,6 +18,8 @@ struct ManageEnrollView: View {
         }
     }
     
+    @StateObject var manager: StoreNetworkManager
+    
     var body: some View {
         ScrollViewReader { proxy in
             List {
@@ -29,9 +31,9 @@ struct ManageEnrollView: View {
                     .font (.largeTitle)
                     .padding()
                     .id("ScrollTop")
-                    ForEach (0..<dummuys1.count, id: \.self) { index in
+                    ForEach (manager.storeInfos, id: \.id) { index in
                         VStack{
-                            Text (dummuys1[index])
+                            Text ("\(index.storeName) \(index.isVerified ? "[승인]" : "[거부]") \(index.registerDateAt)")
                             Divider()
                         }
                     }
@@ -95,6 +97,6 @@ struct ManageEnrollView: View {
 
 struct ManageEnrollView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageEnrollView()
+        ManageEnrollView(manager: StoreNetworkManager(with: "StoreInfo"))
     }
 }

@@ -9,10 +9,8 @@ import SwiftUI
 
 struct EnrollRequestModal: View {
     @Environment(\.dismiss) var dismiss
-    @State var storeName = ""
-    @State var storeAddress = ""
-    @Binding var store : Store
-    
+    var storeInfo: StoreInfo
+
     var body: some View {
 //        VStack{
 //            Text("등록 신청서")
@@ -25,28 +23,27 @@ struct EnrollRequestModal: View {
 //        }.padding()
         VStack {
             List {
-                
                     Group {
                         Text ("입점 신청서")
-                            .font(.largeTitle)
                     }
                     .listRowBackground(Color.clear)
                     .listRowSeparatorTint(.clear)
                     .listRowSeparator (.hidden)
-                    
                     .font(.largeTitle)
+                
                 Section {
                     HStack(alignment: .top) {
                         Text("스토어 이름")
                             .modifier(contentNameModifier())
-                        TextField("2~14자 내로 입력해주세요", text: $storeName)
-                            .modifier(contentFieldModifier())
+                        Text("\(storeInfo.storeName)")
+                            .modifier(contentNameModifier())
                     }
                     HStack(alignment: .top) {
                         Text("사업장소재지 주소")
                             .modifier(contentNameModifier())
-                        TextField("주소를 입력해주세요", text: $storeAddress)
-                            .modifier(contentFieldModifier())
+                        Text("\(storeInfo.storeLocation)")
+                            .modifier(contentNameModifier())
+//                            .modifier(contentFieldModifier())
                     }
                 } header: {
                     Text("입점 신청")
@@ -105,6 +102,6 @@ struct contentFieldModifier: ViewModifier {
 struct EnrollRequestModal_Previews: PreviewProvider {
     @State static var testStore = testStores[0]
     static var previews: some View {
-        EnrollRequestModal(store: $testStore)
+        EnrollRequestModal(storeInfo: StoreNetworkManager(with: "StoreInfo").storeInfos.first!)
     }
 }

@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct RequestCountView: View {
+    @StateObject var manager: StoreNetworkManager
+    var newStores: Int {
+        get {
+            return manager.storeInfos.filter { $0.isSubmitted == true }.count
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
-            Text("신규 / 등록 요청")
+            Text("입점 요청")
                 .font(.headline)
             Spacer()
             HStack{
-                Text("3").foregroundColor(.secondary)
-                Text("/")
-                Text("7")
+                Text("\(newStores)").foregroundColor(.secondary)
+//                Text("/")
+//                Text("7")
                 Spacer()
             }
             .font(.title)
@@ -27,6 +34,6 @@ struct RequestCountView: View {
 
 struct RequestCountView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestCountView().frame(height: 100)
+        RequestCountView(manager: StoreNetworkManager(with: "StoreInfo")).frame(height: 100)
     }
 }
