@@ -29,12 +29,13 @@
 실제 앱 구동화면입니다.
 </Blockquote>
 
-| <img src="asd" width="180"> | <img src="asd" width="180"> | <img src="asd" width="180"> | <img src="asd" width="180"> |
+| ![image](https://user-images.githubusercontent.com/102764542/224872238-039e973b-3976-4294-8fb5-aa60734be247.png) | ![image](https://user-images.githubusercontent.com/102764542/224872289-11c5cfce-5a1c-4948-8662-7050eb1590c6.png) |![image](https://user-images.githubusercontent.com/102764542/224872343-74cd8969-6a1f-4827-862d-76e210be8df0.png)|![image](https://user-images.githubusercontent.com/102764542/224872411-792fd6f3-ec63-42df-9b02-2471af0afbf5.png)|
 | :-------------------------: | :-------------------------: | :-------------------------: | :-------------------------: |
-|           로그인            |          대시보드           |          고객관리           |          가게 정보          |
-| <img src="asd" width="180"> | <img src="asd" width="180"> | <img src="asd" width="180"> | <img src="asd" width="180"> |
+|           로그인            |          사이드 바           |          대시보드           |          고객관리          |
+
+|![image](https://user-images.githubusercontent.com/102764542/224872491-7a4ccd85-2a86-4316-aa78-6af28a7aabe7.png)|![image](https://user-images.githubusercontent.com/102764542/224872512-95faa032-65af-474a-b525-4490dbd8a7ff.png)|![image](https://user-images.githubusercontent.com/102764542/224872548-471de241-a7ec-443c-87e7-b80bb6551252.png)|![image](https://user-images.githubusercontent.com/102764542/224872571-d9180a41-af9b-4c25-988b-8361fcc614a4.png)|
 | :-------------------------: | :-------------------------: | :-------------------------: | :-------------------------: |
-|           로그인            |          대시보드           |          고객관리           |          가게 정보          |
+|           가게정보            |          가게정보 디테일뷰           |          입점관리           |          입점 신청서          |
 
 ### 코드 컨벤션
 
