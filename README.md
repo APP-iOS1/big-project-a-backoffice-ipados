@@ -200,3 +200,6 @@ feat/26-tab2/recipe
       </tr>
   </table>
 </div>
+
+# Libraries
+- [Firebase](https://github.com/firebase/firebase-ios-sdk/blob/master/LICENSE)
